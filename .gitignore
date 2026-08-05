@@ -1,0 +1,6 @@
+# 제작 영역 (로컬 전용, 배포 대상 아님)
+workshop/
+
+# Python
+*.pyc
+__pycache__/
