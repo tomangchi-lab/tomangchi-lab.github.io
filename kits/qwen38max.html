@@ -1,0 +1,133 @@
+<!doctype html><html lang="ko"><head><title>🚀 Qwen3.8-Max 스펙 정리 — 공식 원문 + 한국어 요약 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FCF8F0;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--line:#EBE4D7;--gray:#787E88;--coral:#D97757;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:26px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:6px}
+.card .tip{margin-top:12px;background:var(--cream);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+/* ── 이 페이지 전용 ── */
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tag{font-size:12.5px;font-weight:900;border-radius:999px;padding:4px 12px}
+.tag.a{background:#E6F9FB;color:var(--cyan-d)}
+.tag.b{background:#EDEBFB;color:#4B45B8}
+.spec{list-style:none;padding:0!important;display:grid;gap:0!important}
+.spec li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line)}
+.spec li:last-child{border-bottom:0}
+.spec .k{flex:none;width:118px;font-size:13px;font-weight:900;color:var(--gray);letter-spacing:.01em}
+.spec .v{font-size:15px}
+.spec .v b{color:#4B45B8}
+.price{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px}
+.price div{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center}
+.price .p1{font-size:11.5px;font-weight:900;color:var(--gray)}
+.price .p2{font-size:15px;font-weight:900;margin-top:2px}
+.src{list-style:none;padding:0!important;display:grid;gap:10px}
+.src a.x{display:block;text-decoration:none;color:inherit;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.src a.x:active{transform:scale(.99)}
+.src .h{font-size:14.5px;font-weight:900;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.src .h em{font-style:normal;color:var(--cyan-d)}
+.src .m{font-size:13px;color:#565c66;margin-top:3px}
+.src .sum{font-size:13px;color:#7A8089;line-height:1.62;margin-top:8px}
+.src .go{font-size:12.5px;font-weight:900;color:var(--cyan-d);margin-top:8px}
+.chip{display:inline-block;font-size:11.5px;font-weight:900;border-radius:6px;padding:1px 7px;vertical-align:1px}
+.chip.a{background:#E6F9FB;color:var(--cyan-d)}
+.chip.b{background:#EDEBFB;color:#4B45B8}
+.hint{font-size:13px;color:var(--gray);line-height:1.6;margin:-4px 0 14px}
+.docs{margin-top:14px;font-size:13.5px}
+.docs a{color:var(--cyan-d);font-weight:700;word-break:break-all}
+.bal{background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:14px;padding:18px 18px;margin-bottom:16px}
+.bal h3{font-size:16px;font-weight:900;margin-bottom:8px}
+.bal p{font-size:14.5px;color:#3a4049;margin-bottom:8px}
+.bal p:last-child{margin-bottom:0}
+.soon{background:#fff;border:1px dashed var(--cyan);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.soon h3{font-size:16px;font-weight:900;margin-bottom:6px;color:var(--cyan-d)}
+.soon p{font-size:14.5px;color:#3a4049}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">받아가세요</span>
+<h1>🚀 Qwen3.8-Max<br>스펙 한 장 정리</h1>
+<p class="lead">알리바바가 공개한 <b>역대 최대 플래그십</b>. 공식 발표에 적힌 숫자만 추려서 정리하고, 원문 X 포스트를 그대로 붙였습니다.</p>
+
+<div class="tags">
+  <span class="tag b">2026/08/03 공개</span>
+  <span class="tag a">다음 주 오픈웨이트</span>
+</div>
+
+<div class="card"><h2><span class="num">1</span>스펙 (공식 발표 기준)</h2>
+<ul class="spec">
+  <li><span class="k">파라미터</span><span class="v"><b>2.4T</b> (2조 4천억)</span></li>
+  <li><span class="k">자율 코딩</span><span class="v"><b>10일+</b> 연속 자가발전형 개발 — 빈 폴더에서 프로덕션까지, 사람이 붙잡아주지 않는 조건</span></li>
+  <li><span class="k">롱호라이즌</span><span class="v">칩 설계 최적화 <b>500턴+</b>, 이커머스 전략 <b>365일</b> 시뮬레이션</span></li>
+  <li><span class="k">멀티모달</span><span class="v">비전이 입력에 그치지 않고 계획·실행·자기교정 루프에 들어감</span></li>
+  <li><span class="k">오픈웨이트</span><span class="v">다음 주 <b>Qwen3.8-Max</b> 공개 예정. <b>Qwen3.8-27B</b>도 함께 오픈웨이트</span></li>
+  <li><span class="k">벤치마크</span><span class="v">공식 차트 16종 동시 공개 (SWE-Pro·TerminalBench·PaperBench·CoWorkBench 등) — 숫자는 원문 이미지에서 직접 확인하세요</span></li>
+</ul>
+<p style="font-size:13px;font-weight:900;color:var(--gray);margin:16px 0 2px">API 가격 (100만 토큰당)</p>
+<div class="price">
+  <div><div class="p1">INPUT</div><div class="p2">$2.0</div></div>
+  <div><div class="p1">OUTPUT</div><div class="p2">$6.0</div></div>
+  <div><div class="p1">암묵적 캐싱</div><div class="p2">$0.25</div></div>
+</div>
+<p class="tip">🔎 위 숫자는 전부 아래 2번 원문 포스트에 적힌 그대로입니다. 별도 벤치마크 해석은 넣지 않았습니다.</p></div>
+
+<div class="card"><h2><span class="num">2</span>공식 원문 2건 (X 포스트)</h2>
+<p class="hint">아래 요약은 토망치랩이 정리한 것으로, 정확한 내용은 원문 링크를 확인하세요.</p>
+<ul class="src">
+  <li><a class="x" href="https://x.com/Alibaba_Qwen/status/2084093402967396594" target="_blank" rel="noopener">
+    <div class="h"><em>@Alibaba_Qwen</em> · 8/3 <span class="chip a">발표</span></div>
+    <div class="m">"Meet Qwen3.8-Max: A New Bar for Coding and Cowork."</div>
+    <div class="sum">Qwen3.8-Max 공개 알림. 코딩과 '코워크(협업)'에서 새 기준을 세웠다는 선언과 함께 티저 영상만 붙은 짧은 포스트. 3일간 알리바바 Qwen 계정 최고 반응(좋아요 2.2만 이상 · 노출 7.3M).</div>
+    <div class="go">원문 보기 →</div></a></li>
+
+  <li><a class="x" href="https://x.com/Alibaba_Qwen/status/2084100707423289643" target="_blank" rel="noopener">
+    <div class="h"><em>@Alibaba_Qwen</em> · 8/3 <span class="chip b">스펙 스레드</span></div>
+    <div class="m">"…our most capable model to date… at 2.4T parameters"</div>
+    <div class="sum">이 페이지 1번의 숫자가 전부 여기서 나옵니다. 2.4T 파라미터, 10일 이상 자율 코딩, 칩 설계 500턴·이커머스 365일 롱호라이즌, 네이티브 멀티모달, API 가격 3종, 그리고 <b>다음 주 오픈웨이트 공개 예고</b>. 하단에 벤치마크 차트 16종 첨부.</div>
+    <div class="go">원문 보기 →</div></a></li>
+</ul>
+<div class="docs"><b>공식 링크</b><br>
+· <a href="https://qwen.ai/blog?id=qwen3.8" target="_blank" rel="noopener">qwen.ai — Qwen3.8 공식 블로그</a><br>
+· <a href="https://chat.qwen.ai/" target="_blank" rel="noopener">chat.qwen.ai — Qwen Studio에서 바로 써보기</a><br>
+· <a href="https://qwencloud.com/" target="_blank" rel="noopener">qwencloud.com — API</a>
+</div></div>
+
+<div class="bal">
+<h3>⚖️ 같이 봐야 할 것</h3>
+<p><b>여기 적힌 숫자는 전부 알리바바가 자사 모델에 대해 발표한 값입니다.</b> 제3자 검증 결과가 아니고, 벤치마크 차트도 제작사가 고른 항목입니다.</p>
+<p>공개된 차트에서도 Qwen3.8-Max가 <b>모든 항목 1위는 아닙니다</b> — 항목에 따라 경쟁 모델이 앞선 곳이 있습니다. 원문 이미지를 직접 보고 판단하시는 걸 권합니다.</p>
+<p>'10일 자율 코딩'도 "이만큼 오래 끊기지 않고 굴러갔다"는 뜻이지, 결과물 품질을 보증하는 숫자는 아닙니다.</p>
+</div>
+
+<div class="soon">
+<h3>🔨 오픈웨이트 풀리면 추가됩니다</h3>
+<p>다음 주 가중치가 공개되면 <b>직접 받아서 돌려본 결과를 이 페이지에 그대로 추가</b>할 예정입니다. 설치 과정, 필요한 사양, 실제로 쓸 만한지까지 — 두드려보고 나서 씁니다. 이 링크 그대로 두고 계시면 됩니다.</p>
+</div>
+
+<div class="card"><h2><span class="num">3</span>토망치 한 줄</h2>
+<p>중요한 건 2.4조라는 숫자가 아니라 <b>"프런티어급을 다음 주에 누구나 받아서 돌린다"</b>는 쪽이에요. 성능 경쟁보다 배포 방식이 판을 흔드는 국면입니다.</p>
+<p class="tip">💡 오픈웨이트 = 가중치 파일을 받아 내 컴퓨터/서버에서 돌릴 수 있게 푸는 것. API로만 쓰는 것과 다릅니다.</p></div>
+
+<div class="foot"><div class="hammer">🔨</div><p>매일 업데이트되는 AI, 직접 두드려봅니다.<br>다음 실험도 DM으로 받아보세요.</p><a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/" target="_blank" rel="noopener">인스타 <b>@ai_tomangchi.lab</b> 팔로우</a></div>
+</div></body></html>
