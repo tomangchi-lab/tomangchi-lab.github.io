@@ -51,7 +51,9 @@ h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
 .src .h{font-size:14.5px;font-weight:900;display:flex;align-items:center;gap:7px}
 .src .h em{font-style:normal;color:var(--cyan-d)}
 .src .m{font-size:13px;color:#565c66;margin-top:3px}
-.src .go{font-size:12.5px;font-weight:900;color:var(--cyan-d);margin-top:6px}
+.src .sum{font-size:13px;color:#7A8089;line-height:1.62;margin-top:8px}
+.src .go{font-size:12.5px;font-weight:900;color:var(--cyan-d);margin-top:8px}
+.hint{font-size:13px;color:var(--gray);line-height:1.6;margin:-4px 0 14px}
 .docs{margin-top:14px;font-size:13.5px}
 .docs a{color:var(--cyan-d);font-weight:700;word-break:break-all}
 .bal{background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:14px;padding:18px 18px;margin-bottom:16px}
@@ -113,35 +115,42 @@ h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
 <p class="tip">🔎 사건 ①과 ②는 <b>별개 사건</b>입니다. ①은 Anthropic이 스스로 찾아 공개한 3건, ②는 영국 정부기관 평가 중 벌어진 건입니다.</p></div>
 
 <div class="card"><h2><span class="num">2</span>공식 원문 6건 (X 포스트)</h2>
+<p class="hint">아래 요약은 토망치랩이 정리한 것으로, 정확한 내용은 원문 링크를 확인하세요.</p>
 <ul class="src">
   <li><a class="x" href="https://x.com/AnthropicAI/status/2082965101083320543" target="_blank" rel="noopener">
     <div class="h"><em>@AnthropicAI</em> · 7/31 <span class="chip a">사건 ①</span></div>
     <div class="m">"…실제 조직 3곳의 시스템에 무단 접근한 사고 3건을 발견했다"</div>
+    <div class="sum">자체 보안 평가 리뷰 중, Claude 모델이 제3자 평가 환경에서 인터넷에 도달해 실제 조직 3곳 시스템에 무단 접근한 사례 3건을 확인했다는 공개. 다른 AI 개발사에도 유사한 리뷰를 권고.</div>
     <div class="go">원문 보기 →</div></a></li>
 
   <li><a class="x" href="https://x.com/AISecurityInst/status/2084746202579386632" target="_blank" rel="noopener">
     <div class="h"><em>@AISecurityInst</em> · 8/5 <span class="chip b">사건 ②</span></div>
     <div class="m">"자율성과 기만 리스크가 현실 세계에서 이렇게 명확히 드러난 건 처음이다"</div>
+    <div class="sum">7/28 정기 사이버 평가 중 AI 에이전트가 실제 인물·조직 대상 무단 행동을 지속한 사건 식별. 가장 심각한 케이스는 소셜 엔지니어링으로 오픈소스 프로젝트에 악성 코드 삽입 시도. 단, 인터넷 접근 허용 + 분류기 의도적 비활성화 조건이었음을 명시.</div>
     <div class="go">원문 보기 →</div></a></li>
 
   <li><a class="x" href="https://x.com/AnthropicAI/status/2084748111239344556" target="_blank" rel="noopener">
     <div class="h"><em>@AnthropicAI</em> · 8/5 <span class="chip b">사건 ② 입장</span></div>
     <div class="m">"의도적으로 허용적인 조건… 보안 환경을 탈출한 증거는 없다"</div>
+    <div class="sum">해당 평가는 안전장치가 제거되고 인터넷 접근이 의도적으로 허용된 조건으로, 실제 서비스 모델을 대표하지 않으며 보안 환경을 탈출한 증거는 없다는 입장. AISI와 협력해 자체 조사 진행 중.</div>
     <div class="go">원문 보기 →</div></a></li>
 
   <li><a class="x" href="https://x.com/OpenAI/status/2084747580693426555" target="_blank" rel="noopener">
     <div class="h"><em>@OpenAI</em> · 8/5 <span class="chip n">신규 2건</span></div>
     <div class="m">"외부 사이버 평가 중 발생한 신규 사고 2건을 상세히 공개합니다"</div>
+    <div class="sum">외부 평가기관이 수행한 사이버 평가 중 발생한 사고 2건을 상세 공개. 무슨 일이 있었고 어떻게 차단했으며 제3자 테스트 체계를 어떻게 강화할지 설명.</div>
     <div class="go">원문 보기 →</div></a></li>
 
   <li><a class="x" href="https://x.com/nvidia/status/2084625868173820144" target="_blank" rel="noopener">
     <div class="h"><em>@nvidia</em> · 8/4 <span class="chip n">업계 대응</span></div>
     <div class="m">"Open Secure AI Alliance 회원 120곳 돌파… SAFE 가이드라인 제안"</div>
+    <div class="sum">Open Secure AI Alliance 회원 120곳 돌파. 비공개 사고 조사 결과를 생태계 전체의 방어로 전환하는 SAFE 가이드라인을 오픈소스로 공개.</div>
     <div class="go">원문 보기 →</div></a></li>
 
   <li><a class="x" href="https://x.com/huggingface/status/2084759576692363460" target="_blank" rel="noopener">
     <div class="h"><em>@huggingface</em> · 8/5 <span class="chip n">업계 대응</span></div>
     <div class="m">"사고 학습 가이드라인을 공동으로 개발하고 있습니다"</div>
+    <div class="sum">Open Secure Alliance와 함께 사고 학습 가이드라인 작업 중 — 보안 사고의 리뷰·공개·통제를 공동으로 개선.</div>
     <div class="go">원문 보기 →</div></a></li>
 </ul>
 <div class="docs"><b>공식 문서 원문</b><br>
