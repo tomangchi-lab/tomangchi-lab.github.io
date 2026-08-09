@@ -1,0 +1,171 @@
+<!doctype html><html lang="ko"><head><title>🧩 클로드 스킬 시작 가이드 — 웹에서 켜는 법부터 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--line:#E7E9ED;--gray:#787E88;--coral:#D97757;--soft:#F5F7F9;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:26px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:6px}
+.card .tip{margin-top:12px;background:var(--soft);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+/* ── 이 페이지 전용 ── */
+.path{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14.5px;font-weight:900;letter-spacing:.01em;overflow-wrap:anywhere}
+.path em{font-style:normal;color:var(--cyan-d)}
+.path .sep{color:var(--gray);margin:0 6px}
+.on{display:inline-block;background:var(--cyan);color:#0A3B40;border-radius:999px;padding:1px 10px;font-size:12.5px;font-weight:900;margin-left:6px}
+.chk{list-style:none;padding:0!important;display:grid;gap:10px}
+.chk li{display:flex;gap:10px;align-items:flex-start;font-size:14.8px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.src{list-style:none;padding:0!important;display:grid;gap:10px}
+.src a.x{display:block;text-decoration:none;color:inherit;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.src .h{font-size:14.5px;font-weight:900;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.src .h em{font-style:normal;color:var(--cyan-d)}
+.src .m{font-size:13px;color:#565c66;margin-top:3px}
+.src .go{font-size:12.5px;font-weight:900;color:var(--cyan-d);margin-top:8px}
+.star{font-size:12px;font-weight:900;color:var(--gray)}
+.chip{display:inline-block;font-size:11.5px;font-weight:900;border-radius:6px;padding:1px 7px}
+.chip.web{background:#E6F9FB;color:var(--cyan-d)}
+.chip.cli{background:#EDEBFB;color:#4B45B8}
+.bal{background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:14px;padding:18px;margin-bottom:16px}
+.bal h3{font-size:16px;font-weight:900;margin-bottom:8px}
+.bal p{font-size:14.5px;color:#3a4049;margin-bottom:8px}
+.bal p:last-child{margin-bottom:0}
+.bal b{color:var(--coral)}
+code{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:13.5px;overflow-wrap:anywhere}
+.hint{font-size:13px;color:var(--gray);line-height:1.6;margin:-4px 0 14px}
+.docs{margin-top:14px;font-size:13.5px}
+.docs a{color:var(--cyan-d);font-weight:700;word-break:break-all}
+</style></head><body>
+
+<div class="top"><span class="mark">🔨</span><span class="word">AI TOMANGCHI<b> LAB</b></span></div>
+
+<div class="wrap">
+<span class="badge">꿀팁</span>
+<h1>클로드 스킬 시작 가이드</h1>
+<p class="lead">터미널 없이 웹에서 켜는 것부터, 남이 만든 스킬을 가져다 쓰는 것까지.
+10분 안에 첫 스킬이 돌아가게 하는 것이 이 문서의 목표입니다.</p>
+
+<div class="card">
+<h2><span class="num">1</span>웹에서 켜기 — 2단계</h2>
+<p class="hint">순서가 중요합니다. 1단계를 건너뛰면 <b>스킬 메뉴 자체가 나타나지 않습니다.</b></p>
+
+<p style="font-weight:900;font-size:14px;margin-bottom:2px">1단계 — 코드 실행 켜기</p>
+<div class="path">Settings<span class="sep">→</span><em>Capabilities</em><span class="sep">→</span>Code execution and file creation<span class="on">ON</span></div>
+
+<p style="font-weight:900;font-size:14px;margin:14px 0 2px">2단계 — 스킬 목록에서 토글</p>
+<div class="path">Customize<span class="sep">/</span>사용자 지정<span class="sep">→</span><em>Skills</em><span class="sep">/</span><em>스킬</em><span class="sep">→</span>개별 스킬<span class="on">ON</span></div>
+
+<div class="tip">한국어 UI에서는 왼쪽 사이드바 <b>사용자 지정 → 스킬</b> 입니다. Capabilities는 설정(Settings) 쪽에 따로 있습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>순서 체크리스트</h2>
+<ul class="chk">
+<li>Settings → Capabilities 에서 <b>Code execution and file creation</b> 토글 ON</li>
+<li>사이드바 <b>사용자 지정 → 스킬</b> 이동</li>
+<li>목록의 <b>예시(Anthropic 제공)</b> 스킬 중 하나를 ON</li>
+<li>새 대화에서 그 스킬이 필요한 요청을 해본다 (호출은 Claude가 알아서 판단)</li>
+<li>결과가 나오면 성공 — 스킬을 명시적으로 부를 필요는 없습니다</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>플랜 요건</h2>
+<p><b>Free · Pro · Max · Team · Enterprise</b> 전 플랜에서 쓸 수 있습니다.
+유료 전용 기능이 아닙니다.</p>
+<ul style="margin-top:10px">
+<li>공통 조건: <b>코드 실행(Code execution)</b>이 켜져 있어야 합니다.</li>
+<li>Team·Enterprise: <b>조직 소유자</b>가 먼저 조직 설정에서 스킬을 켜야 개인 목록에 나타납니다.</li>
+</ul>
+<div class="tip">회사 계정인데 스킬 메뉴가 없다면 내 설정 문제가 아니라 조직 설정일 수 있습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>게시물에 나온 스킬 6종</h2>
+<ul class="src">
+<li><a class="x" href="https://github.com/anthropics/skills/tree/main/skills" target="_blank" rel="noopener">
+  <div class="h">공식 문서 스킬 <em>docx · xlsx · pptx · pdf</em> <span class="chip web">웹 기본 제공</span></div>
+  <div class="m">보고서·표·발표자료·PDF를 만들고 고치는 스킬. Claude 문서 기능을 실제로 돌리는 구현이 공개돼 있습니다.</div>
+  <div class="go">github.com/anthropics/skills <span class="star">· 167,146★</span></div></a></li>
+
+<li><a class="x" href="https://github.com/anthropics/skills/tree/main/skills/canvas-design" target="_blank" rel="noopener">
+  <div class="h"><em>canvas-design</em> <span class="chip web">웹 기본 제공</span></div>
+  <div class="m">디자인 원칙을 적용해 .png · .pdf 시각물을 만드는 스킬.</div>
+  <div class="go">github.com/anthropics/skills</div></a></li>
+
+<li><a class="x" href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank" rel="noopener">
+  <div class="h"><em>skill-creator</em> <span class="chip web">웹 기본 제공</span></div>
+  <div class="m">스킬을 새로 만들고 고치고 성능을 재는 스킬. 코딩 없이 말로 나만의 스킬을 만들 때 씁니다.</div>
+  <div class="go">github.com/anthropics/skills</div></a></li>
+
+<li><a class="x" href="https://github.com/coleam00/excalidraw-diagram-skill" target="_blank" rel="noopener">
+  <div class="h"><em>excalidraw-diagram-skill</em> <span class="chip cli">Claude Code용</span></div>
+  <div class="m">말로 설명하면 Excalidraw 다이어그램을 그려줍니다. 저장소 표현으로는 "시각적으로 주장하는" 다이어그램. 렌더 검증에 Playwright를 쓰므로 코딩 에이전트 환경이 전제입니다.</div>
+  <div class="go">github.com/coleam00/excalidraw-diagram-skill <span class="star">· 4,352★</span></div></a></li>
+
+<li><a class="x" href="https://github.com/Master-cai/Research-Paper-Writing-Skills" target="_blank" rel="noopener">
+  <div class="h"><em>Research-Paper-Writing-Skills</em> <span class="chip cli">Codex · Claude Code · Gemini용</span></div>
+  <div class="m">Abstract·Introduction·Method·Experiments·Conclusion 초안과 재작성, 문단 흐름과 주장-근거 정합 점검. 저장소가 안내하는 설치 경로는 Codex·Claude Code·Gemini입니다.</div>
+  <div class="go">github.com/Master-cai/Research-Paper-Writing-Skills <span class="star">· 5,902★</span></div></a></li>
+</ul>
+<div class="hint" style="margin-top:12px">★ 수치는 2026-08-09 기준입니다. 저장소 인기도는 계속 바뀝니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>남이 만든 스킬 가져다 쓰기</h2>
+<p style="font-weight:900;font-size:14px;margin-bottom:6px">웹 (claude.ai) — ZIP 업로드</p>
+<div class="path">사용자 지정<span class="sep">→</span>스킬<span class="sep">→</span><em>+</em><span class="sep">→</span>스킬 만들기<span class="sep">→</span>스킬 업로드</div>
+<ul style="margin-top:8px">
+<li>ZIP <b>루트에 스킬 폴더</b>가 와야 합니다. 한 겹 더 감싸면 인식되지 않습니다.</li>
+<li>최소 요건은 <code>SKILL.md</code> 하나 — 안에 name·description 메타데이터가 있어야 합니다.</li>
+</ul>
+
+<p style="font-weight:900;font-size:14px;margin:16px 0 6px">Claude Code (터미널)</p>
+<ul>
+<li>개인 전체 적용: <code>~/.claude/skills/&lt;스킬이름&gt;/</code></li>
+<li>프로젝트 한정: <code>.claude/skills/&lt;스킬이름&gt;/</code></li>
+</ul>
+<div class="tip">저장소를 받아 그 안의 스킬 폴더를 위 경로에 통째로 두면 됩니다.</div>
+</div>
+
+<div class="bal">
+<h3>⚠️ 막히기 쉬운 곳</h3>
+<p><b>스킬 메뉴가 안 보인다</b> — 대부분 1단계를 안 켠 경우입니다. Settings → Capabilities 에서 Code execution and file creation 을 먼저 켜세요. 회사 계정이면 조직 설정이 원인일 수 있습니다.</p>
+<p><b>Research-Paper 스킬을 웹에 올렸는데 기대와 다르다</b> — 이 스킬은 저장소가 Codex·Claude Code·Gemini 설치만 안내합니다. <b>웹 업로드 동작은 공식적으로 보증된 것이 아닙니다.</b> 쓰려면 직접 확인해보고 판단하세요.</p>
+<p><b>excalidraw 스킬이 웹에서 안 돈다</b> — 정상입니다. 렌더 검증에 Playwright를 쓰는 구조라 터미널(코딩 에이전트) 환경을 전제로 만들어졌습니다.</p>
+<p><b>스킬을 켰는데 안 쓰는 것 같다</b> — 스킬은 명시적으로 부르는 게 아니라 Claude가 필요하다고 판단할 때 알아서 불러옵니다. 요청을 더 구체적으로 적어보세요.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">6</span>공식 문서</h2>
+<div class="docs">
+· <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">support.claude.com — 스킬 사용하기</a><br>
+· <a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills" target="_blank" rel="noopener">support.claude.com — 커스텀 스킬 만들기</a><br>
+· <a href="https://claude.com/blog/skills" target="_blank" rel="noopener">claude.com — Introducing Agent Skills</a>
+</div>
+</div>
+
+<div class="foot">
+<div class="hammer">🔨</div>
+<p>두드려보고 정리했습니다. 틀린 게 있으면 DM 주세요.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/" target="_blank" rel="noopener">@ai_tomangchi<b>.lab</b> 팔로우</a>
+</div>
+</div>
+</body></html>
