@@ -1,0 +1,151 @@
+<!doctype html><html lang="ko"><head><title>🧩 힉스필드 레이어 — 쓰기 전에 이것만 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="힉스필드 Layers가 실제로 하는 일 3가지, 어떤 이미지에 쓰는지, 크레딧이 어디서 나가는지. 공식 changelog·요금표 원문 대조본.">
+<meta property="og:title" content="🧩 힉스필드 레이어 — 쓰기 전에 이것만">
+<meta property="og:description" content="공식이 인정한 기능은 3가지. 확인된 것과 확인 안 된 것을 갈라 적었습니다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.na{color:var(--coral);font-weight:900}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">꿀팁</span>
+<h1>🧩 힉스필드 레이어<br>— 쓰기 전에 이것만</h1>
+<p class="lead">평면 이미지를 편집 가능한 요소로 쪼개주는 기능입니다. <b>이름이 붙은 기능과 그냥 같은 페이지에 있는 기능이 섞여 있어서</b>, 공식 문서에 적힌 것만 갈라 정리했습니다.<br>확인 못 한 건 <b>확인 못 했다고</b> 적었습니다.</p>
+
+<div class="clocks">
+  <div class="clock">
+    <div class="k">출시</div><div class="v">2026년 8월 11일</div>
+    <div class="sub">공식 changelog 항목 기준</div></div>
+  <div class="clock">
+    <div class="k">공식이 인정한 기능</div><div class="v">3가지</div>
+    <div class="sub">페이지 데모는 5종 — 아래 참고</div></div>
+</div>
+
+<div class="card"><h2><span class="num">1</span>Layers가 실제로 하는 일 — 3가지</h2>
+<p>공식 changelog의 Layers 항목에 적힌 것은 이 셋뿐입니다.</p>
+<ul>
+<li><b>레이어 분해</b> — 평면 이미지를 독립적으로 편집되는 요소들로 쪼갠다</li>
+<li><b>텍스트 편집</b> — 이미지 속 글자를 찾아, 바꿀 말로 다시 만든다</li>
+<li><b>배경 제거</b> — 지운 결과가 곧장 프로젝트로 들어가 이어서 편집된다</li>
+</ul>
+<div class="quote"><b>원문</b><br>
+“Layer Decomposition. Splits a flat image into independently editable elements.”<br>
+“Edit Text. Finds text in an image and regenerates it with your replacements.”<br>
+“Remove Background. Removes the background; the result drops straight into your project for further editing.”</div>
+<div class="hard">⚠️ 제품 페이지에는 <b>리라이트·인페인트·이펙트</b> 데모도 같이 걸려 있습니다. 이건 changelog의 Layers 항목에 <b>없습니다.</b> 같은 편집기 안의 다른 기능이지 이번 발표 내용이 아니에요 — 소개 글을 볼 때 이 구분이 자주 뭉개집니다.</div>
+</div>
+
+<div class="card"><h2><span class="num">2</span>어떤 이미지에 쓸 만한가</h2>
+<p><b>쓸 만한 쪽 — 원본 파일이 없는 이미지입니다.</b></p>
+<ul>
+<li>원본(psd·피그마)이 사라진 <b>예전 포스터·배너</b>의 글자만 바꿔야 할 때</li>
+<li>외부에서 <b>완성본 이미지로만 받은</b> 소재를 손봐야 할 때</li>
+<li>스크린샷에서 <b>피사체만 떼어내</b> 다른 배경에 얹을 때</li>
+</ul>
+<p style="margin-top:14px"><b>안 쓰는 게 나은 쪽 — 내가 만들 수 있는 이미지입니다.</b></p>
+<ul>
+<li>코드나 템플릿으로 뽑는 이미지는 <b>거기서 고치는 게 맞습니다.</b> 글자 하나 틀렸을 때 그 줄만 고치면 되고, 같은 실수가 다음 장에서 반복되지 않아요.</li>
+<li>레이어 분해는 <b>손잡이가 없는 이미지에 손잡이를 만드는</b> 도구입니다. 이미 손잡이가 있으면 한 번 더 만들 이유가 없습니다.</li>
+</ul>
+<div class="tip">💡 판단 기준 한 줄 — <b>“이 이미지를 내가 다시 만들 수 있나?”</b> 있으면 원본에서 고치고, 없으면 레이어로 고칩니다.</div>
+</div>
+
+<div class="card"><h2><span class="num">3</span>크레딧은 어디서 나가나</h2>
+<p><b>Layers 3종의 개별 크레딧 단가는 공식 요금표에 없습니다.</b> 요금표의 이미지 항목 21개를 전부 확인했지만 레이어 분해·텍스트 편집·배경 제거는 등재돼 있지 않았어요. <b>그래서 여기에 숫자를 적지 않습니다</b> — 추정치를 적으면 그게 공식 값처럼 읽히니까요.</p>
+<p style="margin-top:12px">대신 <b>공식 요금표에 실제로 있는 값</b>은 이렇습니다.</p>
+<table>
+<tr><th>항목</th><th>공식 표기</th></tr>
+<tr><td>Starter</td><td class="v">$19/월 · 270 크레딧/월 고정</td></tr>
+<tr><td>Plus</td><td class="v">$47/월 · 1,200 크레딧/월 고정</td></tr>
+<tr><td>Ultra</td><td class="v">$99/월</td></tr>
+<tr><td>Nano Banana Pro</td><td class="v">2 크레딧/장 (4K 4)</td></tr>
+<tr><td>Nano Banana 2</td><td class="v">2 크레딧/장</td></tr>
+<tr><td>Seedream</td><td class="v">1 크레딧/장</td></tr>
+<tr><td>GPT Image</td><td class="v">1 크레딧/장</td></tr>
+<tr><td>Flux Kontext</td><td class="v">1.5 크레딧/장</td></tr>
+<tr><td>Higgsfield Soul 2.0</td><td class="v">0.12 크레딧/장</td></tr>
+<tr><td>레이어 분해 · 텍스트 편집 · 배경 제거</td><td class="v na">미등재</td></tr>
+</table>
+<p class="fn">가격은 연간 결제 기준 표기입니다. 부가세·현지세는 별도라고 명시돼 있어요.</p>
+<div class="hard">⚠️ <b>가장 많이 놓치는 조항</b> — 플랜의 무제한·무료 생성은 <b>higgsfield.ai 웹에서만</b> 됩니다. MCP·CLI·캔버스·슈퍼컴퓨터에서는 적용되지 않아요. 자동화로 돌리면 무제한이 안 걸리고 <b>크레딧이 그대로 나갑니다.</b>
+<div class="quote" style="margin-top:8px"><b>원문</b><br>“Unlimited models and Free Generations on plans are accessible only via higgsfield.ai and are not accessible on MCP/CLI, Canvas or Supercomputer.”</div></div>
+</div>
+
+<div class="card"><h2><span class="num">4</span>무료로 얼마나 쓸 수 있나</h2>
+<p>요금표에 <b>Free 열은 있습니다.</b> 그런데 표기가 <b>“Limited use”</b> 한 마디뿐이고, <b>하루 몇 크레딧인지는 공개돼 있지 않습니다.</b></p>
+<ul>
+<li>공식 요금표 — <b>Free / Limited use</b> (숫자 없음)</li>
+<li>무료로 얼마나 되는지 알려면 <b>직접 눌러보는 수밖에 없습니다.</b> 저희도 아직 안 해봤어요.</li>
+</ul>
+<div class="tip">💡 무료로 시험할 계획이면 <b>가장 비싼 이미지부터 넣지 마세요.</b> 한도가 얼마인지 모르는 상태에서 큰 걸 먼저 돌리면 확인도 못 하고 소진됩니다.</div>
+</div>
+
+<div class="card warn"><h2>🔎 우리가 확인한 것 / 못 한 것</h2>
+<ul>
+<li><b>확인함</b> — 출시일, 기능 3종 원문, 플랜별 월 크레딧, 이미지 모델 단가, 웹 전용 조항</li>
+<li><b>확인 못 함</b> — Layers 3종의 개별 크레딧 단가, 무료 티어 일일 한도</li>
+<li><b>확인 못 함</b> — 한글이 들어간 이미지에서 텍스트 편집이 되는지</li>
+</ul>
+<p class="fn">확인 못 한 항목은 직접 돌려본 뒤 이 페이지를 갱신합니다.</p>
+</div>
+
+<div class="card"><h2>📄 공식 원문 (여기서 다시 확인)</h2>
+<ul>
+<li><a href="https://higgsfield.ai/creator-hub/changelog">higgsfield.ai/creator-hub/changelog</a> — 기능 3종 원문</li>
+<li><a href="https://higgsfield.ai/pricing">higgsfield.ai/pricing</a> — 플랜·크레딧·웹 전용 조항</li>
+<li><a href="https://higgsfield.ai/layers">higgsfield.ai/layers</a> — 제품 페이지 (데모 5종)</li>
+<li><a href="https://x.com/higgsfield/status/2087225671714328813">x.com/higgsfield</a> — 출시 공지</li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🔨</div>
+<p>두드려보고 확인한 것만 올립니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">확인 시점 2026-08-15 · 공식 changelog·요금표 직접 열람<br>가격·정책은 예고 없이 바뀝니다. 반드시 위 원문에서 다시 확인하세요.</p>
+</div>
+</body></html>
