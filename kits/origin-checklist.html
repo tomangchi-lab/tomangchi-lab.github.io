@@ -1,0 +1,139 @@
+<!doctype html><html lang="ko"><head><title>📦 Origin 옮기기 전 체크리스트 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="커서 Origin(코드 호스팅 베타)에 레포를 옮기기 전에 확인할 것, GitHub 동기화 절차, 그리고 공식 문서에 아직 없는 것. 공식 문서 기준으로만 적었습니다.">
+<meta property="og:title" content="📦 Origin 옮기기 전 체크리스트">
+<meta property="og:description" content="확인할 것 5가지 · 동기화 4단계 · 아직 문서에 없는 것. 전부 cursor.com 공식 문서 기준.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.na{color:var(--coral);font-weight:900}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 킷</span>
+<h1>📦 Origin 옮기기 전<br>체크리스트</h1>
+<p class="lead">커서가 8월 17일(UTC) 연 코드 호스팅 <b>Origin</b> 얼리 베타 — 내 레포를 옮기기 전에 볼 것만 모았습니다. <b>cursor.com 공식 문서와 발표 원문에 있는 것만</b> 적었고, 문서에 없는 건 없다고 적었습니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">출시</div><div class="v">2026년 8월 17일 (UTC)</div><div class="sub">changelog «Origin Code Hosting» · 얼리 베타</div></div>
+  <div class="clock"><div class="k">쓸 수 있는 플랜</div><div class="v">Pro · Teams · Enterprise</div><div class="sub">무료 플랜은 불가 — 공식 문서</div></div>
+</div>
+
+<div class="card"><h2><span class="num">1</span>옮기기 전 확인 5가지</h2>
+<ul>
+<li><b>요금</b> — 유료 플랜(Pro·Teams·Enterprise)에 포함되고, <b>별도 Origin 요금은 문서에 없습니다.</b> 무료 플랜은 안 됩니다.</li>
+<li><b>개방 단계</b> — «Access opens in stages». 플랜이 맞아도 순서대로 열립니다.</li>
+<li><b>팀 vs 개인</b> — 팀은 <b>레거시 프라이버시 모드면 Origin을 못 켭니다.</b> Privacy Mode로 먼저 전환해야 합니다. 엔터프라이즈는 관리자가 대시보드에서 언제든 끌 수 있습니다.</li>
+<li><b>기존 GitHub 연동</b> — 옮기는 게 아니라 <b>미러</b>입니다. GitHub 레포를 복사해 계속 따라가고, <b>푸시는 GitHub로 흘러가며 원본도 GitHub</b>입니다.</li>
+<li><b>이름</b> — 코드베이스 이름(네임스페이스)은 <b>베타 동안 한 번 정하면 못 바꿉니다.</b></li>
+</ul>
+<div class="quote"><b>원문</b><br>
+“Origin code storage is available on Pro, Teams, and Enterprise plans. It is not available on free plans.”<br>
+“Teams on legacy privacy mode cannot enable Origin.”<br>
+“During the beta, you can't change or update your namespace after it's claimed. Choose your codebase name carefully.”<br>
+“Pushes to a synced repo pass through to GitHub, which remains the source of truth.”</div>
+</div>
+
+<div class="card"><h2><span class="num">2</span>GitHub 동기화 시작 — 공식 절차</h2>
+<p><b>준비물 3가지</b>(문서 «Prerequisites»)</p>
+<ul>
+<li>Pro·Teams·Enterprise 플랜의 Cursor 계정 + Origin 접근</li>
+<li>레포를 가진 조직/계정에 <b>Cursor GitHub 앱</b> 연결</li>
+<li>동기화할 레포의 <b>GitHub admin 권한</b></li>
+</ul>
+<p style="margin-top:12px"><b>켜기</b> — cursor.com/codebase → <b>Get Started</b> → 코드베이스 이름 정하기 → (관리자) 레포 생성·접근 권한 설정</p>
+<p style="margin-top:8px"><b>동기화 4단계</b></p>
+<ol>
+<li>cursor.com/codebase 열기</li>
+<li><b>Sync from GitHub</b> 선택</li>
+<li>GitHub 조직과 레포 고르기</li>
+<li>동기화 확인</li>
+</ol>
+<table>
+<tr><th>같이 오는 것</th><th>안 오는 것</th></tr>
+<tr><td>Git 히스토리·브랜치·태그</td><td class="na">GitHub Issues</td></tr>
+<tr><td>코드 탐색·검색</td><td class="na">GitHub Actions 워크플로·시크릿</td></tr>
+<tr><td>Pull requests — <b>양방향 동기화</b></td><td></td></tr>
+<tr><td>이후 변경 계속 반영</td><td></td></tr>
+</table>
+<div class="tip">💡 이슈와 CI는 GitHub에 남습니다 — 문서 원문: “Issues and CI configuration stay on GitHub unless you rebuild them elsewhere.”</div>
+</div>
+
+<div class="card warn"><h2>🔎 아직 확인 안 된 것 — 공식 문서 미기재</h2>
+<ul>
+<li><b>이슈 이관</b> — GitHub Issues를 Origin으로 옮기는 방법: <span class="na">문서에 없음</span>(«이슈는 GitHub에 남는다»까지만)</li>
+<li><b>CI 이관</b> — GitHub Actions 워크플로 이관: <span class="na">문서에 없음</span>. 네이티브 파이프라인은 <b>Buildkite</b>, PR 프리뷰는 <b>Vercel</b>, 빌드는 <b>Depot</b> 앱으로 붙입니다(공식 연동 3종)</li>
+<li><b>Origin 전용 요금·용량 한도</b> — <span class="na">문서에 없음</span>(플랜 포함만 명시)</li>
+<li><b>GitHub 없이 Origin만 쓰는 구성</b> — 레포 신규 생성은 가능하지만, «GitHub가 원본»인 미러 구조 밖에서의 운영 가이드는 <span class="na">문서에 없음</span></li>
+<li><b>에이전트 네이티브 기능</b> — changelog «Agent-native features ship soon» 예고만, 내용 미기재</li>
+</ul>
+<p class="fn">공식 문서에 생기면 이 페이지를 갱신합니다. 저희도 아직 Origin에 실제 레포를 올려 보지는 않았습니다.</p>
+</div>
+
+<div class="card"><h2>📄 공식 원문 (여기서 다시 확인)</h2>
+<ul>
+<li><a href="https://cursor.com/docs/origin">cursor.com/docs/origin</a> — 플랜·켜기·네임스페이스·프라이버시 모드</li>
+<li><a href="https://cursor.com/docs/origin/mirror-github">cursor.com/docs/origin/mirror-github</a> — 동기화 4단계·«What syncs» 표</li>
+<li><a href="https://cursor.com/docs/origin/integrations">cursor.com/docs/origin/integrations</a> — Vercel·Depot·Buildkite</li>
+<li><a href="https://cursor.com/changelog">cursor.com/changelog</a> — «Aug 17, 2026 · Origin Code Hosting»</li>
+<li><a href="https://x.com/cursor_ai/status/2089399057659596847">x.com/cursor_ai</a> — 출시 공지</li>
+</ul>
+</div>
+
+<div class="card"><h2>🧰 다른 킷</h2>
+<ul>
+<li><a href="higgsfield-layers.html">힉스필드 레이어 — 쓰기 전에 이것만</a></li>
+<li><a href="manus-backup.html">마누스 백업 체크리스트</a></li>
+<li><a href="tomangchi-intro.html">토망치랩 소개 · 코너 안내</a></li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🔨</div>
+<p>두드려보고 확인한 것만 올립니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">확인 시점 2026-08-20 · cursor.com 공식 문서·changelog·X 공지 직접 열람<br>베타라 조건은 예고 없이 바뀝니다. 반드시 위 원문에서 다시 확인하세요.</p>
+</div>
+</body></html>
