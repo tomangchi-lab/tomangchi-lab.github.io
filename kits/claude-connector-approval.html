@@ -1,0 +1,176 @@
+<!doctype html><html lang="ko"><head><title>🔐 Claude 커넥터 승인 기본값 대조표 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gmail·Drive 커넥터가 무엇을 물어보고 무엇을 안 물어보는지 전수 확인. 공식 문서에는 기본값이 없어 설정 화면에서 직접 확인했습니다. 2026-08-21 기준.">
+<meta property="og:title" content="🔐 Claude 커넥터 승인 기본값 대조표">
+<meta property="og:description" content="Gmail 27 · Drive 11 전수. 공식 문서에 없는 기본값을 직접 확인했습니다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+.na{color:var(--coral);font-weight:900}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--gray);font-weight:700;white-space:nowrap}
+td.y{color:var(--coral);font-weight:900;white-space:nowrap}
+td.n{color:var(--cyan-d);font-weight:700;white-space:nowrap}
+.scroll{overflow-x:auto}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 킷</span>
+<h1>🔐 Claude 커넥터<br>승인 기본값 대조표</h1>
+<p class="lead"><b>확인 시점 2026년 8월 21일 — 이 값은 그날의 스냅숏입니다.</b> Anthropic이 기본값을 바꾸면 이 표는 틀린 자료가 됩니다. 쓰기 전에 <b>설정 &gt; 커넥터 &gt; (커넥터) &gt; 도구 권한</b>에서 <b>직접 확인하세요.</b><br>공식 문서에는 「읽기 전용 / 쓰기·삭제」 범주만 있고 <b>각 동작의 기본값은 적혀 있지 않습니다.</b> 아래는 토망치랩이 설정 화면에서 직접 확인한 값입니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">Gmail</div><div class="v">27개 중 8개만 무승인</div><div class="sub">읽기 5 전부 + 쓰기·삭제 3</div></div>
+  <div class="clock"><div class="k">Google Drive</div><div class="v">11개 전부 승인 필요</div><div class="sub">읽기 6 · 쓰기·삭제 5</div></div>
+</div>
+
+<div class="card warn"><h2>🔴 이 킷이 있는 이유 — 공식 문서와 실물이 다릅니다</h2>
+<div class="quote">공식 도움말: “<b>By default, each action Claude takes on your behalf requires your explicit approval.</b>”<br>(기본적으로 Claude가 대신 하는 <b>모든 동작</b>은 명시적 승인을 요구합니다)</div>
+<p style="margin-top:10px">그런데 설정 화면에서는 <b>Gmail 읽기 5개 전부</b>와 <b>쓰기·삭제 3개</b>가 <b>항상 허용</b>입니다.</p>
+<p class="hard">문서만 읽고 「다 물어보겠거니」 하면 틀립니다. 특히 <b>메일 본문을 읽는 동작은 묻지 않습니다.</b></p>
+</div>
+
+<div class="card"><h2><span class="num">1</span>한눈에 — 같은 회사 커넥터인데 기본값이 반대</h2>
+<div class="scroll"><table>
+<tr><th></th><th>읽기</th><th>쓰기·삭제</th></tr>
+<tr><td><b>Gmail</b></td><td class="y">5개 · 항상 허용</td><td>22개 중 <b>3개만</b> 항상 허용</td></tr>
+<tr><td><b>Google Drive</b></td><td class="n">6개 · 승인 필요</td><td class="n">5개 · 승인 필요</td></tr>
+</table></div>
+<p class="tip">Drive는 <b>파일 목록만 봐도</b> 물어보고, Gmail은 <b>메일 본문을 읽어도</b> 안 물어봅니다.</p>
+</div>
+
+<div class="card"><h2><span class="num">2</span>Gmail 쓰기·삭제 22개 — 개별 기본값 전수</h2>
+<div class="scroll"><table>
+<tr><th>#</th><th>동작</th><th>기본값</th></tr>
+<tr><td>1</td><td>민감 라벨 적용(휴지통·스팸) — 메일</td><td class="y">항상 허용</td></tr>
+<tr><td>2</td><td>민감 라벨 적용(휴지통·스팸) — 스레드</td><td class="y">항상 허용</td></tr>
+<tr><td>3</td><td>라벨 삭제</td><td class="y">항상 허용</td></tr>
+<tr><td>4</td><td>메일 보내기</td><td class="n">승인 필요</td></tr>
+<tr><td>5</td><td>답장</td><td class="n">승인 필요</td></tr>
+<tr><td>6</td><td>전달</td><td class="n">승인 필요</td></tr>
+<tr><td>7</td><td>초안 만들기</td><td class="n">승인 필요</td></tr>
+<tr><td>8</td><td>초안 수정</td><td class="n">승인 필요</td></tr>
+<tr><td>9</td><td>휴지통으로 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>10</td><td>휴지통으로 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>11</td><td>휴지통에서 복구 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>12</td><td>휴지통에서 복구 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>13</td><td>스팸 표시 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>14</td><td>스팸 표시 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>15</td><td>스팸 해제 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>16</td><td>스팸 해제 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>17</td><td>라벨 달기 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>18</td><td>라벨 달기 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>19</td><td>라벨 떼기 — 메일</td><td class="n">승인 필요</td></tr>
+<tr><td>20</td><td>라벨 떼기 — 스레드</td><td class="n">승인 필요</td></tr>
+<tr><td>21</td><td>라벨 만들기</td><td class="n">승인 필요</td></tr>
+<tr><td>22</td><td>라벨 수정</td><td class="n">승인 필요</td></tr>
+</table></div>
+<p class="fn">확인 22 · 추정 0 · 미확인 0 — 전수입니다.</p>
+</div>
+
+<div class="card"><h2><span class="num">3</span>보이는 경향 — 「보내는 쪽은 안 묻고, 되돌리는 쪽은 묻는다」</h2>
+<div class="scroll"><table>
+<tr><th>방향</th><th>동작</th><th>기본값</th></tr>
+<tr><td>보내기</td><td>휴지통·스팸으로 (민감 라벨 적용)</td><td class="y">항상 허용</td></tr>
+<tr><td>되돌리기</td><td>휴지통에서 복구 · 스팸 해제</td><td class="n">승인 필요</td></tr>
+<tr><td>지우기</td><td>라벨 삭제</td><td class="y">항상 허용</td></tr>
+<tr><td>만들기·고치기</td><td>라벨 만들기 · 수정 · 떼기</td><td class="n">승인 필요</td></tr>
+</table></div>
+<p class="hard">⚠️ 이것은 <b>토망치랩이 관찰한 패턴이지 Anthropic이 밝힌 규칙이 아닙니다.</b> 공식 문서에 기본값 규칙은 없습니다. 참고로만 쓰시고 실제 값은 설정 화면에서 확인하세요.</p>
+</div>
+
+<div class="card warn"><h2><span class="num">4</span>눈에 띄는 자리 두 개</h2>
+<ul>
+<li><b>「민감 라벨 적용(휴지통·스팸)」이 항상 허용입니다.</b> 도구 설명에 <b>“이 도구로 메일을 휴지통에 넣거나 스팸으로 표시한다”</b>고 적혀 있습니다 — 이름은 라벨이지만 하는 일은 휴지통·스팸행입니다. 정작 「휴지통으로」·「스팸 표시」는 승인을 요구합니다. <b>같은 결과에 이르는 두 경로의 기본값이 정반대라, 한쪽을 잠가도 다른 쪽이 열려 있습니다.</b></li>
+<li><b>「라벨 삭제」가 항상 허용입니다.</b> 라벨을 지우면 그 라벨로 정리해 둔 분류가 사라집니다.</li>
+</ul>
+</div>
+
+<div class="card"><h2><span class="num">5</span>어디서 바꾸나</h2>
+<ol>
+<li><b>설정 &gt; 커넥터</b>에서 커넥터를 고릅니다.</li>
+<li><b>도구 권한</b>에서 항목마다 <b>항상 허용 / 승인 필요 / 차단</b> 중 고릅니다.</li>
+</ol>
+<p class="tip">조직(Team·Enterprise)에 속해 있으면 <b>관리자 설정이 상한</b>입니다 — 개인이 그 위로 못 엽니다.</p>
+</div>
+
+<div class="card warn"><h2><span class="num">6</span>안 되는 조건 12가지 (공식 문서 기준)</h2>
+<ol>
+<li>조직 단위 세분 권한 설정은 <b>Team·Enterprise 소유자 전용</b></li>
+<li>Cowork 「자동 승인」을 관리자가 끄면 <b>모드 선택기에 뜨지도 않습니다</b></li>
+<li>커넥터 「항상 허용」은 Team·Enterprise <b>기본 꺼짐</b> — 과거 저장한 설정도 무시됩니다</li>
+<li>읽기 전용 면제는 <b>커넥터가 read-only 주석을 달아야만</b> — 대부분의 커스텀 커넥터는 주석이 없어 전 도구가 승인 대상</li>
+<li><b>컴퓨터 사용은 승인 게이트 밖</b>입니다</li>
+<li><b>삭제는 어떤 모드에서도 끌 수 없습니다</b> (「모든 승인 건너뛰기」에서도 물어봅니다)</li>
+<li>Google Workspace 관리자가 Claude를 신뢰 앱으로 등록해야 연결됩니다 (전파 약 15분)</li>
+<li>Enterprise 검증 도메인 제한 — 회사 도메인 메일이면 개인 Claude 계정에 못 붙입니다</li>
+<li>Gmail <b>첨부 내용은 접근 불가</b> (메타데이터만)</li>
+<li>Drive는 <b>댓글 추가·xlsx→시트·pptx→슬라이드 변환 미지원</b></li>
+<li>Drive 커넥터는 <b>비공개 프로젝트에만</b> — 공유 프로젝트에서는 비활성</li>
+<li>자동 승인 모드는 <b>사용 한도를 더 먹습니다</b></li>
+</ol>
+</div>
+
+<div class="card"><h2>📄 공식 원문 (여기서 다시 확인)</h2>
+<ul>
+<li><a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors">Use Google Workspace connectors</a> — Gmail·Calendar·Drive 커넥터 기능·제한·문제 해결</li>
+<li><a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Use connectors to extend Claude’s capabilities</a> — 도구 권한(항상 허용/승인 필요/차단) 설정 경로</li>
+<li><a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork">Get started with Claude Cowork</a> — 승인 모드 3종과 도구 권한의 관계</li>
+<li><a href="https://x.com/claudeai/status/2089806039088517356">x.com/claudeai</a> — Gmail·Drive 커넥터 발표 원 포스트</li>
+</ul>
+</div>
+
+<div class="card"><h2>🧰 다른 킷</h2>
+<ul>
+<li><a href="claude-design-start.html">Claude Code /design 시작 가이드</a></li>
+<li><a href="gemini-student-plus.html">한국 학생 Gemini Plus 신청 체크리스트</a></li>
+<li><a href="tomangchi-intro.html">토망치랩 소개 · 코너 안내</a></li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🔨</div>
+<p>두드려보고 확인한 것만 올립니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">확인 시점 2026-08-21 · 설정 &gt; 커넥터 &gt; 도구 권한 화면 직접 확인 (Gmail 27 · Drive 11 전수)<br>기본값은 예고 없이 바뀝니다. 쓰기 전에 반드시 설정 화면에서 다시 확인하세요.</p>
+</div>
+</body></html>
