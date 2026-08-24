@@ -1,0 +1,86 @@
+<!doctype html><html lang="ko"><head><title>📄 ELI5 스킬 쓰는 법 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Anthropic 사람들이 쓰던 Claude Code 스킬 ELI5 — 무엇을 하는지, 어떻게 깔고 쓰는지 한 장에.">
+<meta property="og:title" content="📄 ELI5 스킬 쓰는 법">
+<meta property="og:description" content="한 줄 적으면 큰 그림과 적은 글자로 설명해 준다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:180px;font-weight:700} .v{color:#464c56}
+.tag{display:inline-block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 12px;margin:4px 6px 0 0;font-size:14px;font-weight:700}
+.warn{background:#FFF6F5;border:1px solid #F3D2CE;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px}
+.warn b{color:var(--coral)}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+ul{margin:6px 0 0 18px} li{font-size:13.5px;color:#464c56;margin-bottom:4px}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head><body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>ELI5 스킬 쓰는 법</h1>
+<p class=lead>Anthropic 사람들이 사내에서 쓰던 <b>Claude Code 스킬</b>입니다.
+무엇을 하는 것인지, 어떻게 깔고 어떻게 쓰는지를 한자리에 놓았습니다.</p>
+
+<div class=split>📄 <b>/eli5 뒤에 궁금한 것을 적으면 됩니다.</b>
+아무것도 모르는 사람 기준으로, <b>큰 그림과 적은 글자</b>로 된 HTML 한 장이 나옵니다.</div>
+
+<div class=card>
+<h2><span class=num>1</span>무엇을 하나</h2>
+<div class=row><div class=k>무엇을 시키나</div><div class=v><b>Explain like I&#x27;m someone who knows nothing about this topic, using a HTML artifact with big pictures and few words.</b></div></div><div class=row><div class=k>누구 기준으로</div><div class=v>그 주제를 <b>전혀 모르는 사람</b> 기준</div></div><div class=row><div class=k>부르는 법</div><div class=v>채팅에 <b>/eli5 &lt;궁금한 것&gt;</b></div></div><div class=row><div class=k>나오는 것</div><div class=v>큰 그림과 적은 글자로 된 <b>HTML 한 장</b></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>설치</h2>
+<div class=row><div class=k>1단계</div><div class=v><code>claude plugin marketplace add anthropics/claude-plugins-community</code></div></div><div class=row><div class=k>2단계</div><div class=v><code>claude plugin install eli5@claude-community</code></div></div>
+<p class=scope>커뮤니티 마켓플레이스에서 받습니다. 공식 배포 플러그인이 아닙니다.</p>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>이렇게 씁니다</h2>
+<p class=note>만든 사람이 든 예시 세 가지입니다. 카드 03 은 이것을 말로 옮긴 것이고, 아래가 원문입니다.</p>
+<div class=row><div class=k></div><div class=v><code>/eli5 how does this module work</code></div></div><div class=row><div class=k></div><div class=v><code>/eli5 why did we make this tradeoff</code></div></div><div class=row><div class=k></div><div class=v><code>/eli5 what caused this incident</code></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>🔴 이름은 조금 낚시입니다</h2>
+<p class=note>만든 사람이 다음날 스스로 적었습니다 — 다섯 살에게 설명하라는 뜻이 아닙니다.</p>
+<div class=warn>중요한 것은 <b>「big pictures, few words」</b> 쪽입니다.
+「그 주제를 전혀 모르는 사람」 기준으로 설명해 달라는 프롬프트입니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>만든 사람이 다음날 적은 것</h2>
+<div class=quote>“eli5 is maybe too clickbaity of a name, the prompt doesn&#x27;t actually ask you to explain it like I&#x27;m 5, just like you don&#x27;t have domain knowledge. I think the &quot;big pictures, few words&quot; part of that prompt is actually the most important part”<div class=scope>x.com/trq212 · 2026-08-23</div></div>
+</div>
+
+<div class=foot>
+<b>📌 이 표를 읽는 조건</b>
+<ul>
+<li>스킬 원문은 <b>anthropics/claude-plugins-community</b> 의 <b>eli5/skills/eli5/SKILL.md</b> 기준입니다. <b>2026-08-24 10:20 KST</b> 확인분입니다.</li>
+<li>🔴 <b>이 스킬은 Anthropic 이 공식 배포한 플러그인이 아니라 커뮤니티 마켓플레이스에 올라온 것입니다. 만든 사람은 Anthropic 에서 일하지만 본인이 「공식으로 만들지는 논의 중」이라고 적었습니다.</b></li>
+<li>커밋 시각은 GitHub API 가 주는 <b>UTC</b> 입니다.</li>
+</ul>
+<p style="margin-top:14px">🐰🔨 토망치랩 · @ai_tomangchi.lab</p>
+</div>
+
+</div></body></html>
