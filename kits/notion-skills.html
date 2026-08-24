@@ -1,0 +1,89 @@
+<!doctype html><html lang="ko"><head><title>📄 내 스킬 만들기 체크리스트 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Notion 스킬을 만드는 두 경로와 자동 실행 조건, 로컬 도구로 내려받기까지 한 장에. 2026-08-23 01:10 KST 공식 문서 기준.">
+<meta property="og:title" content="📄 내 스킬 만들기 체크리스트">
+<meta property="og:description" content="스킬은 페이지다 · 자동 실행에는 설명이 필요하다 · 다섯 도구로 내려받는다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:180px;font-weight:700} .v{color:#464c56}
+.tag{display:inline-block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 12px;margin:4px 6px 0 0;font-size:14px;font-weight:700}
+.warn{background:#FFF6F5;border:1px solid #F3D2CE;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px}
+.warn b{color:var(--coral)}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+ul{margin:6px 0 0 18px} li{font-size:13.5px;color:#464c56;margin-bottom:4px}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head><body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>내 스킬 만들기 체크리스트</h1>
+<p class=lead>Notion 스킬은 <b>따로 만드는 물건이 아니라 페이지</b>입니다.
+만드는 경로와 자동 실행 조건, 밖으로 들고 나가는 법을 한자리에 놓았습니다.</p>
+
+<div class=split>📄 <b>스킬은 페이지입니다.</b> 그래서 정리·공유·권한이
+다른 페이지와 <b>똑같이</b> 돌아갑니다 — 새로 배울 규칙이 없습니다.</div>
+
+<div class=card>
+<h2><span class=num>1</span>만드는 네 갈래</h2>
+<div class=row><div class=k>이미 있는 페이지로 만들기</div><div class=v>페이지 위 <b>•••</b> → <b>Use as a Skill</b></div></div><div class=row><div class=k>새로 만들기</div><div class=v>사이드바 <b>Library</b> → <b>Skills</b> 탭 → <b>+ Add a Skill</b></div></div><div class=row><div class=k>설정에서 찾기</div><div class=v><b>Settings → Notion AI → Skills</b></div></div><div class=row><div class=k>채팅에서 부르기</div><div class=v>Notion Agent 채팅에서 <b>/</b> 입력 → 스킬 목록</div></div><div class=row><div class=k>되돌리기 (해제)</div><div class=v>페이지 위 <b>•••</b> → <b>Unset page as skill</b> <span class=scope>페이지와 내용은 그대로 남는다</span></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>🔴 자동으로 돌게 하려면</h2>
+<p class=note>페이지면 다 스킬이 되지만, <b>자동으로 도는 것은 아닙니다.</b></p>
+<div class=row><div class=k>자동으로 돌게 하려면</div><div class=v>설명(description)이 있어야 한다</div></div><div class=row><div class=k>설명은 어디서 생기나</div><div class=v><b>스킬 데이터베이스</b> 안에 있을 때만 생긴다</div></div><div class=row><div class=k>수동으로 고정하려면</div><div class=v><b>Use automatically</b> 토글을 끈다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>밖으로 들고 나가기</h2>
+<p class=note>스킬 페이지에서 내 컴퓨터 폴더로 내려받습니다. <b>SKILL.md</b> 와 승인된 파일이 함께 갑니다.</p>
+<span class=tag>Claude Code</span><span class=tag>Codex</span><span class=tag>Cursor</span><span class=tag>Gemini</span><span class=tag>Grok</span>
+<p class=scope>출처: x.com/NotionHQ 원문 · 공식 문서는 Claude Code 를 예시로 듭니다</p>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>조건</h2>
+<div class=warn><b>Business·Enterprise</b> 플랜에는 일부 Notion AI 기능에
+<b>사용량 할당</b>이 있고, 스킬도 그 대상입니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>Notion 이 뭐라고 적었나</h2>
+<p class=note>이 편의 축은 저자 진술에서 나왔습니다.</p>
+<div class=quote>“Skills are just Notion pages (of course).”<div class=scope>x.com/NotionHQ · 2026-08-21 03:03 KST</div></div>
+</div>
+
+<div class=foot>
+<b>📌 이 표를 읽는 조건</b>
+<ul>
+<li>공식 헬프 문서(<b>www.notion.com/help/create-and-manage-skills</b>) 기준입니다. <b>2026-08-23 01:10 KST</b> 확인분입니다.</li>
+<li>UI 문구는 판본에 따라 달라집니다 — 2026년 3월 릴리스는 «··· 메뉴 → Use with AI → Use as AI skill» 였습니다.</li>
+<li>🔴 <b>해제 경로는 공식끼리 갈립니다.</b> 헬프 문서는 아직 «••• → Use with AI → uncheck Use as AI skill» 로 적고 있고,
+2026-08-20 공식 발표 이미지의 실제 메뉴는 «••• → Unset page as skill» 한 줄입니다.
+위 표는 <b>에셋 실물</b>을 따랐습니다 — 되돌렸을 때 내용이 남는다는 사실은 양쪽이 같습니다.</li>
+</ul>
+<p style="margin-top:14px">🐰🔨 토망치랩 · @ai_tomangchi.lab</p>
+</div>
+
+</div></body></html>
