@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><title>무료 조건 대조표 — Ox Alpha | 토망치랩</title>
+<!doctype html><html lang="ko"><head><title>Ox Alpha 쓰는 법 + 무료 조건 대조표 | 토망치랩</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Anthropic 사람들이 쓰던 Claude Code 스킬 ELI5 — 무엇을 하는지, 어떻게 깔고 쓰는지 한 장에.">
@@ -37,13 +37,26 @@ ul{margin:6px 0 0 18px} li{font-size:13.5px;color:#464c56;margin-bottom:4px}
 <div class=wrap>
 
 <span class=badge>AI 소식</span>
-<h1>무료 조건 대조표 — Ox Alpha</h1>
+<h1>Ox Alpha 쓰는 법 + 무료 조건 대조표</h1>
 <p class=lead>만든 곳을 밝히지 않은 모델 <b>Ox Alpha</b> 가 무료로 열렸습니다.
-그런데 <b>「무료」의 조건이 적힌 자리가 세 곳이고, 세 곳이 서로 다릅니다.</b>
-세 문서의 원문을 그대로 옮겨 한자리에 놓았습니다.</p>
+<b>바로 쓸 수 있는 명령</b>과, 쓰기 전에 알아 둘 <b>조건</b>을 한자리에 놓았습니다.</p>
 
-<div class=split>🔎 <b>가장 크게 갈리는 것은 「보관」입니다.</b>
-OpenRouter 는 <b>보관한다</b>고 적었고, OpenCode 는 <b>보관하지 않는다(Zero Data Retention)</b> 고 적었습니다.</div>
+<div class=split>⚡ <b>모델 이름에 <code>stealth/ox-alpha</code> 만 적으면 됩니다.</b>
+카드 등록도 잔액도 필요 없습니다.</div>
+
+<div class=card>
+<h2><span class=num>0</span>바로 쓰는 법</h2>
+<div class=row><div class=k>1. 가입</div><div class=v><b>openrouter.ai</b> — 카드 등록 없이 됩니다.</div></div>
+<div class=row><div class=k>2. 키 발급</div><div class=v><b>Keys</b> 메뉴에서 발급. 무료 모델은 <b>잔액이 없어도</b> 호출됩니다.</div></div>
+<div class=row><div class=k>3. 모델 지정</div><div class=v>쓰던 코드에서 모델 이름만 <b>stealth/ox-alpha</b> 로 바꾸면 그대로 돕니다.</div></div>
+<div class=row><div class=k>curl</div><div class=v style="font-family:monospace;font-size:13px;line-height:1.7">curl https://openrouter.ai/api/v1/chat/completions \<br>
+&nbsp;&nbsp;-H "Authorization: Bearer $OPENROUTER_API_KEY" \<br>
+&nbsp;&nbsp;-d '{"model": <b>"stealth/ox-alpha"</b>, "messages": [{"role":"user","content":"..."}]}'</div></div>
+<div class=row><div class=k>Python (OpenAI SDK)</div><div class=v style="font-family:monospace;font-size:13px;line-height:1.7">client = OpenAI(base_url=<b>"https://openrouter.ai/api/v1"</b>, api_key=KEY)<br>
+client.chat.completions.create(model=<b>"stealth/ox-alpha"</b>, messages=[...])</div></div>
+<div class=row><div class=k>🔴 재시도는 넣으세요</div><div class=v><b>429</b>(일시 제한)가 자주 뜹니다. 재시도하면 통과하지만, 없으면 작업이 임의로 끊깁니다.</div></div>
+<div class=row><div class=k>🔴 max_tokens 는 넉넉히</div><div class=v>추론 분량이 상한에 포함됩니다. 낮게 주면 <b>답이 시작되기도 전에 잘려 빈 응답</b>이 옵니다(저희가 12000 에서 겪었습니다).</div></div>
+</div>
 
 <div class=card>
 <h2><span class=num>1</span>세 곳이 각각 뭐라고 적었나</h2>
@@ -87,6 +100,11 @@ OpenRouter 는 <b>보관한다</b>고 적었고, OpenCode 는 <b>보관하지 �
 <div class=row><div class=k>비용</div><div class=v>네 건 모두 <b>cost 0</b> · 누적 사용액 <b>0 USD</b> — <b>무료는 사실이었습니다.</b></div></div>
 <div class=row><div class=k>걸린 점</div><div class=v>호출이 자주 <b>429</b>(일시 제한)로 막혔습니다. <b>재시도하면 통과</b>했고, 재시도 없이는 작업이 임의로 끊깁니다.</div></div>
 </div>
+
+<div class=warn style="margin-bottom:14px">⚠️ <b>「프런티어급」은 OpenRouter 가 자기 소개에 쓴 표현입니다.</b>
+성능 평가는 갈립니다 — 커뮤니티에는 “Opus 5 근처”라는 말도, “Fable·Sol 근처는 아니다”, “Great free coding model. Not a frontier” 라는 말도 같이 있습니다.
+그리고 널리 인용되는 <b>DeepSWE 80%</b> 점수는 <b>공식 리더보드에 올라와 있지 않습니다</b>(8월 20일 갱신분 기준 최고는 claude-opus-5 74).
+<b>저희는 성능 순위를 매기지 않았습니다</b> — 위 §4 는 저희 작업에 넣어 본 실측일 뿐입니다.</div>
 
 <div class=warn>⚠️ <b>「하루 100조 토큰」은 사용자에게 주는 한도가 아닙니다.</b>
 원문은 OpenCode 가 적은 “We have <b>capacity</b> for 100T tokens per day”(우리 쪽 <b>처리 용량</b>이 하루 100조 토큰) 입니다.
