@@ -101,9 +101,21 @@ client.chat.completions.create(model=<b>"stealth/ox-alpha"</b>, messages=[...])<
 <div class=row><div class=k>걸린 점</div><div class=v>호출이 자주 <b>429</b>(일시 제한)로 막혔습니다. <b>재시도하면 통과</b>했고, 재시도 없이는 작업이 임의로 끊깁니다.</div></div>
 </div>
 
+<div class=card>
+<h2><span class=num>5</span>「DeepSWE 80%」를 읽는 법</h2>
+<div class=note>가장 많이 인용되는 수치입니다. 원 표를 열어 보면 <b>비교가 그대로 성립하지는 않습니다.</b></div>
+<div class=row><div class=k>다른 네 모델</div><div class=v>과제당 <b>4회 시행 중 성공 횟수</b> — 40점 만점 부분점수<br>
+fable-5 26/40 <b>65%</b> · glm-5.3 25/40 <b>62%</b> · gpt-5.6-sol 21/40 <b>52%</b> · grok-4.6 25/40 <b>62%</b></div></div>
+<div class=row><div class=k><b>ox-alpha 만</b></div><div class=v>과제당 <b>성공·실패 이진</b> — 10점 만점<br>8✓ 2✗ = <b>80%</b>. 각 과제에서 4번 중 몇 번 성공했는지는 <b>표에 적혀 있지 않습니다.</b></div></div>
+<div class=row><div class=k>그래서</div><div class=v>같은 자로 잰 값이 아닙니다. ox-alpha 를 다른 넷과 <b>같은 4점 척도로 환산</b>하면, 8개 과제를 각각 몇 번 통과했느냐에 따라 <b>20%에서 80% 사이 어디든</b> 될 수 있습니다.<br>
+(각 1/4 통과 → 8/40 = 20% · 각 4/4 → 32/40 = 80%)</div></div>
+<div class=row><div class=k>공식 리더보드</div><div class=v><b>ox-alpha 는 없습니다.</b> 2026년 8월 20일 갱신분 · 25개 모델 등재.<br>
+상위는 Claude Opus 5 <b>73.6%</b> · GPT-5.6 Sol <b>72.7%</b> · Claude Fable 5 <b>69.7%</b> 입니다.</div></div>
+<div class=row><div class=k>⚠️ 오해 없게</div><div class=v>이건 <b>「ox-alpha 가 나쁘다」는 뜻이 아닙니다.</b> <b>80%와 65%를 나란히 놓는 비교가 성립하지 않는다</b>는 뜻입니다. 무료 모델로 이 정도 결과를 낸 것 자체는 그대로입니다.</div></div>
+</div>
+
 <div class=warn style="margin-bottom:14px">⚠️ <b>「프런티어급」은 OpenRouter 가 자기 소개에 쓴 표현입니다.</b>
 성능 평가는 갈립니다 — 커뮤니티에는 “Opus 5 근처”라는 말도, “Fable·Sol 근처는 아니다”, “Great free coding model. Not a frontier” 라는 말도 같이 있습니다.
-그리고 널리 인용되는 <b>DeepSWE 80%</b> 점수는 <b>공식 리더보드에 올라와 있지 않습니다</b>(8월 20일 갱신분 기준 최고는 claude-opus-5 74).
 <b>저희는 성능 순위를 매기지 않았습니다</b> — 위 §4 는 저희 작업에 넣어 본 실측일 뿐입니다.</div>
 
 <div class=warn>⚠️ <b>「하루 100조 토큰」은 사용자에게 주는 한도가 아닙니다.</b>
@@ -117,6 +129,7 @@ client.chat.completions.create(model=<b>"stealth/ox-alpha"</b>, messages=[...])<
 <li>모델 페이지의 공개일 표기는 브라우저 시간대에 따라 <b>Aug 20 / Aug 21</b> 로 갈립니다. API 등재 시각은 <b>2026-08-20 20:04 UTC = 8월 21일 05:04 KST</b> 입니다.</li>
 <li>실사용 수치는 <b>한 계정·OpenRouter 경유·그날 오후</b> 기준입니다. OpenCode 게이트웨이나 유료 경로는 재지 않았습니다.</li>
 <li>🔴 <b>만든 곳은 확인되지 않았습니다.</b> 여러 이름이 거론되지만 어느 것도 확인된 사실이 아니라 이 표에 싣지 않았습니다.</li>
+<li>§5 의 10과제 표는 <b>저희가 직접 재검산</b>했고(합계가 표 기재값과 일치), 리더보드는 <b>직접 열어 확인</b>했습니다. 전체 113과제 결과를 적은 보도가 있으나 <b>저희가 확인하지 못해 싣지 않았습니다.</b></li>
 <li>무료 창은 ③ 기준 <b>8월 27일 전후</b> 로 추정되나 <b>정확한 종료 시각은 어느 쪽도 공표하지 않았습니다.</b></li>
 </ul>
 <p style="margin-top:14px">🐰🔨 토망치랩 · @ai_tomangchi.lab</p>
