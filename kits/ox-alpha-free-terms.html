@@ -1,0 +1,125 @@
+<!doctype html><html lang="ko"><head><title>Ox Alpha 쓰는 법 + 무료 조건 대조표 | 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Anthropic 사람들이 쓰던 Claude Code 스킬 ELI5 — 무엇을 하는지, 어떻게 깔고 쓰는지 한 장에.">
+<meta property="og:title" content="📄 ELI5 스킬 쓰는 법">
+<meta property="og:description" content="한 줄 적으면 큰 그림과 적은 글자로 설명해 준다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:180px;font-weight:700} .v{color:#464c56}
+.tag{display:inline-block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 12px;margin:4px 6px 0 0;font-size:14px;font-weight:700}
+.warn{background:#FFF6F5;border:1px solid #F3D2CE;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px}
+.warn b{color:var(--coral)}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+ul{margin:6px 0 0 18px} li{font-size:13.5px;color:#464c56;margin-bottom:4px}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head><body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>Ox Alpha 쓰는 법 + 무료 조건 대조표</h1>
+<p class=lead>만든 곳을 밝히지 않은 모델 <b>Ox Alpha</b> 가 무료로 열렸습니다.
+<b>바로 쓸 수 있는 명령</b>과, 쓰기 전에 알아 둘 <b>조건</b>을 한자리에 놓았습니다.</p>
+
+<div class=split>⚡ <b>모델 이름에 <code>stealth/ox-alpha</code> 만 적으면 됩니다.</b>
+카드 등록도 잔액도 필요 없습니다.</div>
+
+<div class=card>
+<h2><span class=num>0</span>바로 쓰는 법</h2>
+<div class=row><div class=k>1. 가입</div><div class=v><b>openrouter.ai</b> — 카드 등록 없이 됩니다.</div></div>
+<div class=row><div class=k>2. 키 발급</div><div class=v><b>Keys</b> 메뉴에서 발급. 무료 모델은 <b>잔액이 없어도</b> 호출됩니다.</div></div>
+<div class=row><div class=k>3. 모델 지정</div><div class=v>쓰던 코드에서 모델 이름만 <b>stealth/ox-alpha</b> 로 바꾸면 그대로 돕니다.</div></div>
+<div class=row><div class=k>curl</div><div class=v style="font-family:monospace;font-size:13px;line-height:1.7">curl https://openrouter.ai/api/v1/chat/completions \<br>
+&nbsp;&nbsp;-H "Authorization: Bearer $OPENROUTER_API_KEY" \<br>
+&nbsp;&nbsp;-d '{"model": <b>"stealth/ox-alpha"</b>, "messages": [{"role":"user","content":"..."}]}'</div></div>
+<div class=row><div class=k>Python (OpenAI SDK)</div><div class=v style="font-family:monospace;font-size:13px;line-height:1.7">client = OpenAI(base_url=<b>"https://openrouter.ai/api/v1"</b>, api_key=KEY)<br>
+client.chat.completions.create(model=<b>"stealth/ox-alpha"</b>, messages=[...])</div></div>
+<div class=row><div class=k>🔴 재시도는 넣으세요</div><div class=v><b>429</b>(일시 제한)가 자주 뜹니다. 재시도하면 통과하지만, 없으면 작업이 임의로 끊깁니다.</div></div>
+<div class=row><div class=k>🔴 max_tokens 는 넉넉히</div><div class=v>추론 분량이 상한에 포함됩니다. 낮게 주면 <b>답이 시작되기도 전에 잘려 빈 응답</b>이 옵니다(저희가 12000 에서 겪었습니다).</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>1</span>세 곳이 각각 뭐라고 적었나</h2>
+<div class=note>원문 그대로입니다. 번역은 괄호 안에 넣었습니다.</div>
+<div class=row><div class=k>① 모델 페이지 안내<br><span style="font-weight:400;color:#787E88;font-size:13px">openrouter.ai</span></div>
+<div class=v>“Prompts and completions for this model are <b>retained by the provider and are not used for training</b>; all other use is governed by the Stealth Model Terms.”<br>
+(이 모델의 프롬프트와 출력은 <b>제공자가 보관하며 학습에는 쓰지 않습니다.</b> 그 밖의 사용은 스텔스 모델 약관을 따릅니다.)</div></div>
+
+<div class=row><div class=k>② 스텔스 프로그램 약관<br><span style="font-weight:400;color:#787E88;font-size:13px">openrouter.ai/terms/stealth · Updated July 6, 2026</span></div>
+<div class=v>“In consideration for the provision of your User Content <b>for Stealth Model training</b> and improvement, access to the Stealth Models is provided to you <b>free of charge</b>.”<br>
+(귀하의 콘텐츠를 <b>스텔스 모델 학습</b>·개선에 제공하는 <b>대가로</b> 스텔스 모델을 <b>무료로</b> 제공합니다.)</div></div>
+
+<div class=row><div class=k>③ OpenCode 공지<br><span style="font-weight:400;color:#787E88;font-size:13px">x.com/opencode · 2026-08-20</span></div>
+<div class=v>“Ox Alpha (stealth model) is <b>free for the next week</b> — 1M Context · Multi-modal · <b>Zero Data Retention</b>. Generous rate limits, near unlimited usage.”<br>
+(다음 <b>일주일간 무료</b> · 1M 컨텍스트 · 멀티모달 · <b>데이터 미보관</b> · 넉넉한 호출 한도, 거의 무제한 사용.)</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>항목별로 갈리는 지점</h2>
+<div class=row><div class=k>보관하는가</div><div class=v>① <b>보관한다</b> ↔ ③ <b>보관하지 않는다</b> — <b>정반대입니다.</b></div></div>
+<div class=row><div class=k>학습에 쓰는가</div><div class=v>① 쓰지 않는다 ↔ ② 학습 제공이 <b>무료의 대가</b>다</div></div>
+<div class=row><div class=k>언제까지 무료인가</div><div class=v>① 밝히지 않음 ↔ ③ <b>일주일</b><br>②는 “limited period of time” 과 “<b>with or without notice to you</b>”(사전 통보 없이 종료 가능) 만 적혀 있습니다.</div></div>
+<div class=row><div class=k>한도가 있는가</div><div class=v>①·② 표기 없음 ↔ ③ “near unlimited”</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>「This time」 — 공식이 붙인 단서</h2>
+<div class=note>OpenRouter 공식 계정이 발표 직후 올린 후속 글입니다.</div>
+<div class=row><div class=k>원문</div><div class=v>“💰 It is free / 🔑 <b>This time</b>, the provider does not train on your prompts or completions”<br><span class=scope>x.com/OpenRouter · 2026-08-20</span></div></div>
+<div class=row><div class=k>읽는 법</div><div class=v><b>「이번엔」</b> 이라는 말이 붙어 있습니다. 뒤집으면 <b>스텔스 모델의 기본값은 학습에 쓰는 것</b>이라는 뜻이고, 실제로 약관 ②가 그렇게 적혀 있습니다.</div></div>
+<div class=row><div class=k>남는 것</div><div class=v>약관 본문은 <b>7월 6일자 그대로</b>이고, 예외는 안내문과 공지 글로만 밝혀져 있습니다. <b>어느 쪽이 우선하는지는 공개된 자료로 확인되지 않습니다.</b></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>직접 돌려본 결과</h2>
+<div class=note>OpenRouter 무료 키로 2026-08-25 오후에 네 가지 과제를 돌린 실측입니다. 벤치마크가 아닙니다.</div>
+<div class=row><div class=k>코딩 리팩토링</div><div class=v><b>700.7초</b> (11분 40초) · 입력 1737 → 출력 25625 토큰</div></div>
+<div class=row><div class=k>카드 이미지 검수</div><div class=v><b>66.4초</b> · 우리가 낸 카드 한 장을 넣고 6가지를 물어 <b>5개 중 5개</b> 정확</div></div>
+<div class=row><div class=k>규약 조문 질의</div><div class=v><b>36.5초</b> · 입력 23975 토큰</div></div>
+<div class=row><div class=k>규약 전문 질의</div><div class=v><b>90.2초</b> · 입력 <b>97149 토큰</b> · <b>11개 중 11개</b> 정확</div></div>
+<div class=row><div class=k>비용</div><div class=v>네 건 모두 <b>cost 0</b> · 누적 사용액 <b>0 USD</b> — <b>무료는 사실이었습니다.</b></div></div>
+<div class=row><div class=k>걸린 점</div><div class=v>호출이 자주 <b>429</b>(일시 제한)로 막혔습니다. <b>재시도하면 통과</b>했고, 재시도 없이는 작업이 임의로 끊깁니다.</div></div>
+</div>
+
+<div class=warn style="margin-bottom:14px">⚠️ <b>「프런티어급」은 OpenRouter 가 자기 소개에 쓴 표현입니다.</b>
+성능 평가는 갈립니다 — 커뮤니티에는 “Opus 5 근처”라는 말도, “Fable·Sol 근처는 아니다”, “Great free coding model. Not a frontier” 라는 말도 같이 있습니다.
+그리고 널리 인용되는 <b>DeepSWE 80%</b> 점수는 <b>공식 리더보드에 올라와 있지 않습니다</b>(8월 20일 갱신분 기준 최고는 claude-opus-5 74).
+<b>저희는 성능 순위를 매기지 않았습니다</b> — 위 §4 는 저희 작업에 넣어 본 실측일 뿐입니다.</div>
+
+<div class=warn>⚠️ <b>「하루 100조 토큰」은 사용자에게 주는 한도가 아닙니다.</b>
+원문은 OpenCode 가 적은 “We have <b>capacity</b> for 100T tokens per day”(우리 쪽 <b>처리 용량</b>이 하루 100조 토큰) 입니다.
+개인 할당량으로 읽으면 원문과 다릅니다.</div>
+
+<div class=foot>
+<b>📌 이 표를 읽는 조건</b>
+<ul>
+<li>세 문서 모두 <b>2026-08-25 12:26~12:40 KST</b> 에 직접 열어 확인한 문구입니다.</li>
+<li>모델 페이지의 공개일 표기는 브라우저 시간대에 따라 <b>Aug 20 / Aug 21</b> 로 갈립니다. API 등재 시각은 <b>2026-08-20 20:04 UTC = 8월 21일 05:04 KST</b> 입니다.</li>
+<li>실사용 수치는 <b>한 계정·OpenRouter 경유·그날 오후</b> 기준입니다. OpenCode 게이트웨이나 유료 경로는 재지 않았습니다.</li>
+<li>🔴 <b>만든 곳은 확인되지 않았습니다.</b> 여러 이름이 거론되지만 어느 것도 확인된 사실이 아니라 이 표에 싣지 않았습니다.</li>
+<li>무료 창은 ③ 기준 <b>8월 27일 전후</b> 로 추정되나 <b>정확한 종료 시각은 어느 쪽도 공표하지 않았습니다.</b></li>
+</ul>
+<p style="margin-top:14px">🐰🔨 토망치랩 · @ai_tomangchi.lab</p>
+</div>
+
+</div></body></html>
