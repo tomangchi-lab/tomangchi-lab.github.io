@@ -1,0 +1,109 @@
+<!doctype html><html lang="ko"><head><title>📄 Qwen3.8-Flash-Next 받기·조건 한 장 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Qwen3.8-Flash-Next 오픈 웨이트 — 이름 둘 가르기 · 받는 곳과 파일 크기 · 공식 실행 명령 · Qwen Community License 1.0 조건 원문 · 지금 쓸 수 있는 곳 실측표.">
+<meta property="og:title" content="📄 Qwen3.8-Flash-Next 받기·조건 한 장">
+<meta property="og:description" content="Qwen4 구조를 미리 보는 오픈 웨이트 — 받는 곳·크기·명령·라이선스 조건·실측표.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:180px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+pre{background:#1C2028;color:#E9EDF2;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.6;overflow-x:auto;margin:8px 0 12px}
+code{font-family:Consolas,'Noto Sans KR',monospace}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>Qwen3.8-Flash-Next 받기·조건 한 장</h1>
+<p class=lead>Qwen4 구조를 미리 보는 오픈 웨이트가 <b>8월 26일</b> 풀렸습니다. 받는 곳, 파일 크기, 공식 실행 명령, 라이선스 조건, 그리고 지금 어디서 써볼 수 있는지 실측한 것을 한 장에 놓았습니다.</p>
+
+<div class=split>⚡ 오픈 웨이트 = <b>Qwen3.8-Flash-Next</b>(125B + N-gram 51B · 활성 6B · 문맥 262,144). <b>Qwen3.8-Flash</b> 는 QwenCloud 에 얹힐 프로덕션 판이라 다른 이름입니다. 라이선스는 Apache 가 아니라 <b>Qwen Community License 1.0</b>.</div>
+
+<div class=card>
+<h2><span class=num>1</span>이 편의 이름 둘</h2>
+<div class=note>본문 카드는 Flash-Next 만 말합니다. 아래가 원문 기준의 구분입니다.</div>
+<div class=row><div class=k>Qwen3.8-Flash-Next</div><div class=v><b>오픈 웨이트.</b> Hugging Face · ModelScope 에 8월 26일 공개. 멀티모달 MoE, «Qwen4 에 쓰일 구조의 이른 미리보기».</div></div>
+<div class=row><div class=k>Qwen3.8-Flash</div><div class=v><b>프로덕션 판.</b> Flash-Next 기반에 1M 문맥 기본·내장 도구를 얹어 QwenCloud API 로 제공될 이름. 공식 블로그 표기는 «API coming soon»(1M 입력 0.16 달러 · 출력 0.47 달러) — <b>이 킷 작성 시점(8월 26일 22:20 기준)엔 열리지 않았습니다.</b></div></div>
+<div class=row><div class=k>규모</div><div class=v>본체 125B + N-gram 임베딩 51B, 토큰당 활성 6B (MTP 4B 별도). 문맥 262,144 기본, YaRN 으로 1,000,000 까지.</div></div>
+<div class=row><div class=k>구조 4가지</div><div class=v>GDN + QSA 하이브리드 어텐션(4층 중 3층 GDN·1층 QSA) · Gated Residual(4갈래) · N-gram Embedding(호스트 메모리 프리페치) · Muon 옵티마이저.</div></div>
+<div class=row><div class=k>비용</div><div class=v>Qwen3.7-Plus(397B·활성 17B) 대비 활성 파라미터 1/3 · 학습 토큰 1/3 · 학습 FLOPs 약 <b>1/9</b>(기술보고서 Abstract). 1M 문맥 프리필 처리량 8.6배(프리픽스 캐시 90% 조건).</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>받는 곳 · 파일 크기</h2>
+<div class=note>본문 카드 05 는 이것을 말로 옮긴 것이고, 아래가 조회 값입니다(8월 26일 22:20 기준).</div>
+<div class=row><div class=k>Hugging Face</div><div class=v><a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next">Qwen/Qwen3.8-Flash-Next</a> — 게이팅 없음, 파일 144개(safetensors 샤드 131), 합산 <b>360GB</b>(BF16)</div></div>
+<div class=row><div class=k>FP8 판</div><div class=v><a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next-FP8">Qwen/Qwen3.8-Flash-Next-FP8</a> — 합산 <b>186GB</b></div></div>
+<div class=row><div class=k>ModelScope</div><div class=v><a href="https://modelscope.cn/models/Qwen/Qwen3.8-Flash-Next">modelscope.cn/models/Qwen/Qwen3.8-Flash-Next</a> — 표기 360.02GB</div></div>
+<div class=row><div class=k>GitHub · 기술보고서</div><div class=v><a href="https://github.com/QwenLM/Qwen3.8-Flash-Next">QwenLM/Qwen3.8-Flash-Next</a> · <code>tech_report.pdf</code>(28쪽, 2026-08-26)</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>돌리는 명령 (공식 README)</h2>
+<div class=note>Hugging Face 모델 카드·GitHub README 의 quickstart 를 그대로 옮겼습니다. <b>저희도 아직 안 돌려봤어요</b> — 360GB 급 가중치라 128GB 급 통합 메모리나 다중 GPU 가 필요합니다.</div>
+<pre><code># vLLM
+pip install vllm
+vllm serve Qwen/Qwen3.8-Flash-Next --port 8000
+
+# SGLang
+pip install sglang
+python3 -m sglang.launch_server --model-path Qwen/Qwen3.8-Flash-Next</code></pre>
+<div class=row><div class=k>기본 동작</div><div class=v>thinking 모드가 기본 on(<code>enable_thinking</code> · <code>preserve_thinking</code> · <code>reasoning_effort</code> 로 제어). 끄려면 <code>chat_template_kwargs: {"enable_thinking": false}</code>.</div></div>
+<div class=row><div class=k>권장 샘플링</div><div class=v>thinking: temperature 1.0 · top_p 0.95 · top_k 20 / non-thinking: temperature 0.7 · top_p 0.80 · top_k 20 · presence_penalty 1.5</div></div>
+<div class=row><div class=k>1M 문맥</div><div class=v>YaRN 설정(<code>rope_type: yarn · factor 4.0 · original_max_position_embeddings 262144</code>)을 넘겨야 합니다. 짧은 문맥 위주면 켜지 말라는 것이 공식 안내.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>라이선스 조건 (Qwen Community License 1.0)</h2>
+<div class=note>본문 카드 05 의 조건 문장은 아래 원문을 말로 옮긴 것입니다. HF 저장소 <code>LICENSE</code> 파일(3.24 kB) 원문.</div>
+<div class=row><div class=k>허용</div><div class=v>사용·복제·수정·배포·재라이선스·판매·배포·호스팅·파인튜닝·파생 제작 — 아래 두 조건 아래.</div></div>
+<div class=row><div class=k>조건 1</div><div class=v>월 이용자 <b>1억 명</b> 또는 월매출 <b>2천만 달러</b>를 넘는 상용 제품·서비스에 쓰면 <b>모델명을 UI 에 눈에 띄게 표시</b>.</div></div>
+<div class=q>“…more than 100,000,000 monthly active users or US$ 20,000,000 (or equivalent in other currencies) monthly revenue, respective model name must be prominently displayed on the user interface…”</div>
+<div class=row><div class=k>조건 2</div><div class=v><b>Model as a Service</b>(API·호스팅 엔드포인트로 제3자에게 추론·파인튜닝 제공) 또는 <b>AI Work Assistant</b>(코딩·사무 생산성 중심 독립 AI 제품, 예: Qoder·QwenWork) 사업자는 상용 이용 전 <b>별도 라이선스</b>. 내부 사용은 제외.</div></div>
+<div class=q>“If the licensee or any of its affiliates conducts a Model as a Service or AI Work Assistant business, the licensee shall obtain a separate license from Qwen before Using the Software or its derivative works for any commercial purpose.”</div>
+<div class=row><div class=k>같은 3.8 시리즈 대조</div><div class=v>Qwen3.8-27B 는 <b>Apache 2.0</b>, Qwen3.8-2.4T-A95B(Max)는 <b>qwen3.8-max</b> 라이선스 — 시리즈 안에서 셋으로 갈립니다. 받기 전에 LICENSE 파일부터.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>지금 쓸 수 있는 곳 (실측)</h2>
+<div class=note>8월 26일 22:10~22:20 기준으로 직접 열어 본 결과입니다. 시간이 지나면 바뀝니다.</div>
+<div class=row><div class=k>chat.qwen.ai</div><div class=v>비로그인 모델 선택창에 <b>Qwen3.7-Plus · Qwen3.8-Max</b> 두 항목 — Flash 계열은 목록에 안 보였습니다(로그인 후 목록은 확인 범위 밖).</div></div>
+<div class=row><div class=k>QwenCloud API</div><div class=v>공식 블로그 «Coming soon. The API is not live yet» — 모델명 <code>qwen3.8-flash</code>, 개통 시각은 미확인.</div></div>
+<div class=row><div class=k>HF Inference Providers</div><div class=v>모델 페이지 표기 «This model isn't deployed by any Inference Provider.»</div></div>
+<div class=row><div class=k>제3자 Space</div><div class=v><code>bored10/qwen3-8-flash-next-demo</code> 는 API 키 미설정 안내만 뜨고 답이 오지 않았습니다. 공식이 아닌 배포는 이 표에서 «되는 곳»으로 세지 않습니다.</div></div>
+<div class=row><div class=k>직접 다운로드</div><div class=v>HF · ModelScope 에서 게이팅 없이 받을 수 있습니다(위 2번). 실행은 3번 명령 — 저희 실측은 아직입니다.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>6</span>이 표를 읽는 조건</h2>
+<div class=row><div class=k>벤치마크</div><div class=v>카드 04 의 점수(SWE-bench Pro 62.5 · DeepSWE 58.7 · CoWorkBench 73.9 · GPQA Diamond 91.7)는 <b>공식 발표 수치</b> — Qwen 팀이 Claude Code 하네스 등으로 자체 평가한 값이고 CoWorkBench 는 자체 벤치마크입니다. 제3자 재현은 발표 당일이라 없습니다.</div></div>
+<div class=row><div class=k>마케팅 문구</div><div class=v>«Unmatched cost-efficiency»·«outperforming across the board» 같은 발표문 표현은 사실 항목에서 뺐고 개별 수치만 실었습니다.</div></div>
+<div class=row><div class=k>확인 범위</div><div class=v>QwenCloud API 개통 시각 · 로그인 후 chat.qwen.ai 목록 · 공식 YouTube 채널 실존 여부는 확인 범위 밖입니다.</div></div>
+</div>
+
+<p class=foot><b>출처</b> — qwen.ai 블로그 «Qwen3.8-Flash-Next: A New Architecture, Towards Ultimate Cost-Efficiency»(2026-08-26) · Hugging Face 모델 카드·LICENSE · GitHub README·기술보고서 · X @Alibaba_Qwen 발표 스레드(8월 26일).<br>
+<span class=scope>조회 2026-08-26 22:20 KST · 두드려보는 AI 실험실, 토망치랩 · @ai_tomangchi.lab</span></p>
+</div>
+</body></html>
