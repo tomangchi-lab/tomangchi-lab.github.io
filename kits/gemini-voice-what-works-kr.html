@@ -1,9 +1,9 @@
-<!doctype html><html lang="ko"><head><title>📄 구글 음성 — 한국에서 무엇이 되나 한 장 — 토망치랩</title>
+<!doctype html><html lang="ko"><head><title>📄 지금 한국에서 켜는 법 — 구글 음성 · 토망치랩</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Gemini 3.5 Transcribe 와 Gemini Live 신기능 4종 — 기능별 플랜 조건, 제외 지역, 나이·계정 조건, 그리고 아직 안 되는 것.">
-<meta property="og:title" content="📄 구글 음성 — 한국에서 무엇이 되나 한 장">
-<meta property="og:description" content="무엇이 무료이고 무엇이 구독인가 · 어디서 안 되는가 · 무엇을 아직 못 재 봤는가.">
+<meta name="description" content="Gemini 음성 기능을 지금 켜는 경로와 순서 — 켜기 전 조건, 켜는 단계, 플랜이 필요한 기능, 개발자용 모델 코드.">
+<meta property="og:title" content="📄 지금 한국에서 켜는 법 — 구글 음성">
+<meta property="og:description" content="켜기 전 조건 · 켜는 순서 · 플랜 조건 · 개발자 경로.">
 <meta property="og:type" content="article">
 <link rel="icon" href="../assets/logo_unit.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
@@ -36,53 +36,77 @@ code{font-family:Consolas,'Noto Sans KR',monospace}
 <div class=wrap>
 
 <span class=badge>AI 소식</span>
-<h1>구글 음성 — 한국에서 무엇이 되나 한 장</h1>
-<p class=lead>말을 받아 적는 모델과, 그 말로 일을 시키는 자리가 같은 날 열렸습니다. 무엇이 무료이고 무엇이 구독인지, 어디서 안 되는지, 그리고 저희가 확인하지 못한 것이 무엇인지를 한 장에 놓았습니다.</p>
+<h1>구글 음성 — 지금 켜는 법</h1>
+<p class=lead>이 장은 <b>순서대로 따라 하는 판</b>입니다. 켜기 전에 맞춰야 할 조건, 켜는 단계, 어떤 기능이 어떤 플랜을 요구하는지, 개발자면 어떤 모델 코드를 쓰는지까지입니다. 🔴 저희는 <b>이 기능들을 직접 돌려 보지 않았습니다</b> — 전부 공식 문구입니다.</p>
 
-<div class=warn>🔴 <b>이 킷의 내용은 전부 공식 문구입니다.</b> 저희는 이 기능들을 직접 돌려 보지 못했습니다 — 구독과 기기가 필요합니다. 「된다」가 아니라 「이렇게 적혀 있다」로 읽어 주세요.</div>
+<div class=split>⚡ 개발자용 모델 코드는 <b>gemini-3.5-transcribe</b>, 한국어는 <b>ko-KR</b> 로 지원 목록에 있습니다. 앱 쪽은 아래 <b>1~2</b> 절 순서대로 켜면 됩니다.</div>
 
 <div class=card>
-<h2><span class=num>1</span>받아쓰기 모델 — Gemini 3.5 Transcribe</h2>
-<div class=note>모델 코드 <code>gemini-3.5-transcribe</code>. 아래는 공식 블로그와 Gemini API 문서에서 옮긴 값입니다.</div>
-<div class=row><div class=k>알아듣는 것</div><div class=v>자기 정정(「화요일에 만나자, 아니 수요일」) · 군말(「음」·「어」) 제거 · 문단 자동 정리</div></div>
-<div class=row><div class=k>언어</div><div class=v><b>85</b>개 이상 자동 감지. 한국어는 <b>ko-KR</b> 로 목록에 있습니다.</div></div>
-<div class=row><div class=k>오류율(WER)</div><div class=v>스트리밍 <b>4.0%</b> · 파일 처리 <b>2.6%</b> — <b>Artificial Analysis</b> 가 잰 값이라고 구글이 밝혔습니다. 구글 자체 측정이 아닙니다.</div></div>
-<div class=row><div class=k>오디오 길이</div><div class=v>표준 요청 최대 <b>60</b>분 · 화자 분리나 단어 타임스탬프를 켜면 <b>30</b>분</div></div>
-<div class=row><div class=k>화자 수 (표기가 갈립니다)</div><div class=v>공식 블로그는 「최대 <b>3</b>명」, Gemini API 문서는 「최대 <b>8</b>명, 3명 이상은 실험적」 — <b>지면마다 다르게 적혀 있어 둘 다 적습니다.</b></div></div>
-<div class=row><div class=k>쓸 수 있는 곳</div><div class=v>Gemini macOS 앱 · 안드로이드 Gboard · Gemini API(AI Studio·Antigravity·Gemini Enterprise Agent Platform 공개 프리뷰)</div></div>
+<h2><span class=num>1</span>켜기 전 — 맞춰야 할 조건</h2>
+<div class=note>공식 도움말 「What you need」 절입니다. 하나라도 어긋나면 카드가 안 뜹니다.</div>
+<div class=row><div class=k>나이</div><div class=v><b>18</b>세 이상</div></div>
+<div class=row><div class=k>계정</div><div class=v><b>개인 구글 계정.</b> 회사·학교·보호자 관리 계정은 안 됩니다</div></div>
+<div class=row><div class=k>Keep Activity</div><div class=v><b>켜야</b> 합니다. 꺼져 있으면 이 기능이 안 나옵니다</div></div>
+<div class=row><div class=k>YouTube History</div><div class=v>YouTube 활동 기반 개인화를 쓰려면 <b>켜야</b> 합니다</div></div>
+<div class=row><div class=k>Smart features</div><div class=v>Workspace 연결에 필요합니다. 꺼져 있으면 구글 앱에 못 붙습니다</div></div>
+<div class=row><div class=k>Google Photos 를 붙이려면</div><div class=v>Photos 에서 <b>Face Groups</b> 를 켜고 내 얼굴을 고른 뒤, <b>Estimate missing locations</b> 도 켜야 합니다</div></div>
 </div>
 
 <div class=card>
-<h2><span class=num>2</span>Gemini Live 신기능 4종 — 무엇이 무료인가</h2>
-<div class=note>공식 블로그 각주 기준. <b>Gemini Live 자체는 전 세계 무료</b>이고, 기능별 조건이 따로입니다.</div>
-<div class=row><div class=k>Gmail 정리</div><div class=v>요약·검색·별표·보관·삭제를 목소리로 — 각주에 <b>조건 표기 없음</b></div></div>
-<div class=row><div class=k>Personal Intelligence</div><div class=v>지난 대화와 Gmail·포토·검색·유튜브를 가로질러 이어 줌 — 각주에 <b>조건 표기 없음</b></div></div>
-<div class=row><div class=k>Daily Brief</div><div class=v>Gmail·캘린더를 한 덩이 음성 요약으로 — <b>Google AI Plus</b> 이상</div></div>
-<div class=row><div class=k>Gemini Spark</div><div class=v>여러 단계 작업을 걸어 두면 혼자 돎(Docs·Sheets·Drive·웹) — <b>Google AI Pro</b> 이상</div></div>
-<div class=q>공식 고지 원문: 「Gemini Live is available globally at no cost. Availability, compatibility, and age restrictions for integrations vary; setup or subscription may be required.」 — <b>무료는 Live 자체이고, 연동 기능은 다르다</b>는 뜻입니다.</div>
+<h2><span class=num>2</span>켜는 순서</h2>
+<div class=note>공식 도움말 「Connect your Google apps」 절 순서 그대로입니다.</div>
+<div class=row><div class=k>① 연다</div><div class=v>폰·태블릿에서 Gemini 앱을 열거나 <code>gemini.google.com</code> 으로 갑니다</div></div>
+<div class=row><div class=k>② 카드를 찾는다</div><div class=v>대상이면 <b>가입 카드</b>가 뜹니다. 안 뜨면 <b>아직 순번이 안 온 것</b>입니다 (1절 조건도 다시 보세요)</div></div>
+<div class=row><div class=k>③ 시작</div><div class=v><b>Get started</b> 를 누릅니다</div></div>
+<div class=row><div class=k>④ 앱 고르기</div><div class=v>붙일 앱을 고릅니다. 전부면 <b>Connect all</b></div></div>
+<div class=split>🇰🇷 <b>한국은 제외 목록에 없습니다.</b> 공식이 못 쓴다고 적은 곳은 <b>유럽경제지역 · 나이지리아 · 스위스 · 영국</b> 넷입니다. 다만 공식은 「gradually … may not be available to you just yet」이라고도 적었습니다 — <b>순차 배포</b>라 지금 당장 보인다는 보장은 아닙니다.</div>
 </div>
 
 <div class=card>
-<h2><span class=num>3</span>지역·나이·계정 조건</h2>
-<div class=note>Personal Intelligence 공식 도움말 기준. 다른 기능은 지역 목록을 따로 적어 두지 않았습니다.</div>
-<div class=row><div class=k>안 되는 곳</div><div class=v><b>유럽경제지역 · 나이지리아 · 스위스 · 영국</b>. <b>한국은 이 목록에 없습니다.</b></div></div>
-<div class=row><div class=k>다만</div><div class=v>「순차 배포 중이라 아직 안 보일 수 있다」고 같이 적혀 있습니다 — <b>한국에서 지금 된다는 뜻은 아닙니다.</b></div></div>
-<div class=row><div class=k>나이</div><div class=v>만 <b>18</b>세 이상</div></div>
-<div class=row><div class=k>계정</div><div class=v>개인 구글 계정만. 직장·학교·관리 계정은 안 됩니다.</div></div>
-<div class=row><div class=k>구글 포토 연결</div><div class=v>일부 국가·지역에서만 됩니다.</div></div>
+<h2><span class=num>3</span>어디서 되고 어디서 안 되나</h2>
+<div class=note>같은 계정이라도 지면에 따라 갈립니다.</div>
+<div class=row><div class=k>되는 곳</div><div class=v>Gemini 모바일 앱 · <code>gemini.google.com</code> 웹 · Gemini in Chrome(그 나라에서 Chrome 용 Gemini 가 되는 경우) · 스마트워치</div></div>
+<div class=row><div class=k>안 되는 곳</div><div class=v><b>Gems</b> 같은 일부 기능 안에서는 안 됩니다</div></div>
 </div>
 
 <div class=card>
-<h2><span class=num>4</span>이 킷이 답하지 못하는 것</h2>
+<h2><span class=num>4</span>플랜이 필요한 기능</h2>
+<div class=warn>🔴 <b>Gemini Live 자체는 전 세계 무료</b>입니다(「available globally at no cost」). 그런데 <b>기능별로 조건이 따로 붙습니다</b> — 같은 화면에서 어떤 것은 되고 어떤 것은 안 뜨는 이유입니다.</div>
+<div class=row><div class=k>Gemini Spark</div><div class=v><b>Google AI Pro</b> 이상 — 여러 단계 작업을 걸어 두면 혼자 돕니다</div></div>
+<div class=row><div class=k>Daily Brief</div><div class=v><b>Google AI Plus</b> 이상 — Gmail·캘린더를 한 덩이 음성 요약으로</div></div>
+<div class=row><div class=k>Personal Intelligence</div><div class=v>블로그 각주에 <b>플랜 조건 표기가 없습니다</b></div></div>
+<div class=row><div class=k>Gmail 정리</div><div class=v>조건 표기가 없습니다 — 요약·검색·별표·보관·삭제를 음성으로</div></div>
+<div class=row><div class=k>공식이 붙인 단서</div><div class=v>「Availability, compatibility, and age restrictions for integrations vary; setup or subscription may be required.」</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>개발자라면 — API 로 쓰는 법</h2>
+<div class=note>Gemini API 문서에서 옮긴 값입니다.</div>
+<div class=row><div class=k>모델 코드</div><div class=v><b>gemini-3.5-transcribe</b></div></div>
+<div class=row><div class=k>한국어</div><div class=v><b>ko-KR</b> — 지원 언어 표에 있습니다. 자동 감지도 되고 코드로 지정할 수도 있습니다</div></div>
+<div class=row><div class=k>지원 언어 수</div><div class=v><b>85</b>개 이상</div></div>
+<div class=row><div class=k>오디오 길이 상한</div><div class=v>표준 요청 <b>60</b>분. 화자 분리·단어 타임스탬프를 켜면 <b>30</b>분</div></div>
+<div class=row><div class=k>화자 수 — 표기가 갈립니다</div><div class=v>블로그는 「up to three speakers」, API 문서는 「up to <b>8</b> speakers」이고 <b>3</b>명 이상은 실험적이라고 적혀 있습니다. <b>둘 다 공식이라 어느 한쪽으로 단정하지 않습니다</b></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>6</span>정확도 수치는 누가 잰 것인가</h2>
+<div class=note>같은 발표 안에 성격이 다른 두 수치가 있습니다. 섞지 마세요.</div>
+<div class=row><div class=k>오류율(WER)</div><div class=v>스트리밍 <b>4.0%</b> · 비스트리밍 <b>2.6%</b> — 구글이 <b>Artificial Analysis</b> 가 잰 값이라고 밝혔습니다</div></div>
+<div class=row><div class=k>이용 통계</div><div class=v>「사용자의 <b>63%</b> 가 Gemini 에게 소리 내어 말한다」 — 이건 <b>구글이 직접 잰 자기 보고</b>입니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>7</span>저희가 하지 않은 것</h2>
 <div class=note>못 잡는 것을 잡는 척하지 않습니다.</div>
-<div class=row><div class=k>한국어 실제 정확도</div><div class=v>재 보지 못했습니다. WER 4.0%·2.6% 는 <b>언어별 값이 아니라 평균</b>입니다.</div></div>
-<div class=row><div class=k>한국 계정에서의 실제 동작</div><div class=v>구독과 기기가 필요해 확인하지 못했습니다.</div></div>
-<div class=row><div class=k>「63%가 목소리로 쓴다」</div><div class=v>구글이 직접 잰 값이고 조사 방법·표본·기간이 공개되어 있지 않습니다.</div></div>
+<div class=row><div class=k>직접 돌려보기</div><div class=v><b>안 했습니다.</b> 이 편에는 저희가 잰 화면이 하나도 없습니다 — 전부 공식 문구입니다</div></div>
+<div class=row><div class=k>「한국에서 지금 된다」</div><div class=v><b>확인하지 않았습니다.</b> 말할 수 있는 것은 «제외 목록에 없다»와 «순차 배포다» 둘뿐입니다</div></div>
+<div class=row><div class=k>Coming soon 대상</div><div class=v>공식이 「곧」이라고 적은 것은 <b>뺐습니다</b></div></div>
 </div>
 
 <div class=foot>
-<b>이 킷의 범위.</b> 전부 공식 지면에서 옮긴 값입니다 — 구글 블로그 두 편, Gemini API 문서, Gemini 공식 도움말. 저희 실측은 <b>없습니다</b>.
-<div class=scope>확인 시점 2026-08-27 21:50 KST · 순차 배포 중인 기능이 있어 값은 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+<b>이 킷의 범위.</b> 구글 공식 블로그·Gemini API 문서·Gemini 도움말과 공식 X 계정 발표에서 옮긴 값입니다. 저희 실측은 <b>없습니다.</b>
+<div class=scope>확인 시점 2026-08-27 21:50 KST · 순차 배포 중이라 오늘의 화면과 다를 수 있습니다 · 출처는 각 카드 하단에</div>
 </div>
 
 </div>

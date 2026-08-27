@@ -1,9 +1,9 @@
-<!doctype html><html lang="ko"><head><title>📄 Ox Alpha → GLM-5.3-Flash 한 장 — 토망치랩</title>
+<!doctype html><html lang="ko"><head><title>📄 GLM-5.3-Flash 바로 쓰기 — 토망치랩</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="이름 없이 무료였던 ox-alpha 의 정체 — GLM-5.3-Flash. 이름·라이선스·문맥, 정가와 할인가와 마감 시각, 토망치랩이 직접 돌린 세 과제 원본값.">
-<meta property="og:title" content="📄 Ox Alpha → GLM-5.3-Flash 한 장">
-<meta property="og:description" content="무엇이었나 · 얼마가 됐나 · 직접 돌려 보니 어땠나.">
+<meta name="description" content="ox-alpha 였던 그 모델을 지금 부르는 법 — 모델 문자열, 호출 예시, 공식 권장 설정, 값과 마감 시각.">
+<meta property="og:title" content="📄 GLM-5.3-Flash 바로 쓰기">
+<meta property="og:description" content="모델 문자열 · 호출 예시 · 권장 설정 · 값의 조건.">
 <meta property="og:type" content="article">
 <link rel="icon" href="../assets/logo_unit.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
@@ -37,53 +37,90 @@ code{font-family:Consolas,'Noto Sans KR',monospace}
 <div class=wrap>
 
 <span class=badge>AI 소식</span>
-<h1>Ox Alpha → GLM-5.3-Flash 한 장</h1>
-<p class=lead>이름 없이 무료로 돌던 모델의 정체가 밝혀졌고, 같이 값도 붙었습니다. 무엇이었는지, 얼마가 됐는지, 저희가 직접 돌려 보니 어땠는지를 한 장에 놓았습니다.</p>
+<h1>GLM-5.3-Flash 바로 쓰기</h1>
+<p class=lead>이름 없이 무료로 돌던 <b>stealth/ox-alpha</b> 가 <b>z-ai/glm-5.3-flash</b> 가 됐습니다. 이 장은 <b>지금 바로 부르는 법</b>부터 놓습니다 — 붙여 넣을 코드, 공식이 권하는 설정값, 지금 물리는 값. 저희가 잰 수치는 뒤에 있습니다.</p>
 
-<div class=split>⚡ 옛 이름 <b>stealth/ox-alpha</b> → 지금 이름 <b>z-ai/glm-5.3-flash</b>. 라이선스 <b>MIT</b>, 전체 <b>320B</b> 중 토큰마다 <b>18B</b> 만 작동, 문맥 1M.</div>
+<div class=split>⚡ 붙여 넣을 모델 문자열 — OpenRouter <b>z-ai/glm-5.3-flash</b> · Z.ai 직접 <b>glm-5.3-flash</b>. 라이선스 <b>MIT</b>, 전체 <b>320B</b> 중 토큰마다 <b>18B</b> 만 작동합니다.</div>
 
 <div class=card>
-<h2><span class=num>1</span>이름 둘, 그리고 바뀐 것</h2>
-<div class=note>Z.ai 는 「출시 전 반응을 모으려고 ox-alpha 라는 이름으로 익명 시험을 돌렸다」고 적었습니다.</div>
-<div class=row><div class=k>옛 이름</div><div class=v><b>stealth/ox-alpha</b> — 만든 곳 미공개. 입력·출력 모두 무료. <b>지금은 OpenRouter 모델 목록에 없습니다.</b></div></div>
-<div class=row><div class=k>지금 이름</div><div class=v><b>z-ai/glm-5.3-flash</b> — Z.ai 의 GLM-5 계열 첫 네이티브 멀티모달 모델.</div></div>
-<div class=row><div class=k>라이선스</div><div class=v><b>MIT</b> — Hugging Face <code>zai-org/GLM-5.3-Flash</code> 모델 카드 표기.</div></div>
-<div class=row><div class=k>규모 · 문맥</div><div class=v>전체 <b>320B</b>, 토큰당 활성 <b>18B</b>. 문맥 1M(OpenRouter 표기 1310720). 층 45(GLM-5.3 은 92).</div></div>
-<div class=row><div class=k>입력 형식</div><div class=v>텍스트 · 이미지 · 영상. 사고 모드는 켜짐만 지원하고 끌 수 없습니다.</div></div>
+<h2><span class=num>1</span>바로 부르기 — 붙여 넣는 코드</h2>
+<div class=note>OpenRouter 경로입니다. 키만 있으면 그대로 돕니다.</div>
+<pre><code>curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "z-ai/glm-5.3-flash",
+    "messages": [{"role": "user", "content": "안녕하세요"}],
+    "temperature": 1,
+    "top_p": 0.95,
+    "max_tokens": 32000
+  }'</code></pre>
+<div class=row><div class=k>파이썬으로</div><div class=v>같은 몸통을 <code>urllib.request</code> 나 <code>openai</code> SDK 의 <code>base_url="https://openrouter.ai/api/v1"</code> 에 그대로 넣으면 됩니다.</div></div>
+<div class=row><div class=k>Z.ai 로 직접</div><div class=v>모델 코드는 <b>glm-5.3-flash</b>, 엔드포인트는 Chat Completion API 입니다. OpenRouter 를 안 거치면 이쪽입니다.</div></div>
 </div>
 
 <div class=card>
-<h2><span class=num>2</span>값 — 정가와 할인가</h2>
-<div class=note>1M 토큰 기준. 아래 할인가는 <b>기간 한정</b>이라 마감 시각을 같이 봐야 합니다.</div>
-<div class=warn>⏳ 지금 값은 <b>50%</b> 할인가입니다 — <b>2026년 9월 9일 16:00 UTC</b> 까지. 그 뒤로는 정가로 돌아갑니다.</div>
-<div class=row><div class=k>입력</div><div class=v>할인가 <b>$0.075</b> / 정가 <b>$0.15</b></div></div>
-<div class=row><div class=k>출력</div><div class=v>할인가 <b>$0.25</b> / 정가 <b>$0.50</b></div></div>
-<div class=row><div class=k>캐시 읽기</div><div class=v>할인가 <b>$0.015</b> / 정가 $0.03</div></div>
-<div class=row><div class=k>옛 값</div><div class=v>ox-alpha 시절 입력·출력 <b>0</b>.</div></div>
+<h2><span class=num>2</span>공식이 권하는 설정값</h2>
+<div class=note>Z.ai 개발자 문서 「Recommended Settings」 절을 그대로 옮겼습니다.</div>
+<div class=row><div class=k>temperature</div><div class=v><b>1</b></div></div>
+<div class=row><div class=k>top_p</div><div class=v><b>0.95</b></div></div>
+<div class=row><div class=k>reasoning_effort</div><div class=v><b>max</b></div></div>
+<div class=row><div class=k>thinking.type</div><div class=v><b>enabled</b> — <b>끌 수 없습니다.</b> 이 값만 지원합니다.</div></div>
+<div class=row><div class=k>thinking.clear_thinking</div><div class=v><b>false</b> 를 권합니다</div></div>
+<div class=row><div class=k>스트리밍이면</div><div class=v><code>stream: true</code> 와 <code>tool_stream: true</code> 를 같이 켜라고 적혀 있습니다</div></div>
 </div>
 
 <div class=card>
-<h2><span class=num>3</span>저희가 직접 돌린 값</h2>
-<div class=note>OpenRouter 를 거쳐 한 계정으로 각 1회. 아래는 응답에 찍힌 원본값을 그대로 옮긴 것입니다.</div>
-<div class=row><div class=k>카드 이미지 검수</div><div class=v>입력 2241 토큰 · <b>7.02</b>초 · <b>$0.000312</b> · <b>6/6</b> 정답</div></div>
-<div class=row><div class=k>규약 전문 질의</div><div class=v>입력 116339 토큰 · <b>35.25</b>초 · <b>$0.009238</b> · <b>11/11</b> 정답</div></div>
-<div class=row><div class=k>문서 203개 이어붙임</div><div class=v>입력 <b>497,071</b> 토큰 · <b>38.21</b>초 · <b>$0.037454</b> · <b>4/4</b> 정답</div></div>
-<div class=row><div class=k>합계</div><div class=v><b>21/21</b> 정답 · <b>$0.047004</b></div></div>
-<div class=q>세 번째 과제는 같은 문서를 반복해 채우지 않았습니다. 서로 다른 실제 파일 203개(1006814자)를 이어 붙이고 <b>맨 앞·중간·맨 뒤</b> 파일의 값을 각각 물었습니다 — 뒤쪽을 못 읽으면 마지막 문항만 틀립니다.</div>
+<h2><span class=num>3</span>이미지를 같이 넣을 때</h2>
+<div class=note>이 모델은 텍스트·이미지·영상 입력을 받습니다.</div>
+<div class=row><div class=k>넣는 자리</div><div class=v><code>messages[].content[]</code> 에 <code>type: "image_url"</code> 블록을 더합니다</div></div>
+<div class=row><div class=k>URL 이 우선</div><div class=v>공식은 <b>이미지 URL 을 권합니다.</b> Base64 데이터 URL 도 받습니다</div></div>
+<div class=row><div class=k>여러 장</div><div class=v><code>image_url</code> 블록을 여러 개 넣으면 됩니다</div></div>
+<pre><code>"content": [
+  {"type": "text", "text": "이 화면을 그대로 코드로 만들어 주세요"},
+  {"type": "image_url", "image_url": {"url": "https://example.com/shot.png"}}
+]</code></pre>
 </div>
 
 <div class=card>
-<h2><span class=num>4</span>벤치마크는 갈립니다</h2>
-<div class=note>아래는 <b>Z.ai 가 직접 잰 값</b>입니다. 독립 검증이 아니고, 서드파티 재측정이 나오면 달라질 수 있습니다.</div>
-<div class=row><div class=k>Terminal Bench 2.1</div><div class=v>GLM-5.3-Flash <b>84.3</b> · Opus 4.8 <b>85.0</b> — 뒤집니다</div></div>
-<div class=row><div class=k>DeepSWE v1.1</div><div class=v>GLM-5.3-Flash <b>63.4</b> · Opus 4.8 <b>58.0</b> — 앞섭니다</div></div>
-<div class=row><div class=k>NL2Repo</div><div class=v>GLM-5.3-Flash <b>56.3</b> · Opus 4.8 <b>69.7</b> — 차이가 큽니다</div></div>
-<div class=row><div class=k>Z.ai 의 표현</div><div class=v>「approaching Claude Opus 4.8」 — <b>이겼다가 아니라 근접한다</b>입니다.</div></div>
+<h2><span class=num>4</span>지금 물리는 값 — 조건이 붙어 있습니다</h2>
+<div class=warn>🔴 지금 보이는 값은 <b>한시 할인가</b>입니다. <b>2026년 9월 9일 16:00 UTC</b> 까지이고, 그 뒤에는 정가로 돌아갑니다. 예산을 짤 때 이 날짜를 보세요.</div>
+<div class=row><div class=k>할인가 (입력/출력)</div><div class=v><b>$0.075</b> / <b>$0.25</b> — 1M 토큰당</div></div>
+<div class=row><div class=k>정가 (입력/출력)</div><div class=v><b>$0.15</b> / <b>$0.50</b> — 여러 공급자에서 공통</div></div>
+<div class=row><div class=k>캐시 읽기</div><div class=v>할인가 <b>$0.015</b> · 정가 <b>$0.03</b></div></div>
+<div class=row><div class=k>구독으로 쓰려면</div><div class=v>GLM Coding Plan 에서 쓸 수 있고, 문서상 GLM-5.3 대비 쿼터가 <b>3배</b>입니다. 주말과 비혼잡 시간대 호출은 포인트를 <b>절반</b>만 씁니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>고를 때 볼 것</h2>
+<div class=note>「이겼다」로 읽히지 않게, 공식 표현 그대로 적습니다.</div>
+<div class=row><div class=k>Z.ai 의 표현</div><div class=v>「<b>approaching Claude Opus 4.8</b>」 — 「이겼다」가 아닙니다</div></div>
+<div class=row><div class=k>표를 그대로 읽으면</div><div class=v>Opus 4.8 이 Terminal Bench·NL2Repo·Agents' Last Exam·HLE·CharXiv <b>다섯 항목에서 앞섭니다.</b> NL2Repo 는 <b>56.3</b> 대 <b>69.7</b> 로 격차가 큽니다</div></div>
+<div class=row><div class=k>그러니 축은</div><div class=v><b>값 대비</b>입니다. 최고 점수를 원하면 이 모델이 아닙니다</div></div>
+<div class=row><div class=k>공개 범위</div><div class=v>라이선스 <b>MIT</b> · 가중치는 Hugging Face <code>zai-org/GLM-5.3-Flash</code> 에 공개. 직접 서빙도 가능합니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>6</span>저희가 돌려 본 값 (참고)</h2>
+<div class=note>한 계정 · 각 <b>1</b>회 · 공급자는 Z.AI 로 붙었습니다. 재현 표본이 아닙니다.</div>
+<div class=row><div class=k>카드 이미지 검수</div><div class=v>입력 2,241 토큰 · 7.02초 · 6/6 · <b>$0.000312</b></div></div>
+<div class=row><div class=k>규약 전문 질의</div><div class=v>입력 116,339 토큰 · 35.25초 · 11/11 · <b>$0.009238</b></div></div>
+<div class=row><div class=k>문서 203개 이어붙임</div><div class=v>입력 <b>497,071</b> 토큰 · <b>38.21</b>초 · 4/4 · <b>$0.037454</b></div></div>
+<div class=row><div class=k>합계</div><div class=v><b>21/21</b> · <b>$0.047004</b></div></div>
+<div class=row><div class=k>옛 이름으로 쟀을 때</div><div class=v><b>stealth/ox-alpha</b> 시절 지출은 <b>0</b> 이었습니다. 지금은 값이 붙습니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>7</span>저희가 하지 않은 것</h2>
+<div class=note>못 잡는 것을 잡는 척하지 않습니다.</div>
+<div class=row><div class=k>chat.z.ai</div><div class=v>로그인·결제 경로라 <b>열지 않았습니다.</b> 그 경로의 사용법은 이 장에 없습니다</div></div>
+<div class=row><div class=k>ep31 과의 비교</div><div class=v>그때 프롬프트 원문이 남지 않아 <b>시간·정답률을 나란히 놓지 않았습니다.</b> 보존된 값(이름·cost·문맥)만 비교했습니다</div></div>
+<div class=row><div class=k>벤치 재현</div><div class=v>안 했습니다. 위 표는 <b>Z.ai 가 직접 잰 값</b>입니다</div></div>
 </div>
 
 <div class=foot>
-<b>이 킷의 범위.</b> 이름·라이선스·규모·값은 Z.ai 블로그와 Hugging Face 모델 카드, OpenRouter 모델 페이지에서 옮긴 것입니다. 실측 세 과제는 저희가 OpenRouter 를 거쳐 잰 값이고 한 계정·각 1회입니다.
-<div class=scope>확인 시점 2026-08-27 20:18 KST · 값과 할인 마감은 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+<b>이 킷의 범위.</b> Z.ai 블로그·개발자 문서·Hugging Face 모델 카드·OpenRouter 모델 API 에서 옮긴 값과, 저희가 OpenRouter 로 직접 돌린 원본값입니다.
+<div class=scope>확인 시점 2026-08-27 20:18 KST · 값과 쿼터는 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
 </div>
 
 </div>
