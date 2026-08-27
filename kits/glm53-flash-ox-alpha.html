@@ -1,0 +1,90 @@
+<!doctype html><html lang="ko"><head><title>📄 Ox Alpha → GLM-5.3-Flash 한 장 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="이름 없이 무료였던 ox-alpha 의 정체 — GLM-5.3-Flash. 이름·라이선스·문맥, 정가와 할인가와 마감 시각, 토망치랩이 직접 돌린 세 과제 원본값.">
+<meta property="og:title" content="📄 Ox Alpha → GLM-5.3-Flash 한 장">
+<meta property="og:description" content="무엇이었나 · 얼마가 됐나 · 직접 돌려 보니 어땠나.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:190px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+pre{background:#1C2028;color:#E9EDF2;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.6;overflow-x:auto;margin:8px 0 12px}
+code{font-family:Consolas,'Noto Sans KR',monospace}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>Ox Alpha → GLM-5.3-Flash 한 장</h1>
+<p class=lead>이름 없이 무료로 돌던 모델의 정체가 밝혀졌고, 같이 값도 붙었습니다. 무엇이었는지, 얼마가 됐는지, 저희가 직접 돌려 보니 어땠는지를 한 장에 놓았습니다.</p>
+
+<div class=split>⚡ 옛 이름 <b>stealth/ox-alpha</b> → 지금 이름 <b>z-ai/glm-5.3-flash</b>. 라이선스 <b>MIT</b>, 전체 <b>320B</b> 중 토큰마다 <b>18B</b> 만 작동, 문맥 1M.</div>
+
+<div class=card>
+<h2><span class=num>1</span>이름 둘, 그리고 바뀐 것</h2>
+<div class=note>Z.ai 는 「출시 전 반응을 모으려고 ox-alpha 라는 이름으로 익명 시험을 돌렸다」고 적었습니다.</div>
+<div class=row><div class=k>옛 이름</div><div class=v><b>stealth/ox-alpha</b> — 만든 곳 미공개. 입력·출력 모두 무료. <b>지금은 OpenRouter 모델 목록에 없습니다.</b></div></div>
+<div class=row><div class=k>지금 이름</div><div class=v><b>z-ai/glm-5.3-flash</b> — Z.ai 의 GLM-5 계열 첫 네이티브 멀티모달 모델.</div></div>
+<div class=row><div class=k>라이선스</div><div class=v><b>MIT</b> — Hugging Face <code>zai-org/GLM-5.3-Flash</code> 모델 카드 표기.</div></div>
+<div class=row><div class=k>규모 · 문맥</div><div class=v>전체 <b>320B</b>, 토큰당 활성 <b>18B</b>. 문맥 1M(OpenRouter 표기 1310720). 층 45(GLM-5.3 은 92).</div></div>
+<div class=row><div class=k>입력 형식</div><div class=v>텍스트 · 이미지 · 영상. 사고 모드는 켜짐만 지원하고 끌 수 없습니다.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>값 — 정가와 할인가</h2>
+<div class=note>1M 토큰 기준. 아래 할인가는 <b>기간 한정</b>이라 마감 시각을 같이 봐야 합니다.</div>
+<div class=warn>⏳ 지금 값은 <b>50%</b> 할인가입니다 — <b>2026년 9월 9일 16:00 UTC</b> 까지. 그 뒤로는 정가로 돌아갑니다.</div>
+<div class=row><div class=k>입력</div><div class=v>할인가 <b>$0.075</b> / 정가 <b>$0.15</b></div></div>
+<div class=row><div class=k>출력</div><div class=v>할인가 <b>$0.25</b> / 정가 <b>$0.50</b></div></div>
+<div class=row><div class=k>캐시 읽기</div><div class=v>할인가 <b>$0.015</b> / 정가 $0.03</div></div>
+<div class=row><div class=k>옛 값</div><div class=v>ox-alpha 시절 입력·출력 <b>0</b>.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>저희가 직접 돌린 값</h2>
+<div class=note>OpenRouter 를 거쳐 한 계정으로 각 1회. 아래는 응답에 찍힌 원본값을 그대로 옮긴 것입니다.</div>
+<div class=row><div class=k>카드 이미지 검수</div><div class=v>입력 2241 토큰 · <b>7.02</b>초 · <b>$0.000312</b> · <b>6/6</b> 정답</div></div>
+<div class=row><div class=k>규약 전문 질의</div><div class=v>입력 116339 토큰 · <b>35.25</b>초 · <b>$0.009238</b> · <b>11/11</b> 정답</div></div>
+<div class=row><div class=k>문서 203개 이어붙임</div><div class=v>입력 <b>497,071</b> 토큰 · <b>38.21</b>초 · <b>$0.037454</b> · <b>4/4</b> 정답</div></div>
+<div class=row><div class=k>합계</div><div class=v><b>21/21</b> 정답 · <b>$0.047004</b></div></div>
+<div class=q>세 번째 과제는 같은 문서를 반복해 채우지 않았습니다. 서로 다른 실제 파일 203개(1006814자)를 이어 붙이고 <b>맨 앞·중간·맨 뒤</b> 파일의 값을 각각 물었습니다 — 뒤쪽을 못 읽으면 마지막 문항만 틀립니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>벤치마크는 갈립니다</h2>
+<div class=note>아래는 <b>Z.ai 가 직접 잰 값</b>입니다. 독립 검증이 아니고, 서드파티 재측정이 나오면 달라질 수 있습니다.</div>
+<div class=row><div class=k>Terminal Bench 2.1</div><div class=v>GLM-5.3-Flash <b>84.3</b> · Opus 4.8 <b>85.0</b> — 뒤집니다</div></div>
+<div class=row><div class=k>DeepSWE v1.1</div><div class=v>GLM-5.3-Flash <b>63.4</b> · Opus 4.8 <b>58.0</b> — 앞섭니다</div></div>
+<div class=row><div class=k>NL2Repo</div><div class=v>GLM-5.3-Flash <b>56.3</b> · Opus 4.8 <b>69.7</b> — 차이가 큽니다</div></div>
+<div class=row><div class=k>Z.ai 의 표현</div><div class=v>「approaching Claude Opus 4.8」 — <b>이겼다가 아니라 근접한다</b>입니다.</div></div>
+</div>
+
+<div class=foot>
+<b>이 킷의 범위.</b> 이름·라이선스·규모·값은 Z.ai 블로그와 Hugging Face 모델 카드, OpenRouter 모델 페이지에서 옮긴 것입니다. 실측 세 과제는 저희가 OpenRouter 를 거쳐 잰 값이고 한 계정·각 1회입니다.
+<div class=scope>확인 시점 2026-08-27 20:18 KST · 값과 할인 마감은 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+</div>
+
+</div>
+</body></html>
