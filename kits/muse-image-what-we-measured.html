@@ -1,0 +1,135 @@
+<!doctype html><html lang="ko"><head><title>📄 Muse Image 바로 쓰기 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Muse Image 를 지금 부르는 법 — 호출 예시, 저희가 쓴 프롬프트 전문, 값 계산법, 공식이 밝힌 한계.">
+<meta property="og:title" content="📄 Muse Image 바로 쓰기">
+<meta property="og:description" content="호출 예시 · 프롬프트 전문 · 값 계산 · 한계.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:200px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+pre{background:#1C2028;color:#E9EDF2;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.6;overflow-x:auto;margin:8px 0 12px}
+code{font-family:Consolas,'Noto Sans KR',monospace}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>Muse Image 바로 쓰기</h1>
+<p class=lead>이 장은 <b>그대로 복사해 쓰는 판</b>입니다 — 붙여 넣을 호출 코드, 저희가 실제로 넣은 프롬프트 <b>전문</b>, 값이 얼마나 나오는지 계산하는 법. 저희가 잰 결과는 뒤에 있습니다.</p>
+
+<div class=split>⚡ 모델 <b>muse-image-1.0</b> · 한 장 <b>$0.01</b> 정액 · 분당 <b>150</b>회. 키는 <b>dev.meta.ai</b> 에서 받고, 가입 없이 쓰려면 저희처럼 <b>openrouter.ai</b> 로 붙습니다.</div>
+
+<div class=card>
+<h2><span class=num>1</span>바로 부르기 — 붙여 넣는 코드</h2>
+<div class=note>저희가 실제로 쓴 경로(OpenRouter)입니다. 그대로 돕니다.</div>
+<pre><code>curl https://openrouter.ai/api/v1/images/generations \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "meta/muse-image",
+    "prompt": "여기에 프롬프트",
+    "n": 1
+  }'</code></pre>
+<div class=row><div class=k>Meta 로 직접</div><div class=v>기준 주소는 <b>https://api.meta.ai/v1</b>, 키는 <b>dev.meta.ai</b> 에서 받습니다. 엔드포인트는 <code>/v1/images/generations</code> 와 <code>/v1/images/edits</code></div></div>
+<div class=row><div class=k>다른 실행처</div><div class=v>공식 모델 페이지가 <b>fal · Runway · OpenRouter</b> 셋을 적어 두었습니다</div></div>
+<div class=warn>🔴 저희가 붙은 판은 <b>meta/muse-image-1.0-eval-20260824</b> — <b>eval 판</b>입니다. 아래 결과를 프로덕션 판 성능으로 읽지 마세요.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>값 계산 — 조건이 없습니다</h2>
+<div class=note>가격 문서 「billed at a flat $0.01 per generated image」 그대로입니다.</div>
+<div class=row><div class=k>프롬프트 길이</div><div class=v>무관</div></div>
+<div class=row><div class=k>추론 강도</div><div class=v>무관</div></div>
+<div class=row><div class=k>모델이 쓴 도구·내장 웹 검색</div><div class=v>무관 · 별도 과금 없음</div></div>
+<div class=row><div class=k>실패하거나 필터로 안 나온 장</div><div class=v><b>과금 안 함</b></div></div>
+<div class=row><div class=k>여러 장을 한 번에</div><div class=v><b>장수만큼</b> 물립니다. 저희가 <code>n</code> 을 <b>2</b> 로 넣었더니 정확히 <b>$0.02</b> 가 빠졌습니다</div></div>
+<div class=split>계산은 그래서 곱셈 하나입니다 — <b>필요한 장수 × $0.01</b>. 「대량이어야 싸다」가 아닙니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>저희가 쓴 프롬프트 — 전문</h2>
+<div class=note>그대로 복사해 쓰세요. 한글 문자열이 실제로 찍히는지 보려고 만든 판입니다.</div>
+<div class=row><div class=k>요령 하나</div><div class=v>박히길 원하는 글자는 <b>「reading exactly:」</b> 로 못박고, <b>「No other text anywhere」</b> 를 같이 넣습니다. 이 두 문장이 군더더기 글자를 막습니다</div></div>
+<pre><code>A flat vector infographic card on a plain white background, portrait orientation.
+
+At the top, a single line of large bold black text reading exactly: 세 가지 기본 요소
+
+Below it, three evenly spaced rounded rectangles in a vertical stack. Each rectangle is pale grey with a thin teal left border. Inside each rectangle, one short line of black text, exactly these three lines in this order:
+1) 생성
+2) 편집
+3) 합성
+
+At the bottom right, small grey text reading exactly: 0.01
+
+No other text anywhere in the image. No English words. No decorative lettering. Clean, minimal, high contrast.</code></pre>
+<div class=row><div class=k>여러 단계 지시도 한 번에</div><div class=v>아래는 「셋만 놓아라 + 한 값에만 취소선 + 그 아래 새 값」을 <b>한 호출</b>로 시킨 것입니다</div></div>
+<pre><code>A top-down photo of three second-hand items laid out on a wooden floor, each with a small white paper price tag handwritten in black marker.
+
+The three items and their tags, exactly:
+- a brass desk lamp, tag reads exactly: 3만원
+- a small green hardcover book, tag reads exactly: 8천원, and directly above that on the same tag the old price 1만2천원 is written and struck through with a single line
+- a ceramic mug, tag reads exactly: 5천원
+
+There must be exactly three items. Do not add a radio, a rug, boots, or any fourth object. No other text anywhere in the image — no labels, no watermarks, no English words.
+
+Natural window light from the left, plain wooden floor, realistic photograph.</code></pre>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>쓰기 전에 알아 둘 한계</h2>
+<div class=note>공식이 스스로 적은 것 넷입니다. 자랑과 같은 문서 안에 있습니다.</div>
+<div class=row><div class=k>해상도</div><div class=v>출력은 최대 <b>1600</b>px</div></div>
+<div class=row><div class=k>글자</div><div class=v>텍스트 렌더링이 <b>회차마다 달라집니다</b></div></div>
+<div class=row><div class=k>합성</div><div class=v>합칠 때 배치가 <b>다시 흐를 수 있습니다</b></div></div>
+<div class=row><div class=k>재현성</div><div class=v><b>매 호출이 비결정적</b>입니다 — 「한 번에 맞기」보다 <b>여러 번 돌려 고르기</b>가 전제인 도구입니다</div></div>
+<div class=row><div class=k>속도 한도</div><div class=v>분당 <b>150</b>회</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>저희가 잰 값 (참고)</h2>
+<div class=note>실행처 <b>openrouter.ai</b> · <b>6</b>장 · 총 <b>$0.06</b>. 재현 표본이 아닙니다.</div>
+<div class=row><div class=k>선언한 글자</div><div class=v>같은 프롬프트를 네 번 돌려 <b>24/24</b> 전부 제자리에 찍혔습니다</div></div>
+<div class=row><div class=k>주문에 없던 글자</div><div class=v><b>0</b>자 — 한 글자도 안 끼어들었습니다</div></div>
+<div class=row><div class=k>흔들린 것</div><div class=v>상자 크기와 간격은 회차마다 달랐습니다. 공식이 미리 적어 둔 그대로입니다</div></div>
+<div class=row><div class=k>걸린 시간</div><div class=v>글자 판 <b>9.04</b>·<b>9.52</b>·<b>9.95</b>초 · 여러 단계 지시 <b>17.50</b>초</div></div>
+<div class=row><div class=k>취소선</div><div class=v>실제로 그어졌습니다. 다만 <b>첫 글자 위를 살짝 지나</b> 획이 흐려졌습니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>6</span>저희가 하지 않은 것</h2>
+<div class=note>못 잡는 것을 잡는 척하지 않습니다.</div>
+<div class=row><div class=k>편집·합성</div><div class=v><b>재지 못했습니다.</b> 저희가 붙은 경로에 편집 엔드포인트가 없었습니다. 재려면 Meta 직접 경로(가입)가 필요합니다</div></div>
+<div class=row><div class=k>프로덕션 판</div><div class=v>안 썼습니다 — 위 <b>eval</b> 판 경고를 보세요</div></div>
+<div class=row><div class=k>표본</div><div class=v>각 <b>1</b>회 또는 <b>4</b>회입니다. 통계가 아닙니다</div></div>
+</div>
+
+<div class=foot>
+<b>이 킷의 범위.</b> Meta 공식 블로그·모델 페이지·가격 문서에서 옮긴 값과, 저희가 OpenRouter 로 직접 돌린 원본값입니다.
+<div class=scope>확인 시점 2026-08-27 23:5x KST · eval 판 기준 · 값과 한도는 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+</div>
+
+</div>
+</body></html>
