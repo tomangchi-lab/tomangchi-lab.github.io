@@ -1,0 +1,89 @@
+<!doctype html><html lang="ko"><head><title>📄 구글 음성 — 한국에서 무엇이 되나 한 장 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gemini 3.5 Transcribe 와 Gemini Live 신기능 4종 — 기능별 플랜 조건, 제외 지역, 나이·계정 조건, 그리고 아직 안 되는 것.">
+<meta property="og:title" content="📄 구글 음성 — 한국에서 무엇이 되나 한 장">
+<meta property="og:description" content="무엇이 무료이고 무엇이 구독인가 · 어디서 안 되는가 · 무엇을 아직 못 재 봤는가.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:190px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+code{font-family:Consolas,'Noto Sans KR',monospace}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>구글 음성 — 한국에서 무엇이 되나 한 장</h1>
+<p class=lead>말을 받아 적는 모델과, 그 말로 일을 시키는 자리가 같은 날 열렸습니다. 무엇이 무료이고 무엇이 구독인지, 어디서 안 되는지, 그리고 저희가 확인하지 못한 것이 무엇인지를 한 장에 놓았습니다.</p>
+
+<div class=warn>🔴 <b>이 킷의 내용은 전부 공식 문구입니다.</b> 저희는 이 기능들을 직접 돌려 보지 못했습니다 — 구독과 기기가 필요합니다. 「된다」가 아니라 「이렇게 적혀 있다」로 읽어 주세요.</div>
+
+<div class=card>
+<h2><span class=num>1</span>받아쓰기 모델 — Gemini 3.5 Transcribe</h2>
+<div class=note>모델 코드 <code>gemini-3.5-transcribe</code>. 아래는 공식 블로그와 Gemini API 문서에서 옮긴 값입니다.</div>
+<div class=row><div class=k>알아듣는 것</div><div class=v>자기 정정(「화요일에 만나자, 아니 수요일」) · 군말(「음」·「어」) 제거 · 문단 자동 정리</div></div>
+<div class=row><div class=k>언어</div><div class=v><b>85</b>개 이상 자동 감지. 한국어는 <b>ko-KR</b> 로 목록에 있습니다.</div></div>
+<div class=row><div class=k>오류율(WER)</div><div class=v>스트리밍 <b>4.0%</b> · 파일 처리 <b>2.6%</b> — <b>Artificial Analysis</b> 가 잰 값이라고 구글이 밝혔습니다. 구글 자체 측정이 아닙니다.</div></div>
+<div class=row><div class=k>오디오 길이</div><div class=v>표준 요청 최대 <b>60</b>분 · 화자 분리나 단어 타임스탬프를 켜면 <b>30</b>분</div></div>
+<div class=row><div class=k>화자 수 (표기가 갈립니다)</div><div class=v>공식 블로그는 「최대 <b>3</b>명」, Gemini API 문서는 「최대 <b>8</b>명, 3명 이상은 실험적」 — <b>지면마다 다르게 적혀 있어 둘 다 적습니다.</b></div></div>
+<div class=row><div class=k>쓸 수 있는 곳</div><div class=v>Gemini macOS 앱 · 안드로이드 Gboard · Gemini API(AI Studio·Antigravity·Gemini Enterprise Agent Platform 공개 프리뷰)</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>Gemini Live 신기능 4종 — 무엇이 무료인가</h2>
+<div class=note>공식 블로그 각주 기준. <b>Gemini Live 자체는 전 세계 무료</b>이고, 기능별 조건이 따로입니다.</div>
+<div class=row><div class=k>Gmail 정리</div><div class=v>요약·검색·별표·보관·삭제를 목소리로 — 각주에 <b>조건 표기 없음</b></div></div>
+<div class=row><div class=k>Personal Intelligence</div><div class=v>지난 대화와 Gmail·포토·검색·유튜브를 가로질러 이어 줌 — 각주에 <b>조건 표기 없음</b></div></div>
+<div class=row><div class=k>Daily Brief</div><div class=v>Gmail·캘린더를 한 덩이 음성 요약으로 — <b>Google AI Plus</b> 이상</div></div>
+<div class=row><div class=k>Gemini Spark</div><div class=v>여러 단계 작업을 걸어 두면 혼자 돎(Docs·Sheets·Drive·웹) — <b>Google AI Pro</b> 이상</div></div>
+<div class=q>공식 고지 원문: 「Gemini Live is available globally at no cost. Availability, compatibility, and age restrictions for integrations vary; setup or subscription may be required.」 — <b>무료는 Live 자체이고, 연동 기능은 다르다</b>는 뜻입니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>지역·나이·계정 조건</h2>
+<div class=note>Personal Intelligence 공식 도움말 기준. 다른 기능은 지역 목록을 따로 적어 두지 않았습니다.</div>
+<div class=row><div class=k>안 되는 곳</div><div class=v><b>유럽경제지역 · 나이지리아 · 스위스 · 영국</b>. <b>한국은 이 목록에 없습니다.</b></div></div>
+<div class=row><div class=k>다만</div><div class=v>「순차 배포 중이라 아직 안 보일 수 있다」고 같이 적혀 있습니다 — <b>한국에서 지금 된다는 뜻은 아닙니다.</b></div></div>
+<div class=row><div class=k>나이</div><div class=v>만 <b>18</b>세 이상</div></div>
+<div class=row><div class=k>계정</div><div class=v>개인 구글 계정만. 직장·학교·관리 계정은 안 됩니다.</div></div>
+<div class=row><div class=k>구글 포토 연결</div><div class=v>일부 국가·지역에서만 됩니다.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>이 킷이 답하지 못하는 것</h2>
+<div class=note>못 잡는 것을 잡는 척하지 않습니다.</div>
+<div class=row><div class=k>한국어 실제 정확도</div><div class=v>재 보지 못했습니다. WER 4.0%·2.6% 는 <b>언어별 값이 아니라 평균</b>입니다.</div></div>
+<div class=row><div class=k>한국 계정에서의 실제 동작</div><div class=v>구독과 기기가 필요해 확인하지 못했습니다.</div></div>
+<div class=row><div class=k>「63%가 목소리로 쓴다」</div><div class=v>구글이 직접 잰 값이고 조사 방법·표본·기간이 공개되어 있지 않습니다.</div></div>
+</div>
+
+<div class=foot>
+<b>이 킷의 범위.</b> 전부 공식 지면에서 옮긴 값입니다 — 구글 블로그 두 편, Gemini API 문서, Gemini 공식 도움말. 저희 실측은 <b>없습니다</b>.
+<div class=scope>확인 시점 2026-08-27 21:50 KST · 순차 배포 중인 기능이 있어 값은 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+</div>
+
+</div>
+</body></html>
