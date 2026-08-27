@@ -1,0 +1,87 @@
+<!doctype html><html lang="ko"><head><title>📄 Claude Code 피드백 초안 한 장 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Claude Code 2.1.247 SendFeedback — 언제 초안이 써지나, 보내면 무엇이 같이 가나, 어디에 쌓이나, 끄는 법.">
+<meta property="og:title" content="📄 Claude Code 피드백 초안 한 장">
+<meta property="og:description" content="쓰는 건 Claude, 보내는 건 사람 — 그 사이에 무엇이 있나.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:190px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+pre{background:#1C2028;color:#E9EDF2;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.6;overflow-x:auto;margin:8px 0 12px}
+code{font-family:Consolas,'Noto Sans KR',monospace}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>Claude Code 피드백 초안 한 장</h1>
+<p class=lead>쓰는 건 Claude 고 보내는 건 사람입니다. 그 사이에 무엇이 있는지 — 언제 써지고, 어디에 쌓이고, 보낼 때 무엇이 같이 가고, 어떻게 끄는지를 한 장에 놓았습니다.</p>
+
+<div class=split>⚡ <b>Claude Code 2.1.247</b> 에 <b>SendFeedback</b> 이 들어갔습니다. 초안은 <b>~/.claude/feedback/drafts/</b> 에 쌓이고, <b>/feedback</b> 에서 보고 고쳐 승인해야 나갑니다.</div>
+
+<div class=card>
+<h2><span class=num>1</span>언제 초안이 써지나</h2>
+<div class=note>공식 발표 문구 그대로입니다.</div>
+<div class=row><div class=k>① 실패했을 때</div><div class=v>세션에서 뭔가 잘못됐을 때 (when something fails)</div></div>
+<div class=row><div class=k>② 스스로 알아차렸을 때</div><div class=v>Claude 가 자기가 틀렸다고 판단했을 때 (when Claude notices it made a mistake)</div></div>
+<div class=row><div class=k>③ 사용자가 말했을 때</div><div class=v>「이거 잘못됐다」고 지적했을 때 (when you tell it something went wrong)</div></div>
+<div class=row><div class=k>초안 종류</div><div class=v><b>bug</b> · <b>idea</b> · <b>missing_capability</b> — 「버그」만이 아닙니다</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>보내면 무엇이 같이 가나</h2>
+<div class=note>이 킷에서 가장 실무적인 절입니다.</div>
+<div class=warn>🔴 리포트만 가지 않습니다 — <b>설명문 + 현재 세션 트랜스크립트 + 정리된 오류 로그</b>가 함께 전송됩니다. <b>사내 코드나 비공개 자료를 다루던 세션이면 보내기 전에 확인하세요.</b></div>
+<div class=row><div class=k>공식 설명이 말해 줍니다</div><div class=v><code>/bug</code> 의 명령 설명이 「<b>Report a bug or share your conversation</b>」입니다 — 「대화를 공유한다」가 이름에 들어 있습니다.</div></div>
+<div class=row><div class=k>대화상자 제목</div><div class=v><b>Submit feedback / bug report</b></div></div>
+<div class=row><div class=k>모으는 것</div><div class=v>공식 README 「Data collection」 절 — 사용 데이터(코드 수락·거절), <b>연관된 대화 데이터</b>, <code>/bug</code> 으로 보낸 피드백</div></div>
+<div class=row><div class=k>반대쪽도 적혀 있습니다</div><div class=v>같은 절의 「Privacy safeguards」 — 민감 정보 <b>보관 기간 제한</b> · 세션 데이터 <b>접근 제한</b> · 그리고 <b>모아 둔 피드백을 모델 학습에 쓰지 않는다</b>는 방침(「clear policies against using feedback for model training」).</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>어디에 쌓이고 어떻게 보나</h2>
+<div class=note>로컬 설치본 <b>2.1.247</b> 에서 읽은 값입니다.</div>
+<div class=row><div class=k>쌓이는 곳</div><div class=v><b>~/.claude/feedback/drafts/</b> — UUID 이름의 파일</div></div>
+<div class=row><div class=k>보관 상한</div><div class=v><b>10</b>건</div></div>
+<div class=row><div class=k>보는 명령</div><div class=v><b>/feedback</b>(Send feedback to Anthropic or report a bug) · <b>/bug</b> · 별칭 <code>/share</code></div></div>
+<div class=row><div class=k>끄는 법</div><div class=v><b>feedbackDrafts</b> 설정 — 릴리스 노트에 「turn off with the <code>feedbackDrafts</code> setting」으로 적혀 있습니다.</div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>저희가 하지 않은 것</h2>
+<div class=note>못 잡는 것을 잡는 척하지 않습니다.</div>
+<div class=row><div class=k>초안 생성</div><div class=v><b>일부러 안 했습니다.</b> 시연용으로 하나 만들면 그게 실제 대기열에 쌓이고, 잘못 승인되면 진짜로 전송됩니다.</div></div>
+<div class=row><div class=k>전송</div><div class=v>같은 이유로 안 했습니다.</div></div>
+<div class=row><div class=k>확인한 범위</div><div class=v>판본 · 명령 실물과 설명 문구 · 저장 경로 · 보관 상한 · 차단 설정까지입니다.</div></div>
+</div>
+
+<div class=foot>
+<b>이 킷의 범위.</b> 공식 발표(@ClaudeDevs)와 릴리스 노트, 그리고 로컬 설치본 <b>2.1.247</b> 조회에서 옮긴 값입니다.
+<div class=scope>확인 시점 2026-08-27 22:05 KST · 판올림마다 바뀔 수 있습니다 · 출처는 각 카드 하단에</div>
+</div>
+
+</div>
+</body></html>
