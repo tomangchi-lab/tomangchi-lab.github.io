@@ -55,9 +55,10 @@ code{font-family:Consolas,'Noto Sans KR',monospace}
 
 <div class=card>
 <h2><span class=num>2</span>쌓인 초안 직접 열어 보기</h2>
-<div class=note>로컬 설치본 <b>2.1.247</b> 에서 읽은 값입니다.</div>
+<div class=note>경로는 로컬 설치본 <b>2.1.247</b> 에서, 상한과 만료는 <b>공식 도구 문서</b>에서 읽은 값입니다.</div>
 <div class=row><div class=k>쌓이는 곳</div><div class=v><b>~/.claude/feedback/drafts/</b> — UUID 이름의 파일</div></div>
-<div class=row><div class=k>보관 상한</div><div class=v><b>10</b>건</div></div>
+<div class=row><div class=k>한 세션 카드 상한</div><div class=v><b>3</b>장 — 그 뒤로는 대기열 개수만 보입니다 (<code>feedbackDrafts</code> 를 <code>quiet</code> 로 두면 처음부터 개수만)</div></div>
+<div class=row><div class=k>큐에 두면</div><div class=v><b>30일</b> 뒤 만료됩니다</div></div>
 <pre><code>ls ~/.claude/feedback/drafts/
 cat ~/.claude/feedback/drafts/&lt;파일이름&gt;</code></pre>
 <div class=row><div class=k>비우려면</div><div class=v>그 폴더의 파일을 지우면 됩니다. <b>지우기 전에 한 번 열어 보세요</b> — 무엇이 들어갔는지는 파일이 말해 줍니다</div></div>
@@ -74,7 +75,9 @@ cat ~/.claude/feedback/drafts/&lt;파일이름&gt;</code></pre>
 
 <div class=card>
 <h2><span class=num>4</span>보내기 전에 볼 것</h2>
-<div class=warn>🔴 리포트만 가지 않습니다 — <b>설명문 + 현재 세션 트랜스크립트 + 정리된 오류 로그</b>가 함께 갑니다. <b>사내 코드나 비공개 자료를 다루던 세션이면 보내기 전에 확인하세요.</b></div>
+<div class=warn>🔴 리포트만 가지 않습니다 — <b>보고 본문 · 환경 정보(판본·운영체제·모델) · 최근 API 요청 ID</b> 가 함께 갑니다. <b>대화 트랜스크립트는 검토 화면의 토글</b>이고 <b>기본값이 「보냄」</b>입니다. <b>사내 코드나 비공개 자료를 다루던 세션이면 그 자리를 보고 보내세요.</b></div>
+<div class=row><div class=k>카드에서 바로 보내면</div><div class=v>트랜스크립트는 <b>가지 않습니다</b> — 문서 원문 「Sending from the card never includes the transcript」</div></div>
+<div class=row><div class=k>검토 화면에서 보내면</div><div class=v><b>Send transcript</b> 가 <code>yes</code> 로 시작합니다. <code>no</code> 로 바꾸면 보고서만 갑니다</div></div>
 <div class=row><div class=k>이름이 말해 줍니다</div><div class=v><code>/bug</code> 의 설명이 「Report a bug or <b>share your conversation</b>」입니다</div></div>
 <div class=row><div class=k>공식이 모은다고 적은 것</div><div class=v>사용 데이터(코드 수락·거절 등) · <b>연관된 대화 데이터</b> · <code>/bug</code> 으로 보낸 피드백</div></div>
 <div class=row><div class=k>반대쪽도 적혀 있습니다</div><div class=v>민감 정보 <b>보관 기간 제한</b> · 세션 데이터 <b>접근 제한</b> · 그리고 <b>모델 학습에 쓰지 않는다</b>(「clear policies against using feedback for model training」)</div></div>
@@ -83,10 +86,11 @@ cat ~/.claude/feedback/drafts/&lt;파일이름&gt;</code></pre>
 
 <div class=card>
 <h2><span class=num>5</span>초안이 써지는 때</h2>
-<div class=note>공식 발표 문구 그대로입니다. 「버그」만이 아닙니다.</div>
-<div class=row><div class=k>① 실패했을 때</div><div class=v>when something fails</div></div>
-<div class=row><div class=k>② 스스로 알아차렸을 때</div><div class=v>when Claude notices it made a mistake</div></div>
-<div class=row><div class=k>③ 사용자가 말했을 때</div><div class=v>when you tell it something went wrong</div></div>
+<div class=note>공식 <b>도구 문서</b> 기준입니다 — 발표문은 셋으로 요약했지만 문서는 <b>넷</b>입니다. 「버그」만이 아닙니다.</div>
+<div class=row><div class=k>① 도구·명령이 계속 실패</div><div class=v>A tool or command keeps failing</div></div>
+<div class=row><div class=k>② 요청을 못 들어줄 때</div><div class=v>It can't help with something you asked for</div></div>
+<div class=row><div class=k>③ 지적받거나 스스로 알아차림</div><div class=v>You point out a mistake it made, or it notices one</div></div>
+<div class=row><div class=k>④ 사람이 신고해 달라고 함</div><div class=v>You ask it to file feedback</div></div>
 <div class=row><div class=k>초안 종류</div><div class=v><b>bug</b> · <b>idea</b> · <b>missing_capability</b></div></div>
 </div>
 
@@ -96,7 +100,8 @@ cat ~/.claude/feedback/drafts/&lt;파일이름&gt;</code></pre>
 <div class=row><div class=k>초안 생성</div><div class=v><b>일부러 안 했습니다.</b> 시연용으로 하나 만들면 그게 실제 대기열에 쌓이고, 잘못 승인되면 진짜로 전송됩니다</div></div>
 <div class=row><div class=k>전송</div><div class=v>같은 이유로 안 했습니다</div></div>
 <div class=row><div class=k>환경변수 3종</div><div class=v>설치본에는 있으나 <b>공식 설정 문서에 없어</b> 뺐습니다. 문서화된 <b>feedbackDrafts</b> 만 실었습니다</div></div>
-<div class=row><div class=k>확인한 범위</div><div class=v>판본 · 명령 실물과 설명 문구 · 저장 경로 · 보관 상한 · 차단 설정까지입니다</div></div>
+<div class=row><div class=k>확인한 범위</div><div class=v>판본 · 명령 실물과 설명 문구 · 저장 경로 · 차단 설정까지입니다. 계기·동봉 항목·상한은 <b>공식 도구 문서</b>를 정본으로 삼았습니다</div></div>
+<div class=row><div class=k>설치본의 「10건」</div><div class=v>설치본에서는 <b>10</b> 이라는 값을 읽었지만 <b>공식 문서에 같은 상한이 없어</b> 카드에서 뺐습니다. 문서가 말하는 축은 카드 3장 · 30일 만료로 다릅니다</div></div>
 </div>
 
 <div class=foot>
