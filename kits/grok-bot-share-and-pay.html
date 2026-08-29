@@ -1,0 +1,115 @@
+<!doctype html><html lang="ko"><head><title>📄 그록봇 공유와 결제 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Grok Bot 템플릿 공유와 봇 결제 — 발표 원문 통짜, 공식 문서에서 옮긴 줄, 그리고 저희가 확인하지 못한 것.">
+<meta property="og:title" content="📄 그록봇 공유와 결제">
+<meta property="og:description" content="발표 원문 통짜 · 문서 인용 줄 · 확인 못 한 것.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px} .top .word{font-weight:900;letter-spacing:.06em;font-size:15px} .top .word b{color:var(--cyan)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{font-size:13.5px;color:var(--gray);margin:6px 0 14px}
+.row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.k{flex:none;width:170px;font-weight:700} .v{color:#464c56}
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+.q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6;white-space:pre-line}
+.q i{font-style:normal;color:var(--gray);display:block;margin-top:4px;font-size:12.5px}
+.foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
+.scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+</style></head>
+<body>
+<div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
+<div class=wrap>
+
+<span class=badge>AI 소식</span>
+<h1>그록봇 — 봇을 넘기는 것과 봇이 사는 것</h1>
+<p class=lead>이 장은 <b>회사가 밝힌 것만</b> 모은 판입니다. 저희는 이 기능을 직접 돌려 보지 않았습니다 — 무엇이 회사의 말이고 무엇이 저희 확인인지 자리마다 표시해 두었습니다. 발표 문장은 <b>줄이지 않고 통째로</b> 실었습니다.</p>
+
+<div class=split>⚡ 발표 <b>xAI · Grok Bot 계정</b> · 날짜 <b>2026년 8월 28일</b>(현지, 두 건 같은 날) · 문서 <b>docs.x.ai</b> · 결제는 <b>지금 미국에서만</b> 열려 있습니다.</div>
+
+<div class=card>
+<h2><span class=num>1</span>발표 원문 — 봇 템플릿 공유</h2>
+<div class=note>포스트 본문과 <b>작성자 자신이 이어 붙인 답글</b>을 함께 싣습니다. 답글까지가 한 벌입니다.</div>
+<div class=q>You can now share templates of your Bots with others.
+<i>Grok Bot 계정 · 루트 포스트 · 식별자 2093376523919323618</i></div>
+<div class=q>To get started, update to the latest Grok Bot desktop and mobile app.
+<i>같은 계정 · 작성자 답글 · 식별자 2093376525127266718</i></div>
+<div class=warn>🔴 발표 계정의 원문은 <b>포스트 한 장이 아닙니다.</b> 저희도 처음엔 루트만 보고 「본문은 이 한 문장이 전부」라고 적었다가, 스레드를 열어 답글을 찾고 고쳤습니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>2</span>발표 원문 — 봇이 물건을 삽니다</h2>
+<div class=note>이 축의 세부는 <b>전부 답글에 있습니다.</b> 승인·카드·지역이 그 안에 들어 있습니다.</div>
+<div class=q>Grok Bot can now buy things on the internet.
+To get started, connect @link, send your Bot shopping, and it can complete purchases on your behalf.
+<i>Grok Bot 계정 · 루트 포스트 · 식별자 2093419921007108385</i></div>
+<div class=q>You approve every spend request, and Grok Bot receives a secure, single-use card for each payment.
+Currently available to users in the US, rolling out to mobile soon.
+<i>같은 계정 · 작성자 답글 · 식별자 2093419922470961421</i></div>
+</div>
+
+<div class=card>
+<h2><span class=num>3</span>문서에서 옮긴 줄 — 무엇이 따라가나</h2>
+<div class=note>docs.x.ai 의 봇 문서입니다. 사본을 만들 때 넘어가는 것과 남는 것을 문서가 직접 가릅니다.</div>
+<div class=row><div class=k>따라가는 것</div><div class=v>프로필, 설정, 켜 둔 스킬, 루틴, 아바타</div></div>
+<div class=row><div class=k>안 따라가는 것</div><div class=v>대화 이력, 학습한 기억, 첨부 파일</div></div>
+<div class=row><div class=k>넘어가지 않는 것</div><div class=v>내 컴퓨터, 로그인 정보, 대화 기록</div></div>
+<div class=q>The copy is named "&lt;name&gt; copy" and carries the profile, settings, enabled skills, routines, and avatar. It does not copy conversation history, learned memory, or chat attachments.
+<i>docs.x.ai · Create and manage Bots</i></div>
+<div class=q>Adding a shared Bot creates a copy on the recipient's account. It does not give them your computer, logins, or conversation history.
+<i>docs.x.ai · Create and manage Bots</i></div>
+<div class=q>Send the link. The recipient opens a preview on x.ai and can choose Add to Grok Bot.
+<i>docs.x.ai · Create and manage Bots</i></div>
+</div>
+
+<div class=card>
+<h2><span class=num>4</span>문서에서 옮긴 줄 — 링크는 공개입니다</h2>
+<div class=note>이 편에서 가장 실질적인 대목입니다. 문서가 먼저 경고합니다.</div>
+<div class=q>The link is public. Anyone who has it can view the Bot's shared configuration, including its identity, description, skills, and routines. Remove API keys, internal URLs, customer data, and anything else you would not put in a public document before you share.
+<i>docs.x.ai · Create and manage Bots</i></div>
+<div class=q>Shared Bots are created by other users, not by SpaceXAI. Adding one accepts the third-party bot terms.
+<i>docs.x.ai · Create and manage Bots</i></div>
+<div class=warn>🔴 공개 문서에 올리지 않을 것은 봇에도 넣지 마세요. 링크를 받은 사람은 봇의 이름, 소개, 스킬, 루틴을 그대로 볼 수 있습니다.</div>
+</div>
+
+<div class=card>
+<h2><span class=num>5</span>문서에서 옮긴 줄 — 승인 화면</h2>
+<div class=note>승인·보안 문서입니다. 봇이 무언가 하려 할 때 사람에게 무엇을 묻는지 적혀 있습니다.</div>
+<div class=q>On desktop, Allow once lets the Bot continue with that action and Deny blocks it. Always allow can save a matching rule.
+<i>docs.x.ai · Approvals, security, and privacy</i></div>
+<div class=row><div class=k>승인 경계 권장 대상</div><div class=v>메시지 발송, 콘텐츠 게시, <b>구매와 송금</b>, 삭제·덮어쓰기, 권한 변경, 프로덕션 변경, 약관 수락</div></div>
+<div class=row><div class=k>사람이 직접 해야 하는 것</div><div class=v>비밀번호, 패스키, 2단계 코드, 캡차, <b>결제 확인</b></div></div>
+</div>
+
+<div class=card>
+<h2><span class=num>6</span>🔴 저희가 확인하지 못한 것</h2>
+<div class=note>이 목록이 이 장의 절반입니다. 못 읽은 것을 못 읽었다고 적어 둡니다.</div>
+<div class=row><div class=k>«Stripe» 라는 이름</div><div class=v>Grok Bot 계정 명의의 문장에는 «@link» 만 있습니다. Stripe 는 서드파티 서술이라 쓰지 않았습니다.</div></div>
+<div class=row><div class=k>영상 안의 금액 예시</div><div class=v>공식 영상 화면에 값이 스쳐 지나가지만, 저희가 프레임을 한 장씩 읽어 확인하지는 않았습니다. 그래서 어떤 숫자도 카드에 옮기지 않았습니다.</div></div>
+<div class=row><div class=k>공유 링크의 주소 형식</div><div class=v>문서는 «opens a preview on x.ai» 까지만 적습니다. 링크가 어떤 꼴인지는 문서에 없습니다.</div></div>
+<div class=row><div class=k>서드파티 봇 약관 전문</div><div class=v>docs 가 가리키는 x.ai/legal/bot-sharing-terms 는 저희 환경에서 403 이라 원문을 열지 못했습니다. 약관이 있다는 사실은 문서 문장으로 확인했습니다.</div></div>
+</div>
+
+<div class=foot>
+<b>출처</b> — X · Grok Bot 계정 발표 두 건과 각 작성자 답글 · docs.x.ai 문서 두 쪽.<br>
+<b>인용 방식</b> — 영문은 <b>줄이지 않고 통째로</b> 옮겼습니다. 한국어 줄은 그 문장을 옮긴 것이고, 해석이 들어간 자리는 표시했습니다.<br>
+<b>저희가 한 일</b> — 발표와 문서를 읽고 옮겼습니다. 기능을 직접 돌려 보지는 않았습니다.
+<div class=scope>조회 시점 2026년 8월 29일 저녁 · 이후 문서가 바뀌면 이 장은 그때의 기록으로 남습니다.</div>
+</div>
+
+</div>
+</body></html>
