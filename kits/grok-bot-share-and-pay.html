@@ -1,9 +1,9 @@
 <!doctype html><html lang="ko"><head><title>📄 그록봇 공유와 결제 — 토망치랩</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Grok Bot 템플릿 공유와 봇 결제 — 발표 원문 통짜, 공식 문서에서 옮긴 줄, 그리고 저희가 확인하지 못한 것.">
+<meta name="description" content="Grok Bot 템플릿 공유와 봇 결제 — 시작 절차와 공유 전 점검 목록, 승인 경계 설정, 그리고 근거가 된 발표 원문과 문서 인용.">
 <meta property="og:title" content="📄 그록봇 공유와 결제">
-<meta property="og:description" content="발표 원문 통짜 · 문서 인용 줄 · 확인 못 한 것.">
+<meta property="og:description" content="시작 절차 · 공유 전 점검 목록 · 승인 경계 설정 · 발표 원문 통짜.">
 <meta property="og:type" content="article">
 <link rel="icon" href="../assets/logo_unit.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
@@ -24,12 +24,39 @@ h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
 .row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
 .row:last-child{border-bottom:0}
 .k{flex:none;width:170px;font-weight:700} .v{color:#464c56}
-.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--cyan-d);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
+/* 🔴 좌측 보더를 시안으로 두지 않는다. 킷 슬라이드 첫 프레임에서 이 보더가 뱃지
+   판독 상자(cardcheck._NUM_BOX = x56~210)의 오른쪽 끝에 걸쳐 시안 400화소를 남기고,
+   숫자 모양이 아니라 IOU 0.000 → «못 읽음(?)» 으로 게이트 [2] 가 걸린다. 실측으로
+   잡았다. 강조는 잉크 보더 + 시안 배경으로 준다 — 채도 높은 시안 덩어리만 뺀다. */
+.split{background:#F2FBFC;border:1px solid #CDEEF1;border-left:4px solid var(--ink);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
 .warn{background:#FFF6F4;border:1px solid #F6D8D2;border-left:4px solid var(--coral);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:14px}
 .q{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;font-size:13.5px;color:#464c56;margin:6px 0 10px;line-height:1.6;white-space:pre-line}
 .q i{font-style:normal;color:var(--gray);display:block;margin-top:4px;font-size:12.5px}
 .foot{margin-top:26px;font-size:13px;color:var(--gray);line-height:1.8} .foot b{color:var(--ink)}
 .scope{font-size:12.5px;color:var(--gray);margin-top:8px}
+.toc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:18px;font-size:14px}
+.toc b{display:block;font-size:13px;color:var(--gray);margin-bottom:8px;font-weight:700}
+/* 🔴 링크를 시안으로 두면 안 된다. 킷 슬라이드 첫 프레임의 이 자리를 뱃지 검사가
+   «시안 화소»로 읽어 번호로 오독한다(cardcheck._NUM_BOX · 실제로 `?` 로 걸렸다).
+   강조는 밑줄로 준다 — 색이 아니라 형태로. */
+.toc a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:700;display:inline-block;margin:3px 14px 3px 0}
+.toc a:hover{text-decoration:underline}
+.layer{display:flex;align-items:center;gap:12px;margin:30px 0 14px}
+.layer span{flex:none;font-size:13px;font-weight:900;color:var(--gray);letter-spacing:.04em}
+.layer:before,.layer:after{content:"";height:1px;background:var(--line);flex:1}
+.num.al{background:var(--ink)}
+.step{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .n{flex:none;width:22px;height:22px;border-radius:6px;background:var(--surface);color:var(--cyan-d);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .b{font-size:14.5px}
+.step .b em{font-style:normal;font-weight:700}
+.src{display:block;font-size:12.5px;color:var(--gray);margin-top:3px}
+.chk{list-style:none;margin:4px 0 0}
+.chk li{font-size:14.5px;padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--line)}
+.chk li:last-child{border-bottom:0}
+.chk li:before{content:"\2610";position:absolute;left:0;top:6px;color:var(--cyan-d);font-size:16px}
+.chk li.hand:before{content:"\270B";font-size:13px}
+.mini{font-size:12.5px;color:var(--gray);margin-top:10px}
 </style></head>
 <body>
 <div class=top><span class=mark>🐰🔨</span><span class=word>AI TOMANGCHI <b>LAB</b></span></div>
@@ -37,12 +64,92 @@ h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
 
 <span class=badge>AI 소식</span>
 <h1>그록봇 — 봇을 넘기는 것과 봇이 사는 것</h1>
-<p class=lead>이 장은 <b>회사가 밝힌 것만</b> 모은 판입니다. 저희는 이 기능을 직접 돌려 보지 않았습니다 — 무엇이 회사의 말이고 무엇이 저희 확인인지 자리마다 표시해 두었습니다. 발표 문장은 <b>줄이지 않고 통째로</b> 실었습니다.</p>
+<p class=lead>이 장은 <b>회사가 밝힌 것만</b> 모은 판입니다. 저희는 이 기능을 직접 돌려 보지 않았습니다 — 그래서 절차는 전부 <b>「문서 기준」</b>이고, 줄마다 어느 발표·어느 문서에서 왔는지 달아 두었습니다. 앞쪽 <b>A·B·C</b> 는 바로 쓰는 자리이고, 뒤쪽 <b>1~6</b> 은 그 근거가 된 원문입니다. 발표 문장은 <b>줄이지 않고 통째로</b> 실었습니다.</p>
+
+<div class=toc><b>이 장에서</b><a href="#a">A 시작하기</a><a href="#b">B 지금 할 수 있는 것</a><a href="#c">C 승인 경계 설정</a><a href="#s1">1 발표 원문 · 공유</a><a href="#s2">2 발표 원문 · 쇼핑</a><a href="#s3">3 문서 · 무엇이 따라가나</a><a href="#s4">4 문서 · 링크는 공개</a><a href="#s5">5 문서 · 승인 화면</a><a href="#s6">6 확인하지 못한 것</a></div>
 
 <div class=split>⚡ 발표 <b>xAI · Grok Bot 계정</b> · 날짜 <b>2026년 8월 28일</b>(현지, 두 건 같은 날) · 문서 <b>docs.x.ai</b> · 결제는 <b>지금 미국에서만</b> 열려 있습니다.</div>
 
 <div class=card>
-<h2><span class=num>1</span>발표 원문 — 봇 템플릿 공유</h2>
+<h2 id="a"><span class="num al">A</span>시작하기</h2>
+<div class=note>절차는 <b>문서와 발표가 적은 것</b>만 옮겼습니다. 저희가 돌려 보고 확인한 순서가 아닙니다.</div>
+
+<div class=step><div class=n>1</div><div class=b><em>앱을 최신으로 올립니다.</em> 발표가 시작점으로 지목한 유일한 준비물입니다.
+<span class=src>발표 원문 — “To get started, update to the latest Grok Bot desktop and mobile app.” (작성자 답글 · 식별자 2093376525127266718)</span></div></div>
+
+<div class=step><div class=n>2</div><div class=b><em>보내는 쪽 — 봇 설정에서 «Share as template».</em> 공식 영상 화면에 찍힌 버튼 이름입니다. 누르면 링크가 나옵니다.
+<span class=src>공식 발표 영상 화면 · 문서에는 이 버튼 이름이 없습니다</span></div></div>
+
+<div class=step><div class=n>3</div><div class=b><em>받는 쪽 — 링크를 열면 미리보기가 뜨고 거기서 담습니다.</em>
+<span class=src>문서 — “Send the link. The recipient opens a preview on x.ai and can choose Add to Grok Bot.” (docs.x.ai · Create and manage Bots)</span></div></div>
+
+<div class=warn>🔴 <b>받는 쪽 버튼 이름은 저희도 단정하지 못합니다.</b> 문서는 «Add to Grok Bot» 이라고 적는데 공식 영상 화면의 실물 버튼은 «Open in Grok Bot» 입니다. 어느 쪽이 최신인지 확인할 방법이 없어 <b>둘 다 적어 둡니다.</b></div>
+
+<div class=row><div class=k>이용 범위</div><div class=v>결제 기능은 <b>미국 사용자</b>에게 열려 있고 모바일은 준비 중이라고 발표가 적습니다 — “Currently available to users in the US, rolling out to mobile soon.”</div></div>
+<div class=mini>🔴 <b>요금제 조건은 이 장에 없습니다.</b> 어느 구독이 필요한지는 저희가 확보한 공식 출처(발표 두 건과 문서 두 쪽)에 <b>한 줄도 없었습니다.</b> 확인하지 못한 것을 적지 않는 것이 이 장의 규칙이라 비워 둡니다.</div>
+</div>
+
+<div class=card>
+<h2 id="b"><span class="num al">B</span>지금 할 수 있는 것</h2>
+<div class=note>두 축을 <b>동작 단위</b>로 폈습니다. 각 줄의 근거는 그 아래 회색 줄에 있습니다.</div>
+
+<h3 style="font-size:15.5px;font-weight:900;margin:6px 0 4px">① 봇을 통째로 건네기</h3>
+<div class=step><div class=n>1</div><div class=b><em>링크를 만듭니다</em> — 봇 설정의 «Share as template».<span class=src>공식 발표 영상 화면</span></div></div>
+<div class=step><div class=n>2</div><div class=b><em>받는 쪽이 미리보기에서 담습니다</em> — 그 계정에 <b>사본</b>이 하나 생깁니다.<span class=src>문서 — “Adding a shared Bot creates a copy on the recipient's account.”</span></div></div>
+
+<div class=split><b>사본에 담기는 것</b> — 프로필, 설정, 켜 둔 스킬, 루틴, 아바타<br>
+<b>안 담기는 것</b> — 대화 이력, 학습한 기억, 첨부 파일<br>
+<b>받는 쪽에 넘어가지 않는 것</b> — 내 컴퓨터, 로그인 정보, 대화 기록
+<span class=src>문서 두 문장을 그대로 가른 것입니다 — “…carries the profile, settings, enabled skills, routines, and avatar. It does not copy conversation history, learned memory, or chat attachments.” · “It does not give them your computer, logins, or conversation history.”</span></div>
+
+<div class=warn>🔴 <b>공유 전 점검 목록</b> — 문서가 «공유하기 전에 지우라»고 이름까지 대어 적은 것들입니다. 링크는 <b>가진 사람 누구나</b> 열 수 있습니다.
+<ul class=chk>
+<li>API 키를 봇 안에 적어 두지 않았는가</li>
+<li>사내 주소(internal URL)가 들어 있지 않은가</li>
+<li>고객 데이터가 들어 있지 않은가</li>
+<li>그 밖에 <b>공개 문서에 올리지 않을 것</b>이 남아 있지 않은가</li>
+<li>이름·소개·스킬·루틴은 <b>그대로 공개된다</b>는 것을 알고 보내는가</li>
+</ul>
+<span class=src>문서 원문을 목록으로 편 것입니다 — “Remove API keys, internal URLs, customer data, and anything else you would not put in a public document before you share.” · 공개되는 항목은 “including its identity, description, skills, and routines.”</span></div>
+
+<h3 style="font-size:15.5px;font-weight:900;margin:16px 0 4px">② 봇에게 사 오게 하기</h3>
+<div class=step><div class=n>1</div><div class=b><em>«@link» 를 연결합니다.</em> 발표가 시작점으로 지목한 것입니다.<span class=src>발표 원문 — “To get started, connect @link…”</span></div></div>
+<div class=step><div class=n>2</div><div class=b><em>봇에게 장을 보라고 시킵니다.</em> 봇이 대신 구매를 마칠 수 있다고 적혀 있습니다.<span class=src>발표 원문 — “…send your Bot shopping, and it can complete purchases on your behalf.”</span></div></div>
+<div class=step><div class=n>3</div><div class=b><em>지출은 매번 사람이 승인합니다.</em> 데스크톱에서는 «Allow once» 와 «Deny», 아이폰에서는 «Approve once» 와 «Deny» 입니다.<span class=src>문서 — “On desktop, Allow once lets the Bot continue with that action and Deny blocks it.” · “On iPhone, the equivalent controls are Approve once and Deny.”</span></div></div>
+<div class=step><div class=n>4</div><div class=b><em>결제마다 일회용 카드가 새로 발급됩니다.</em><span class=src>발표 원문 — “…Grok Bot receives a secure, single-use card for each payment.”</span></div></div>
+<div class=mini>🔴 지역은 <b>미국</b>뿐입니다. 그리고 결제 확인 자체는 <b>사람이 직접</b> 해야 하는 항목으로 문서가 따로 적어 두었습니다(아래 C).</div>
+</div>
+
+<div class=card>
+<h2 id="c"><span class="num al">C</span>승인 경계 설정 가이드</h2>
+<div class=note>문서가 «승인을 받게 하라»고 권한 대상과, «봇에게 맡기지 말라»고 적은 것을 <b>설정할 것 목록</b>으로 폈습니다. 항목 이름은 문서의 것입니다.</div>
+
+<div style="font-weight:700;font-size:14px;margin:4px 0 2px">봇이 하려 할 때 <b>내 승인을 받게</b> 걸어 둘 것</div>
+<ul class=chk>
+<li>메시지·초대 보내기 <span class=src>Sending messages or invitations</span></li>
+<li>콘텐츠 게시하기 <span class=src>Publishing content</span></li>
+<li>구매와 송금 <span class=src>Purchases and financial transfers</span></li>
+<li>삭제하거나 덮어쓰기 <span class=src>Deleting or overwriting data</span></li>
+<li>권한 바꾸기 <span class=src>Changing permissions</span></li>
+<li>프로덕션 변경 <span class=src>Production changes</span></li>
+<li>약관 수락 <span class=src>Accepting legal terms</span></li>
+</ul>
+
+<div style="font-weight:700;font-size:14px;margin:16px 0 2px">✋ 봇에게 <b>맡기지 않고 사람이 직접</b> 할 것</div>
+<ul class=chk>
+<li class=hand>비밀번호 <span class=src>passwords</span></li>
+<li class=hand>패스키 <span class=src>passkeys</span></li>
+<li class=hand>2단계 인증 코드 <span class=src>two-factor codes</span></li>
+<li class=hand>캡차 <span class=src>CAPTCHAs</span></li>
+<li class=hand>결제 확인 <span class=src>payment confirmations</span></li>
+</ul>
+<div class=mini>«Always allow» 를 쓰면 같은 꼴의 요청에 규칙이 저장된다고 문서가 적습니다 — 위 목록에 걸어 두려던 것을 그것으로 풀지 않도록 주의하시라는 뜻으로 함께 적습니다.<span class=src>문서 — “Always allow can save a matching rule.”</span></div>
+</div>
+
+<div class=layer><span>여기부터는 위 절차의 근거가 된 원문입니다</span></div>
+
+<div class=card>
+<h2 id="s1"><span class=num>1</span>발표 원문 — 봇 템플릿 공유</h2>
 <div class=note>포스트 본문과 <b>작성자 자신이 이어 붙인 답글</b>을 함께 싣습니다. 답글까지가 한 벌입니다.</div>
 <div class=q>You can now share templates of your Bots with others.
 <i>Grok Bot 계정 · 루트 포스트 · 식별자 2093376523919323618</i></div>
@@ -52,7 +159,7 @@ h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
 </div>
 
 <div class=card>
-<h2><span class=num>2</span>발표 원문 — 봇이 물건을 삽니다</h2>
+<h2 id="s2"><span class=num>2</span>발표 원문 — 봇이 물건을 삽니다</h2>
 <div class=note>이 축의 세부는 <b>전부 답글에 있습니다.</b> 승인·카드·지역이 그 안에 들어 있습니다.</div>
 <div class=q>Grok Bot can now buy things on the internet.
 To get started, connect @link, send your Bot shopping, and it can complete purchases on your behalf.
@@ -63,7 +170,7 @@ Currently available to users in the US, rolling out to mobile soon.
 </div>
 
 <div class=card>
-<h2><span class=num>3</span>문서에서 옮긴 줄 — 무엇이 따라가나</h2>
+<h2 id="s3"><span class=num>3</span>문서에서 옮긴 줄 — 무엇이 따라가나</h2>
 <div class=note>docs.x.ai 의 봇 문서입니다. 사본을 만들 때 넘어가는 것과 남는 것을 문서가 직접 가릅니다.</div>
 <div class=row><div class=k>따라가는 것</div><div class=v>프로필, 설정, 켜 둔 스킬, 루틴, 아바타</div></div>
 <div class=row><div class=k>안 따라가는 것</div><div class=v>대화 이력, 학습한 기억, 첨부 파일</div></div>
@@ -77,7 +184,7 @@ Currently available to users in the US, rolling out to mobile soon.
 </div>
 
 <div class=card>
-<h2><span class=num>4</span>문서에서 옮긴 줄 — 링크는 공개입니다</h2>
+<h2 id="s4"><span class=num>4</span>문서에서 옮긴 줄 — 링크는 공개입니다</h2>
 <div class=note>이 편에서 가장 실질적인 대목입니다. 문서가 먼저 경고합니다.</div>
 <div class=q>The link is public. Anyone who has it can view the Bot's shared configuration, including its identity, description, skills, and routines. Remove API keys, internal URLs, customer data, and anything else you would not put in a public document before you share.
 <i>docs.x.ai · Create and manage Bots</i></div>
@@ -87,7 +194,7 @@ Currently available to users in the US, rolling out to mobile soon.
 </div>
 
 <div class=card>
-<h2><span class=num>5</span>문서에서 옮긴 줄 — 승인 화면</h2>
+<h2 id="s5"><span class=num>5</span>문서에서 옮긴 줄 — 승인 화면</h2>
 <div class=note>승인·보안 문서입니다. 봇이 무언가 하려 할 때 사람에게 무엇을 묻는지 적혀 있습니다.</div>
 <div class=q>On desktop, Allow once lets the Bot continue with that action and Deny blocks it. Always allow can save a matching rule.
 <i>docs.x.ai · Approvals, security, and privacy</i></div>
@@ -96,7 +203,7 @@ Currently available to users in the US, rolling out to mobile soon.
 </div>
 
 <div class=card>
-<h2><span class=num>6</span>🔴 저희가 확인하지 못한 것</h2>
+<h2 id="s6"><span class=num>6</span>🔴 저희가 확인하지 못한 것</h2>
 <div class=note>이 목록이 이 장의 절반입니다. 못 읽은 것을 못 읽었다고 적어 둡니다.</div>
 <div class=row><div class=k>«Stripe» 라는 이름</div><div class=v>Grok Bot 계정 명의의 문장에는 «@link» 만 있습니다. Stripe 는 서드파티 서술이라 쓰지 않았습니다.</div></div>
 <div class=row><div class=k>영상 안의 금액 예시</div><div class=v>공식 영상 화면에 값이 스쳐 지나가지만, 저희가 프레임을 한 장씩 읽어 확인하지는 않았습니다. 그래서 어떤 숫자도 카드에 옮기지 않았습니다.</div></div>
