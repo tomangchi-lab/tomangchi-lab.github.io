@@ -1,0 +1,137 @@
+<!doctype html><html lang="ko"><head><title>🔐 AI에게 회사 파일 맡기기 전 5문항 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI 에이전트에게 회사 문서를 맡기기 전에 확인할 다섯 가지. Box가 Hermes용 공식 스킬에 넣은 운영 습관을 어떤 도구에나 쓸 수 있는 질문으로 바꿨습니다. 원문 인용은 전부 공식 아티클 기준.">
+<meta property="og:title" content="🔐 AI에게 회사 파일 맡기기 전 5문항">
+<meta property="og:description" content="누구로 붙었나 · 번호로 찾나 · 얼마나 읽나 · 지우기 전에 묻나 · 되읽어 확인하나. 아니오면 무엇이 위험한지까지.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}  /* 🔴 상단 70px — 킷 슬라이드 첫 프레임에서 이 페이지의 «1» 원이     게이트 뱃지 상자(56,806-210,872)와 겹쳐 번호로 오독됐다 (kitchain 주석의 ep28 결함). */
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.na{color:var(--coral);font-weight:900}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 킷</span>
+<h1>🔐 AI에게 회사 파일<br>맡기기 전 5문항</h1>
+<p class="lead">Box가 Hermes Agent용 공식 스킬에 넣은 <b>운영 습관 다섯</b>을, Box를 안 써도 그대로 쓸 수 있는 질문으로 바꿨습니다. 원문이 <b>「한 번짜리 연동에서 빠뜨리기 쉬운 것들」</b>이라 부른 것들이에요. 인용은 전부 공식 아티클 원문 그대로고, 질문으로 바꾼 것은 저희 정리입니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">발표</div><div class="v">2026년 8월 28일</div><div class="sub">@Box · 글 @chriskim_dev</div></div>
+  <div class="clock"><div class="k">기본 탑재</div><div class="v">새 설치에 포함</div><div class="sub">Box × Nous Research</div></div>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span>지금 이 도구는 누구 계정으로 붙어 있나요?</h2>
+<p>「연결됨」만 보고 넘어가기 쉬운 자리입니다. <b>어느 계정인지 화면에 나오는지</b>, 나오지 않으면 물어서 답하게 할 수 있는지 확인하세요.</p>
+<div class="quote"><b>원문</b> — <i>It verifies the current Box user before acting</i></div>
+<div class="hard">🔴 아니오면 — 내 권한이 아니라 <b>남의 권한으로</b> 문서를 열고 있을 수 있습니다. 공용 계정·서비스 계정으로 붙어 있으면 원래 못 보던 것까지 보입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>파일을 이름으로 찾나요, 고유 번호로 찾나요?</h2>
+<p>「어디쯤 있겠지」로 경로를 짜맞추는 도구가 많습니다. <b>같은 이름의 파일이 둘일 때 무엇을 집는지</b> 시켜 보세요.</p>
+<div class="quote"><b>원문</b> — <i>prefers Box item IDs over reconstructed paths</i></div>
+<div class="hard">🔴 아니오면 — 폴더가 옮겨지거나 이름이 겹치는 순간 <b>엉뚱한 파일</b>을 집습니다. 그리고 그걸 맞다고 보고합니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>한 번에 얼마나 많이 읽어 오나요?</h2>
+<p>필요한 것만 가져오는지, 폴더째 훑는지 봅니다. 출력이 길수록 <b>맥락에 들어가는 회사 내용도 늘어납니다.</b></p>
+<div class="quote"><b>원문</b> — <i>keeps command output narrow</i></div>
+<div class="hard">🔴 아니오면 — 물어본 것 하나 때문에 <b>관계없는 문서 수십 건</b>이 같이 딸려 들어갑니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>지우기·권한 변경 앞에서 멈추나요?</h2>
+<p>「해도 될까요?」를 <b>실제로 묻게 하는 설정이 있는지</b> 확인하세요. 없으면 그건 「알아서 한다」가 아니라 「말없이 한다」입니다.</p>
+<div class="quote"><b>원문</b> — <i>asks before permission changes or destructive operations</i></div>
+<div class="hard">🔴 아니오면 — 되돌리기 어려운 일이 <b>확인 없이</b> 지나갑니다. 공유 범위가 넓어지는 것도 여기 들어갑니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>쓴 다음 되읽어 확인하나요?</h2>
+<p>「저장했습니다」를 그대로 믿고 있지는 않은지 봅니다. <b>같은 계정으로 다시 읽어</b> 결과를 확인하는지가 갈림길입니다.</p>
+<div class="quote"><b>원문</b> — <i>reads each write back with the same user to confirm the result</i></div>
+<div class="hard">🔴 아니오면 — 실패했는데 <b>성공으로 보고되는</b> 경로가 열립니다. 그 위에 다음 작업이 얹힙니다.</div>
+</div>
+
+<div class="card warn">
+<h2>🔴 공식이 스스로 적어 둔 한계</h2>
+<p>우리가 보탠 경고가 아닙니다. 아티클 본문에 그대로 있는 세 문장입니다.</p>
+<table>
+<tr><th>무엇</th><th>원문</th></tr>
+<tr><td class="v">되는지는 조건에 달렸다</td><td><i>Availability depends on the organization's Box plan, configuration, permissions, and available AI units.</i></td></tr>
+<tr><td class="v">민감한 내용이 담긴다</td><td><i>The answer and Box Note can contain sensitive information even though access remains bounded by the connected Box user's permissions.</i></td></tr>
+<tr><td class="v">공개 데모는 가짜 데이터로</td><td><i>Use fictional data for a public demo and follow the organization's normal content-handling rules for real workflows.</i></td></tr>
+</table>
+<p class="fn">셋째 줄이 특히 중요합니다 — <b>권한 안이라고 내용까지 안전한 건 아닙니다.</b> 접근은 계정 권한 안이지만, 만들어진 답과 노트에는 그 내용이 그대로 옮겨 담깁니다.</p>
+</div>
+
+<div class="card">
+<h2>스킬이 뭔지 한 줄로</h2>
+<p>설정값이 아니라 <b>지시서</b>입니다. 「이런 일은 이렇게 한다」를 가르치고, 통째로 올라가지 않고 <b>필요할 때만</b> 그 부분을 읽습니다.</p>
+<div class="quote"><b>원문</b> — <i>Hermes skills are operating instructions that teach the agent how to complete a class of work.</i></div>
+<div class="quote"><b>원문</b> — <i>The skill routes each task to the appropriate Box interface—the CLI, box request, or an official SDK—and loads the relevant instructions only when needed.</i></div>
+</div>
+
+<div class="card">
+<h2>저희가 확인하지 않은 것</h2>
+<ul>
+<li><b>직접 깔아 Box 계정을 연결해 보지 않았습니다.</b> 위 인용은 전부 공식 아티클과 공식 문서에서 왔습니다.</li>
+<li><b>아티클의 6단계 데모를 재현하지 않았습니다.</b> 그래서 따라 하기 절차는 여기 없습니다.</li>
+<li><b>Box 요금제·AI 유닛 실값을 모릅니다.</b> 확인할 계정이 없어 원문이 밝힌 조건을 그대로 옮겼습니다.</li>
+<li>🔴 <b>Hermes 공식 문서 스킬 절에는 아직 <code>Box</code> 가 없습니다.</b> 아티클은 「기본 탑재」라고 하는데 문서 카탈로그에는 안 보입니다. 선탑재라 <b>선택 스킬 목록</b>에 없는 것으로 읽는 게 맞아 보이지만, 저희가 설치해 확인하지는 않았습니다.</li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>Box를 안 쓰셔도 다섯 문항은 그대로 씁니다.<br>회사 파일에 손대는 AI라면 다 같은 질문이니까요.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/" target="_blank" rel="noopener">AI 토망치랩 <b>팔로우</b></a>
+</div>
+
+<p class="stamp">출처 — 공식 아티클 <b>x.com/i/article/2093443488218296320</b> (@Box · 2026-08-28 · 글 @chriskim_dev) · Hermes 공식 문서 <b>hermes-agent.nousresearch.com</b><br>
+영어 인용은 원문 그대로입니다. 한국어 질문·경고는 저희가 정리한 것입니다.<br>
+2026년 8월 31일 기준 · AI 토망치랩</p>
+</div>
+</body></html>
