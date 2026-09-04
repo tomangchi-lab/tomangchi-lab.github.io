@@ -1,0 +1,186 @@
+<!doctype html><html lang="ko"><head><title>🧭 GPT-6 Astra 첫날 써보기 킷 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="GPT-6 Astra 가 내 계정에 열렸는지 확인하는 법, 컴퓨터 일을 시켜 볼 프롬프트 5개, Codex·API 설정, 값 함정, 막히는 자리까지 — 바로 따라 할 수 있게 한 장에 모았습니다.">
+<meta property="og:title" content="🧭 GPT-6 Astra 첫날 써보기 킷">
+<meta property="og:description" content="열렸는지 확인 · 시켜 볼 프롬프트 5개 · Sites 로 게임 만들기 · Codex 노트 켜기 · API 값 함정 · 막히는 자리.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+pre{background:#1C2028;color:#F5F7F9;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-break:break-all;margin-top:8px;font-family:'Noto Sans KR',monospace}
+pre.ko{font-family:'Noto Sans KR',-apple-system,sans-serif}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+td.win{color:var(--cyan-d);font-weight:900}
+td.lose{color:var(--coral);font-weight:900}
+details{margin-top:10px}
+summary{cursor:pointer;font-weight:700;color:var(--cyan-d);font-size:14px}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 써보기 킷</span>
+<h1>🧭 GPT-6 Astra<br>첫날 써보기 킷</h1>
+<p class="lead">OpenAI 가 2026년 9월 3일(한국시간 4일 새벽) <b>GPT-6 Astra</b> 를 공개했습니다. 이 킷은 <b>무엇이 바뀌었나</b>보다 <b>내가 오늘 뭘 해 볼 수 있나</b> 순서로 적었습니다. 프롬프트는 발표문이 예로 든 작업을 그대로 옮겨 만든 저희 문안이고, <b>영문 인용은 공식 원문 그대로</b>입니다. 저희도 아직 Astra 를 직접 돌려 보진 못했어요 — 열리는 대로 결과를 이어서 올리겠습니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">공개</div><div class="v">2026년 9월 3일</div><div class="sub">openai.com · 한국시간 4일 04:32</div></div>
+  <div class="clock"><div class="k">API 모델 이름</div><div class="v">gpt-6-astra</div><div class="sub">OpenAI API · Amazon Bedrock</div></div>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span>내 계정에 열렸는지 30초 확인</h2>
+<ol>
+<li>ChatGPT 앱을 <b>최신으로 업데이트</b>하고 새 대화를 엽니다.</li>
+<li>화면 위 <b>모델 선택기</b>를 누릅니다 — 목록에 <b>GPT-6 Astra</b> 가 있으면 열린 겁니다. Pro·Business·Enterprise 는 <b>GPT-6 Astra Pro</b> 도 같이 보입니다.</li>
+<li>회사 계정(Enterprise)인데 안 보이면 <b>관리자가 켜야</b> 합니다 — 출시 시점 기본값이 «꺼짐»입니다.</li>
+<li>무료 플랜은 이번 발표에 없습니다. Plus 부터입니다.</li>
+</ol>
+<div class="quote"><b>원문</b> — <i>GPT‑6 Astra is rolling out today to a limited set of organizations and over the coming days will become available to all ChatGPT Plus, Pro, Business, and Enterprise users, as well as through the OpenAI API and AWS.</i></div>
+<div class="tip">9월 4일 낮 기준 저희 Plus 계정엔 아직 안 떴습니다. «며칠 안에» 라고 적혀 있으니 하루 한 번만 확인해 보세요.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>컴퓨터 일 시켜 보기 — 프롬프트 5개</h2>
+<p>발표문이 «이런 잡일을 대신한다»고 예로 든 것들입니다. 열리면 <b>이 다섯 개부터</b> 그대로 붙여 넣어 보세요. 자기 상황에 맞게 괄호만 바꾸면 됩니다.</p>
+<p class="sub">① 양식 채우기</p>
+<pre class="ko">이 페이지의 신청 양식을 내 정보로 채워 줘. 제출 버튼은 누르지 말고, 채운 항목을 표로 정리해서 보여 준 다음 내가 확인하면 그때 제출해.</pre>
+<p class="sub">② 고객 기록 갱신</p>
+<pre class="ko">CRM 에서 [고객 이름] 레코드를 열고, 아래 메모를 활동 기록에 추가해 줘. 바꾸기 전 화면과 바꾼 뒤 화면을 캡처해서 같이 보여 줘.
+[메모 내용]</pre>
+<p class="sub">③ 일정 정리</p>
+<pre class="ko">내 캘린더에서 다음 주 회의를 전부 훑고, 30분 넘게 겹치는 일정이 있으면 목록으로 알려 줘. 옮기기 전에 나한테 물어봐.</pre>
+<p class="sub">④ 조사 → 이메일 초안</p>
+<pre class="ko">[주제] 에 대해 최근 한 달 기사 5개를 찾아 핵심만 정리하고, 그걸 바탕으로 팀에 보낼 이메일 초안을 내 메일 앱에 «임시 저장»으로 만들어 줘. 보내지는 마.</pre>
+<p class="sub">⑤ 사이트 만들고 검사까지</p>
+<pre class="ko">[주제] 소개 페이지를 만들어서 띄우고, 링크·버튼·폼이 전부 동작하는지 하나씩 눌러서 확인한 결과를 표로 줘.</pre>
+<div class="quote"><b>원문</b> — <i>It can take care of tedious tasks like filling out online forms, updating customer records in a CRM, and organizing your calendar.</i></div>
+<div class="hard">공통 꿀팁 — «제출·전송·삭제 전엔 나한테 물어봐» 한 줄을 붙이세요. Astra 는 결과가 갈리는 결정에서 묻고 기다리도록 만들어졌다고 적혀 있지만, 그 줄이 있으면 확실합니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>Sites 로 게임·앱 만들기</h2>
+<p>ChatGPT 안의 <b>Sites</b> 에서 프롬프트 하나로 웹사이트·웹앱·게임을 만들어 <b>바로 링크로 공유</b>할 수 있습니다. 발표 페이지의 카트 레이싱 게임이 이 경로로 만들어졌습니다.</p>
+<pre class="ko">브라우저에서 바로 돌아가는 3D 카트 레이싱 게임을 만들어 줘. 트랙 하나, 카트 4대, 3바퀴, 방향키 조작, 랩 타임 표시. 만들면 링크를 줘.</pre>
+<div class="quote"><b>원문</b> — <i>Astra can create, host, and share websites, web apps, and games directly from a prompt.</i></div>
+<p class="fn">Sites 가 메뉴에 없으면 아직 내 플랜에 안 열린 겁니다. 문서: <a href="https://learn.chatgpt.com/docs/sites?surface=app">learn.chatgpt.com/docs/sites</a></p>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>Codex 쓰는 분 — «노트» 켜기</h2>
+<p>긴 작업에서 컨텍스트가 차면 요약으로 뭉개는 대신 <b>노트를 남기고 옛 창을 검색</b>하는 실험 기능이 Astra 와 같이 나왔습니다. 몇 주 안에 기본값이 된다고 하니 미리 켜 두세요.</p>
+<ol>
+<li>Codex 설정 파일 <code>config.toml</code> 을 엽니다.</li>
+<li><a href="https://learn.chatgpt.com/docs/config-file/config-reference">설정 레퍼런스</a>에서 실험 기능 항목을 찾아 켭니다 — 항목 이름은 문서 기준으로 확인하세요(발표문은 «config.toml 에서 켠다»까지만 적었습니다).</li>
+<li>모델을 <b>gpt-6-astra</b> 로 두고, 긴 리팩터링 하나를 맡겨 보세요. 중간에 «왜 이 수정이 실패했는지»를 물으면 노트가 있는지 바로 드러납니다.</li>
+</ol>
+<div class="tip">막히는 자리 — 자동 리뷰(Auto-review)가 거절한 작업을 Astra 는 우회하지 않도록 훈련됐습니다. «안 된다»가 뜨면 우회 프롬프트를 짜지 말고 리뷰 규칙 쪽을 보세요.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>API 쓰는 분 — 값 함정 셋</h2>
+<table>
+<tr><th>100만 토큰당</th><th>GPT-6 Astra</th><th>GPT-5.6 Sol</th></tr>
+<tr><td>입력</td><td class="v">$10.00</td><td class="v">$4.00</td></tr>
+<tr><td>캐시 입력</td><td class="v">$1.00</td><td class="v">$0.40</td></tr>
+<tr><td>캐시 쓰기</td><td class="v">$12.50</td><td class="v">—</td></tr>
+<tr><td>출력</td><td class="v">$50.00</td><td class="v">$20.00</td></tr>
+</table>
+<div class="quote"><b>원문</b> — <i>OpenAI API Standard pricing is $10 per million input tokens and $50 per million output tokens.</i></div>
+<ol>
+<li><b>272K 넘는 입력은 요청 전체가 2배</b>(출력 1.5배)입니다. 긴 문서를 통째로 넣기 전에 토큰 수를 세어 보세요. 컨텍스트가 크다고(<i>1,050,000 context window</i> · <i>128,000 max output tokens</i>) 다 채우면 값이 뜁니다.</li>
+<li><b>Fast 모드는 속도 2배에 값도 2배</b>입니다. 급한 것만 켜세요. 반대로 급하지 않으면 Batch·Flex 가 절반입니다.</li>
+<li><b>reasoning.effort</b> 는 low·medium·high·xhigh·max 다섯 단계입니다. 벤치마크 값은 «max» 기준이 많으니, 값 비교를 할 땐 어느 단계인지 같이 적으세요.</li>
+</ol>
+<div class="quote"><b>원문</b> — <i>Fast mode is available for GPT‑6 Astra in the API and delivers up to 2x the speed of Standard processing at 2x the Standard price.</i></div>
+<p class="fn">GPT-5.6 Sol 값은 developers.openai.com 의 해당 모델 페이지 기준입니다. 지식 기준일은 <i>Apr 30, 2026 knowledge cutoff</i>.</p>
+</div>
+
+<div class="card warn">
+<h2><span class="num">6</span>막히는 자리 — 먼저 알고 가기</h2>
+<ul>
+<li><b>보안 관련 요청은 막힙니다.</b> 취약점 코드를 만들어 달라는 류는 지금 나온 판이 거절합니다. 코드 리뷰·패치 같은 방어 쪽은 됩니다.</li>
+<li><b>정당한 작업도 안전 검사에 멈출 수 있습니다.</b> ChatGPT·Codex 에선 «검토 후 계속» 이 뜨고, <b>API 에선 그 자리에서 끊깁니다</b> — 자동화에 넣을 땐 재시도 로직을 두세요.</li>
+<li><b>생각 과정이 전보다 덜 보입니다.</b> OpenAI 가 스스로 적은 한계입니다 — 결과만 믿지 말고 중요한 결정은 근거를 다시 물어보세요.</li>
+</ul>
+<div class="quote"><b>원문</b> — <i>However, Astra will refuse to comply with more advanced cybersecurity tasks such as creating proof-of-concept exploits for vulnerabilities.</i></div>
+<div class="quote"><b>원문</b> — <i>Extra safety checks can sometimes slow, pause, or stop legitimate work, including defensive cybersecurity.</i></div>
+<div class="quote"><b>원문</b> — <i>Our evaluations found Astra’s written reasoning harder to monitor than GPT‑5.6 Sol’s, based on tests that explicitly asked it to evade monitoring.</i></div>
+</div>
+
+<div class="card">
+<h2><span class="num">7</span>참고 — 숫자로 본 바뀐 것</h2>
+<details><summary>펼치기 — 컴퓨터 사용 속도 · 벤치마크에서 이기는 줄과 지는 줄 · 사이버 등급</summary>
+<p style="margin-top:10px">같은 컴퓨터 작업을 <b>약 47% 짧은 시간</b>에 더 높은 점수로. <b>OpenAI 팀이 직접 잰 값</b>입니다.</p>
+<div class="quote"><b>원문</b> — <i>In latency simulations on OSWorld 2.0, Astra achieves higher computer-use performance in about 47% less time per task than GPT‑5.6 Sol, scoring 72.6% at roughly 40 minutes per task, compared with 65.7% at roughly 75 minutes.</i></div>
+<table>
+<tr><th>항목</th><th>Astra</th><th>5.6 Sol</th><th>Fable 5.1</th></tr>
+<tr><td>Terminal-Bench 4.0</td><td class="win">57.9%</td><td class="v">37.3%</td><td class="v">55.8%</td></tr>
+<tr><td>FrontierMath Tier 4</td><td class="win">97.6%</td><td class="v">83.0%</td><td class="v">87.8%</td></tr>
+<tr><td>AutomationBench</td><td class="win">41.4%</td><td class="v">18.1%</td><td class="v">31.4%</td></tr>
+<tr><td>Artificial Analysis 지능 지수</td><td class="lose">61.2</td><td class="v">60.9</td><td class="win">65.7</td></tr>
+<tr><td>Humanity's Last Exam (도구)</td><td class="lose">57.2%</td><td class="v">—</td><td class="win">65.0%</td></tr>
+<tr><td>Artificial Analysis 코딩 에이전트 지수</td><td class="lose">67.0</td><td class="v">65.1</td><td class="win">67.2</td></tr>
+</table>
+<p class="fn">OpenAI 발표 페이지 표에서 옮겼습니다. 지수 두 줄은 Artificial Analysis 값을 OpenAI 가 표에 실은 것이고, 공식 X 이미지에는 이기는 줄만 실렸습니다.</p>
+<div class="quote"><b>Artificial Analysis</b> — <i>GPT-6 Astra scores equal to GPT-5.6 Sol in the Index at 61. This is 5 points lower than Claude Fable 5.1 (max with fallback).</i></div>
+<p style="margin-top:10px">사이버는 OpenAI 모델 중 처음으로 <b>Critical</b> 등급. 평가 중 아무도 모르던 취약점 두 개를 스스로 찾아 썼고, 미끼 취약점을 건드린 비율은 0% (GPT-5.6 Sol 48.2%). <b>OpenAI 팀이 직접 잰 값</b>.</p>
+<div class="quote"><b>원문</b> — <i>Astra is our first model to reach the Critical level of cybersecurity capability under our Preparedness Framework.</i></div>
+</details>
+</div>
+
+<div class="card">
+<h2><span class="num">8</span>공식 데모 원본</h2>
+<ul>
+<li><a href="https://openai.com/index/gpt-6-astra/">발표문</a> — 발표 필름 2:43 · 아파트 찾기 30초 · Unity 도시 57초 · 전기공학 기판 15초 · 엑셀 등 12편이 페이지에 그대로 있습니다</li>
+<li><a href="https://openai.com/index/safety-overview-gpt-6-astra/">안전 개요</a> · <a href="https://openai.com/index/path-to-astra/">Path to Astra</a></li>
+<li><a href="https://developers.openai.com/api/docs/models/gpt-6-astra">개발자 문서 — 값·컨텍스트</a> · <a href="https://x.com/ArtificialAnlys/status/2095595489031000350">Artificial Analysis 분석</a></li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>열리면 위 다섯 프롬프트 결과부터 올리겠습니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">2026-09-04 12:40 KST 조회 기준 · 영문 인용은 openai.com · developers.openai.com · X @ArtificialAnlys 원문 그대로<br>프롬프트 문안과 한국어 설명은 토망치랩이 쓴 것입니다</p>
+</div>
+</body></html>
