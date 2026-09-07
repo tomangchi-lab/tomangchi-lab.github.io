@@ -59,7 +59,7 @@ a{color:var(--cyan-d)}
 <div class="wrap">
 <span class="badge">AI 소식 · 써보기 킷</span>
 <h1>🧭 GPT-6 Astra<br>첫날 써보기 킷</h1>
-<p class="lead">OpenAI 가 2026년 9월 3일(한국시간 4일 새벽) <b>GPT-6 Astra</b> 를 공개했습니다. 이 킷은 <b>무엇이 바뀌었나</b>보다 <b>내가 오늘 뭘 해 볼 수 있나</b> 순서로 적었습니다. 프롬프트는 발표문이 예로 든 작업을 그대로 옮겨 만든 저희 문안이고, <b>영문 인용은 공식 원문 그대로</b>입니다. 저희도 아직 Astra 를 직접 돌려 보진 못했어요 — 열리는 대로 결과를 이어서 올리겠습니다.</p>
+<p class="lead">OpenAI 가 2026년 9월 3일(한국시간 4일 새벽) <b>GPT-6 Astra</b> 를 공개했습니다. 이 킷은 <b>무엇이 바뀌었나</b>보다 <b>내가 오늘 뭘 해 볼 수 있나</b> 순서입니다. 프롬프트는 발표문이 예로 든 작업을 그대로 옮긴 문안이고, <b>영문 인용은 공식 원문 그대로</b>입니다. 열리는 대로 결과를 이어서 올리겠습니다.</p>
 
 <div class="clocks">
   <div class="clock"><div class="k">공개</div><div class="v">2026년 9월 3일</div><div class="sub">openai.com · 한국시간 4일 04:32</div></div>
@@ -109,7 +109,7 @@ a{color:var(--cyan-d)}
 <p>긴 작업에서 컨텍스트가 차면 요약으로 뭉개는 대신 <b>노트를 남기고 옛 창을 검색</b>하는 실험 기능이 Astra 와 같이 나왔습니다. 몇 주 안에 기본값이 된다고 하니 미리 켜 두세요.</p>
 <ol>
 <li>Codex 설정 파일 <code>config.toml</code> 을 엽니다.</li>
-<li><a href="https://learn.chatgpt.com/docs/config-file/config-reference">설정 레퍼런스</a>에서 실험 기능 항목을 찾아 켭니다 — 항목 이름은 문서 기준으로 확인하세요(발표문은 «config.toml 에서 켠다»까지만 적었습니다).</li>
+<li><a href="https://learn.chatgpt.com/docs/config-file/config-reference">설정 레퍼런스</a>에서 실험 기능 항목을 찾아 켭니다 — 항목 이름은 문서 기준으로 확인하세요 — 발표문에는 «config.toml 에서 켠다»까지만 있습니다.</li>
 <li>모델을 <b>gpt-6-astra</b> 로 두고, 긴 리팩터링 하나를 맡겨 보세요. 중간에 «왜 이 수정이 실패했는지»를 물으면 노트가 있는지 바로 드러납니다.</li>
 </ol>
 <div class="tip">막히는 자리 — 자동 리뷰(Auto-review)가 거절한 작업을 Astra 는 우회하지 않도록 훈련됐습니다. «안 된다»가 뜨면 우회 프롬프트를 짜지 말고 리뷰 규칙 쪽을 보세요.</div>
@@ -149,7 +149,7 @@ a{color:var(--cyan-d)}
 <div class="card">
 <h2><span class="num">7</span>참고 — 숫자로 본 바뀐 것</h2>
 <details><summary>펼치기 — 컴퓨터 사용 속도 · 벤치마크에서 이기는 줄과 지는 줄 · 사이버 등급</summary>
-<p style="margin-top:10px">같은 컴퓨터 작업을 <b>약 47% 짧은 시간</b>에 더 높은 점수로. <b>OpenAI 팀이 직접 잰 값</b>입니다.</p>
+<p style="margin-top:10px">같은 컴퓨터 작업을 <b>약 47% 짧은 시간</b>에 더 높은 점수로. OpenAI 자체 측정.</p>
 <div class="quote"><b>원문</b> — <i>In latency simulations on OSWorld 2.0, Astra achieves higher computer-use performance in about 47% less time per task than GPT‑5.6 Sol, scoring 72.6% at roughly 40 minutes per task, compared with 65.7% at roughly 75 minutes.</i></div>
 <table>
 <tr><th>항목</th><th>Astra</th><th>5.6 Sol</th><th>Fable 5.1</th></tr>
@@ -162,7 +162,7 @@ a{color:var(--cyan-d)}
 </table>
 <p class="fn">OpenAI 발표 페이지 표에서 옮겼습니다. 지수 두 줄은 Artificial Analysis 값을 OpenAI 가 표에 실은 것이고, 공식 X 이미지에는 이기는 줄만 실렸습니다.</p>
 <div class="quote"><b>Artificial Analysis</b> — <i>GPT-6 Astra scores equal to GPT-5.6 Sol in the Index at 61. This is 5 points lower than Claude Fable 5.1 (max with fallback).</i></div>
-<p style="margin-top:10px">사이버는 OpenAI 모델 중 처음으로 <b>Critical</b> 등급. 평가 중 아무도 모르던 취약점 두 개를 스스로 찾아 썼고, 미끼 취약점을 건드린 비율은 0% (GPT-5.6 Sol 48.2%). <b>OpenAI 팀이 직접 잰 값</b>.</p>
+<p style="margin-top:10px">사이버는 OpenAI 모델 중 처음으로 <b>Critical</b> 등급. 평가 중 아무도 모르던 취약점 두 개를 스스로 찾아 썼고, 미끼 취약점을 건드린 비율은 0% (GPT-5.6 Sol 48.2%). OpenAI 자체 측정.</p>
 <div class="quote"><b>원문</b> — <i>Astra is our first model to reach the Critical level of cybersecurity capability under our Preparedness Framework.</i></div>
 </details>
 </div>
