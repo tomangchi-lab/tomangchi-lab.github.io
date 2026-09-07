@@ -177,11 +177,59 @@ a{color:var(--cyan-d)}
 </ul>
 </div>
 
+<div class="card">
+<h2><span class="num">9</span>힉스필드에서 Astra 로 영상 만들기 — 힉스필드가 공개한 프롬프트</h2>
+<p>힉스필드(Higgsfield)는 9월 4~6일에 Astra 가 자기 툴을 조작해 만든 데모를 20편 넘게 올렸습니다. 뉴욕 3D · 포토샵 배경화 · 아이 동화 · 마인크래프트 화면이 그중 넷입니다. 대부분은 결과만 보여 주는데, <b>프롬프트를 통째로 공개한 것이 두 건</b> 있습니다. 아래는 그 원문과 저희가 옮긴 한국어입니다 — <b>힉스필드 팀이 직접 낸 결과</b>이고, 같은 프롬프트로 같은 결과가 나온다는 뜻은 아닙니다.</p>
+
+<p class="sub">경로 ① ChatGPT 에 힉스필드를 붙이고 Astra 에게 시키기</p>
+<ol>
+<li>ChatGPT 의 플러그인 디렉터리에서 <b>Higgsfield</b> 를 찾아 <b>Add</b> → 힉스필드 계정으로 로그인합니다. API 키는 필요 없습니다.</li>
+<li>새 대화에서 모델을 <b>GPT-6 Astra</b> 로 두고 힉스필드를 도구로 고른 뒤, 아래처럼 <b>단계를 번호로</b> 적어 넘깁니다. 힉스필드 데모는 전부 이 꼴입니다 — 한 문장이 아니라 번호 목록입니다.</li>
+</ol>
+
+<p class="sub">Ⓐ 캐릭터 → 3D → 블렌더 → 만화 (힉스필드 원문 · 30분 걸렸다고 적혀 있습니다)</p>
+<div class="quote"><b>원문</b> — <i>Take control of my computer using GPT-6 Astra and do the following: 1. design a character concept using Higgsfield Soul 2.0, 2. build a textured 3D model of it, 3. import it into Blender, 4. retopologize the mesh, 5. create a UV map, 6. build a character rig, 7. evaluate how production-ready the model is, 8. redo previous steps if you're not satisfied with results, 9. and then turn it into a cartoon using Seedance 2.5 on Higgsfield</i></div>
+<pre class="ko">GPT-6 Astra 로 내 컴퓨터를 조작해서 아래를 순서대로 해 줘.
+1. Higgsfield Soul 2.0 으로 캐릭터 콘셉트를 디자인하고
+2. 그걸 텍스처 입힌 3D 모델로 만들고
+3. Blender 로 불러와서
+4. 메시를 리토폴로지하고
+5. UV 맵을 만들고
+6. 캐릭터 리그를 짜고
+7. 이 모델이 실제 제작에 쓸 만한지 평가하고
+8. 마음에 안 들면 앞 단계로 돌아가서 다시 하고
+9. 끝나면 Higgsfield 의 Seedance 2.5 로 만화로 만들어 줘.</pre>
+
+<p class="sub">Ⓑ 두개골 사진 → 얼굴 복원 → 포토리얼 렌더 (힉스필드 원문)</p>
+<div class="quote"><b>원문</b> — <i>Show all the process, how you find it, how you made a detailed 3d object and put it in Higgsfield. 1. Search open sources for reference photos of ancient Scythian skulls (archaeological finds, museum collections). 2. Model this skull in Blender based on the references, make it detailed and accurate. 3. Reconstruct the face over the skull: add skin, eyes, full facial features and hair – a forensic facial reconstruction of what the person looked like. Keep accuracy of original image. 4. Switch to the Higgsfield tab and run Seedream to visualize the final 3D object as a photoreal render.</i></div>
+<pre class="ko">찾는 과정, 3D 로 만드는 과정, Higgsfield 에 넣는 과정을 전부 보여 줘.
+1. 공개 자료(발굴 보고·박물관 소장품)에서 고대 스키타이인 두개골 참고 사진을 찾고
+2. 그 참고를 바탕으로 Blender 에서 두개골을 정확하고 세밀하게 모델링하고
+3. 두개골 위에 얼굴을 복원해 줘 — 피부·눈·이목구비·머리카락까지, 법의학 얼굴 복원처럼. 원본 사진의 정확도를 지켜.
+4. Higgsfield 탭으로 넘어가서 Seedream 으로 완성된 3D 오브젝트를 포토리얼로 렌더해 줘.</pre>
+<div class="hard">공통 꿀팁 — 두 프롬프트 다 «과정을 보여 줘»·«마음에 안 들면 다시 해» 가 들어 있습니다. Astra 는 중간 결과를 스스로 평가하고 되돌아가는 모델이라, 그 한 줄이 있어야 8단계·4단계가 끝까지 갑니다.</div>
+
+<p class="sub">경로 ② 힉스필드 안에서 — 3D Jutsu 의 모델을 Astra 로</p>
+<ul>
+<li>힉스필드 <b>3D Jutsu</b>(프롬프트 → 편집 가능한 3D 장면 → 영상 렌더)의 LLM 목록에 <b>GPT 6 Astra</b> 가 있습니다. 9월 5일 힉스필드 블로그 기준 <b>메시지당 약 17 크레딧</b>이고, 기본값 Auto 는 무료입니다. 뉴욕 3D 데모가 이 경로입니다.</li>
+<li>순서: 장면을 글로 적기 → (선택) 참고 이미지 붙이기 → 모델·길이(1~60초)·비율 고르기 → Generate → 뷰포트에서 물체·조명·카메라 손보기 → 같은 채팅에서 «렌더해 줘».</li>
+<li>Soul 2.0 · Seedance 2.5 · Seedream 은 힉스필드의 유료 생성 모델입니다. 크레딧 값은 <a href="https://higgsfield.ai/pricing">힉스필드 요금 페이지</a>에서 확인하세요 — 이 킷엔 옮기지 않았습니다.</li>
+</ul>
+<div class="quote"><b>원문</b> — <i>GPT-6 Astra + Blender + Higgsfield. we rebuilt New York in 3D in 20 minutes.</i></div>
+
+<p class="sub">원본</p>
+<ul>
+<li><a href="https://x.com/higgsfield_ai/status/2096342420543660277">Ⓐ 9단계 프롬프트 포스트</a> · <a href="https://x.com/higgsfield_ai/status/2096420565527715856">Ⓑ 두개골 복원 포스트</a>(프롬프트는 답글에 있습니다)</li>
+<li>릴스 원본 4편 — <a href="https://x.com/higgsfield_ai/status/2096495974734794840">뉴욕 3D</a> · <a href="https://x.com/higgsfield_ai/status/2096536703330918831">포토샵 배경화</a> · <a href="https://x.com/higgsfield_ai/status/2096561374667342186">아이 동화</a> · <a href="https://x.com/higgsfield_ai/status/2096559176457797652">마인크래프트 화면</a></li>
+<li><a href="https://higgsfield.ai/blog/higgsfield-3d-jutsu">3D Jutsu 블로그</a>(9월 5일) · <a href="https://higgsfield.ai/blog/generate-ai-videos-from-chatgpt">ChatGPT 에서 힉스필드 영상 만들기</a>(8월 14일 · Astra 언급 없음)</li>
+</ul>
+</div>
+
 <div class="foot">
 <div class="hammer">🐰🔨</div>
 <p>열리면 위 다섯 프롬프트 결과부터 올리겠습니다.</p>
 <a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
 </div>
-<p class="stamp">2026-09-04 12:40 KST 조회 기준 · 영문 인용은 openai.com · developers.openai.com · X @ArtificialAnlys 원문 그대로<br>프롬프트 문안과 한국어 설명은 토망치랩이 쓴 것입니다</p>
+<p class="stamp">2026-09-04 12:40 KST 조회 기준 · 9절은 2026-09-07 추가 · 영문 인용은 openai.com · developers.openai.com · higgsfield.ai · X @ArtificialAnlys @higgsfield_ai 원문 그대로<br>프롬프트 문안과 한국어 설명·옮김은 토망치랩이 쓴 것입니다</p>
 </div>
 </body></html>
