@@ -1,0 +1,142 @@
+<!doctype html><html lang="ko"><head><title>🎨 ChatGPT Images 2.5 새 기능 4개 · 어디서 되나 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ChatGPT Images 2.5 의 새 기능 넷(이미지 위 댓글·Sketch·템플릿·프롬프트 공유)을 부르는 법과, 그 기능이 어느 화면에서 되는지 공식 발표 글과 도움말을 나란히 대조한 표. 영문 인용은 원문 그대로.">
+<meta property="og:title" content="🎨 ChatGPT Images 2.5 — 새 기능 4개 · 어디서 되나">
+<meta property="og:description" content="기능 넷 부르는 법 · 공식 발표 글 ↔ 도움말 «어디서 되나» 대조표 · 고칠 때 쓰는 순서 · 좋아졌다고 적힌 것 원문.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;--warm:#D2694A;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+code{background:var(--surface);border-radius:6px;padding:1px 6px;font-size:13.5px;font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+td.win{color:var(--cyan-d);font-weight:900}
+td.lose{color:var(--coral);font-weight:900}
+.chk{list-style:none;padding-left:0!important}
+.chk li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · Images 2.5 킷</span>
+<h1>🎨 ChatGPT Images 2.5<br>새 기능 4개 · 어디서 되나</h1>
+<p class="lead">오픈에이아이가 2026년 9월 9일 새벽(한국시간) <b>Introducing ChatGPT Images 2.5</b> 를 올렸습니다. 새로 붙은 기능은 <b>이미지 위 댓글 · Sketch · 템플릿 · 프롬프트 공유</b> 넷입니다. 이 킷은 넷을 <b>지금 내 ChatGPT 에서 부르는 법</b>으로 펴 놓은 것이고, 그보다 중요한 <b>«그 기능이 어느 화면에서 되나»</b>를 공식 문서 둘로 대조해 둔 것입니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">올라온 곳</div><div class="v">openai.com 발표 글</div><div class="sub">X @OpenAI 두 포스트 · 한국시간 9월 9일 03:41</div></div>
+  <div class="clock"><div class="k">열리는 범위</div><div class="v">전 요금제</div><div class="sub">ChatGPT · ChatGPT Work · Codex · 데스크톱/모바일/웹</div></div>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span>새로 붙은 기능은 넷입니다</h2>
+<p class="sub">«부르는 법» 칸은 공식 문구가 말한 조작만 적었습니다. 화면 위치는 판마다 다를 수 있습니다.</p>
+<table>
+<tr><th>기능</th><th>부르는 법</th><th>공식 원문</th></tr>
+<tr><td class="v">이미지 위 댓글</td><td>만든 이미지를 열고 <b>고칠 자리를 짚어</b> 댓글을 붙입니다</td><td>“place comments directly on images for more focused editing”</td></tr>
+<tr><td class="v">Sketch</td><td>채팅창에 <code>@Sketch</code> 를 입력해 부르고, 그린 뒤 원하는 결과를 글로 덧붙입니다</td><td>“just type <b>“@Sketch”</b> in ChatGPT”</td></tr>
+<tr><td class="v">템플릿</td><td><b>Poster</b>·<b>Merch</b> 같은 형식을 먼저 고르고 시작합니다</td><td>“you can choose a template like <b>“Poster”</b> or <b>“Merch”</b>”</td></tr>
+<tr><td class="v">프롬프트 공유</td><td>쓴 프롬프트를 <b>그림과 같이</b> 넘겨 다른 사람이 제 사진으로 다시 돌리게 합니다</td><td>“share prompts you’ve used to let others try your ideas with their own photos and details”</td></tr>
+</table>
+<div class="tip">넷 중 셋(<b>댓글 · Sketch · 템플릿</b>)은 «만들기 전»이 아니라 <b>«만든 뒤에 고치는»</b> 자리에 붙었습니다. 이번 판의 무게가 그쪽에 실려 있습니다.</div>
+</div>
+
+<div class="card warn">
+<h2><span class="num">2</span>🔴 «어디서 되나» — 공식 문서 둘이 다르게 적습니다</h2>
+<p>이 킷에서 가장 쓸모 있는 칸입니다. <b>발표 글은 플랫폼을 달지 않았고, 도움말은 «댓글»과 «스케치»를 모바일 앱 절에만 적었습니다.</b> 웹 편집기 절의 버튼 목록에는 그 둘이 없습니다.</p>
+<table>
+<tr><th>문서</th><th>무엇이 적혀 있나</th><th>원문</th></tr>
+<tr><td class="v">발표 글</td><td class="win">플랫폼 한정 <b>없음</b></td><td>“You can also now place comments directly on images for more focused editing”</td></tr>
+<tr><td class="v">도움말 · 모바일 절</td><td class="win">댓글 <b>있음</b></td><td>“On the ChatGPT mobile app, select an image … You can edit the image or add comments.”</td></tr>
+<tr><td class="v">도움말 · 모바일 절</td><td class="win">스케치 <b>있음</b></td><td>“On the ChatGPT mobile app, you can draw a sketch and use it with written instructions to create an image.”</td></tr>
+<tr><td class="v">도움말 · 웹 편집기 절</td><td class="lose">버튼 목록에 <b>댓글이 없음</b></td><td>Select / Aspect ratio / Undo·Redo / Cancel / Save 다섯 줄뿐</td></tr>
+</table>
+<div class="hard">🔴 <b>그래서 «웹에서는 안 된다»가 아닙니다.</b> 두 공식 문서가 서로 다르게 적고 있고, 어느 쪽이 현행인지 <b>바깥에서 가를 방법이 없다</b>는 것까지가 확인된 사실입니다. 도움말이 <b>스케치도 모바일 절에만</b> 둔 걸 보면 «도움말이 모바일부터 갱신되는 중»일 수도 있지만, <b>공식 문서가 그렇게 적지는 않았습니다.</b></div>
+<div class="tip">실용적인 대처 — <b>댓글 편집이 안 보이면 폰 앱에서 먼저 열어 보세요.</b> 공식 문서가 그 자리를 확실히 적어 둔 유일한 화면입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>순서대로 — 고칠 게 생겼을 때</h2>
+<p class="sub">칸마다 근거가 되는 공식 문구를 같이 뒀습니다. 화면 위치는 판마다 다를 수 있어 <b>조작만</b> 적었습니다.</p>
+<table>
+<tr><th>순서</th><th>할 일</th><th>근거가 되는 공식 문구</th></tr>
+<tr><td class="v">먼저</td><td><b>빈 화면에서 시작하지 않습니다.</b> 포스터·굿즈처럼 흔한 형식은 템플릿을 먼저 고릅니다</td><td>“you can choose a template like <b>“Poster”</b> or <b>“Merch”</b>”</td></tr>
+<tr><td class="v">말이 막히면</td><td>채팅창에 <code>@Sketch</code> 를 쳐서 부르고, <b>그린 것에 글을 같이 붙여</b> 넘깁니다</td><td>“you can draw a sketch and <b>use it with written instructions</b> to create an image.”</td></tr>
+<tr><td class="v">고칠 때</td><td>처음부터 다시 설명하지 말고 <b>고칠 자리를 그림 위에서 짚어</b> 댓글을 답니다</td><td>“place comments directly on images for <b>more focused editing</b>”</td></tr>
+<tr><td class="v">여러 번</td><td>한 번에 다 끝내려 하지 말고 <b>고친 위에 또 고칩니다</b></td><td>“each new edit <b>builds on the work you’ve already done</b> without degrading image quality over time.”</td></tr>
+<tr><td class="v">마음에 들면</td><td>결과만 넘기지 말고 <b>쓴 프롬프트를 그림과 같이</b> 넘깁니다</td><td>“<b>share prompts you’ve used</b> to let others try your ideas with their own photos and details”</td></tr>
+</table>
+<div class="tip"><b>@Sketch 는 메뉴가 아니라 «글자»입니다.</b> 버튼을 찾지 말고 채팅창에 그대로 쳐서 부릅니다 — 공식 문구도 “just type <b>“@Sketch”</b> in ChatGPT” 입니다.</div>
+<div class="hard">🔴 <b>순서가 이렇게 되는 이유</b> — 새로 붙은 넷 중 셋이 «만들기 전»이 아니라 <b>«만든 뒤에 고치는»</b> 자리에 있습니다. 첫 장을 잘 뽑는 것보다 <b>고치는 길이 짧아진 판</b>입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>무엇이 좋아졌다고 적혀 있나</h2>
+<p class="sub">비교급·상한 표현을 원문 그대로 옮겼습니다. «항상 그렇다»로 올리지 않았습니다.</p>
+<table>
+<tr><th>주장</th><th>원문</th></tr>
+<tr><td class="v">짚은 곳만 바뀐다</td><td>“Images 2.5 is <b>better at</b> editing only what you’ve asked for, while keeping the rest of the details the same”</td></tr>
+<tr><td class="v">여러 번 고쳐도 안 무너진다</td><td>“Earlier changes are <b>more likely to</b> stay consistent, and each new edit builds on the work you’ve already done without degrading image quality over time.”</td></tr>
+<tr><td class="v">속도</td><td>“reduced image generation latency by <b>up to 50%</b> compared with Images 2.0”</td></tr>
+<tr><td class="v">규모</td><td>“Every week, people create <b>more than 3 billion images</b> across ChatGPT Images and the GPT‑Image models in the API.”</td></tr>
+</table>
+<div class="tip"><b>“better at” · “more likely to” · “up to”</b> — 셋 다 비교급이거나 상한입니다. 평균이 아니라 <b>«가장 잘 됐을 때»</b>를 말하는 문장이라는 뜻입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>API 에도 두 모델이 같이 나왔습니다</h2>
+<table>
+<tr><th>모델</th><th>공식 설명</th></tr>
+<tr><td class="v">Flare</td><td>“GPT-Image-2.5 <b>Flare</b> brings the same quality, editing, and speed improvements”</td></tr>
+<tr><td class="v">Sunburst</td><td>“GPT-Image-2.5 <b>Sunburst</b> adds precision for detailed creative work, <b>with longer generation times</b>.”</td></tr>
+</table>
+<div class="tip">둘의 갈림길은 <b>«정밀함이냐 속도냐»</b>입니다 — Sunburst 는 더 정밀한 대신 <b>더 오래 걸린다</b>고 공식 글이 직접 적었습니다.</div>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>AI 소식을 매일 한 장으로 정리합니다.</p>
+<a class="follow" href="https://instagram.com/ai_tomangchi.lab" target="_blank" rel="noopener">인스타그램 <b>@ai_tomangchi.lab</b></a>
+</div>
+<p class="stamp">출처 — openai.com 「Introducing ChatGPT Images 2.5」 · X @OpenAI 두 포스트 · OpenAI 도움말 「Images in ChatGPT」<br>
+2026년 9월 9일 조회 · 영문 인용은 원문 그대로</p>
+</div>
+</body></html>
