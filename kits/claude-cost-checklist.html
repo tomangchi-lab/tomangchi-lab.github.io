@@ -1,9 +1,9 @@
 <!doctype html><html lang="ko"><head><title>🧭 클로드 값 깎기 체크리스트 — 토망치랩</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="프롬프트 캐시·지시문·effort 세 손잡이로 Claude API 값을 깎는 점검표. 공식 아티클의 팁을 항목으로 펴고, 실측 수치표와 명령 세 개가 하는 일을 한 장에 모았습니다.">
+<meta name="description" content="프롬프트 캐시·지시문·effort 세 손잡이로 Claude API 값을 깎는 킷. 복사해서 쓰는 요청 뼈대 · 찾아서 바꿀 문장 여섯 쌍 · effort 규칙 한 장 · 공식 실측 수치표.">
 <meta property="og:title" content="🧭 클로드 값 깎기 체크리스트">
-<meta property="og:description" content="캐시 점검 8항 · 지시문 안티패턴 6종 · effort 고르는 법 · 공식 실측 수치표 · 명령 세 개.">
+<meta property="og:description" content="복사해서 쓰는 캐시 뼈대 · 찾아서 바꿀 문장 여섯 쌍 · effort 규칙 한 장 · 공식 실측 수치표 · 명령 세 개.">
 <meta property="og:type" content="article">
 <link rel="icon" href="../assets/logo_unit.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@ a{color:var(--cyan-d)}
 <div class="wrap">
 <span class="badge">AI 소식 · 값 깎기 킷</span>
 <h1>🧭 클로드 값 깎기<br>체크리스트</h1>
-<p class="lead">앤트로픽이 2026년 9월 9일 새벽(한국시간) <b>@ClaudeDevs</b> 아티클로 <b>Reducing cost and improving performance with Claude Platform</b> 을 올렸습니다. 손잡이는 <b>프롬프트 캐시 · 지시문 · effort</b> 셋입니다. 이 킷은 아티클의 팁을 <b>오늘 내 프롬프트에서 눈으로 확인할 수 있는 항목</b>으로 펴 놓은 것이고, <b>영문 인용은 공식 원문 그대로</b>입니다.</p>
+<p class="lead">앤트로픽이 2026년 9월 9일 새벽(한국시간) <b>@ClaudeDevs</b> 아티클로 <b>Reducing cost and improving performance with Claude Platform</b> 을 올렸습니다. 손잡이는 <b>프롬프트 캐시 · 지시문 · effort</b> 셋입니다. 이 킷은 <b>그대로 복사해서 쓰는 세 덩어리</b>입니다 — 요청 뼈대 하나, 프롬프트에서 찾아 바꿀 문장 여섯 쌍, effort 규칙 한 장. <b>영문 인용은 공식 원문 그대로</b>입니다.</p>
 
 <div class="clocks">
   <div class="clock"><div class="k">올라온 곳</div><div class="v">X @ClaudeDevs</div><div class="sub">아티클 · 한국시간 9월 9일 02:01</div></div>
@@ -88,39 +88,58 @@ a{color:var(--cyan-d)}
 </div>
 
 <div class="card">
-<h2><span class="num">2</span>캐시 점검 8항</h2>
-<p class="sub">아래는 아티클의 팁을 «내 프롬프트에서 눈으로 볼 수 있는 것»으로 옮긴 항목입니다. 하나씩 짚어 보세요.</p>
-<ul class="chk">
-<li>시스템 프롬프트에 <b>지금 시각·요청 ID</b> 같은 매번 바뀌는 값이 들어 있지 않은가 <span class="sub">— 앞부분이 바이트 단위로 같아야 읽습니다</span></li>
-<li>도구 정의가 <b>매 요청마다 순서가 바뀌지</b> 않는가 <span class="sub">— 도구는 프롬프트 맨 위에 붙습니다</span></li>
-<li><b>안 변하는 것(도구 정의·시스템 프롬프트)이 앞</b>, 늘어나는 대화가 뒤인가</li>
-<li>대화 도중에 <b>effort 를 바꾸고</b> 있지 않은가 <span class="sub">— 이 값도 앞부분에 실려 캐시를 깹니다</span></li>
-<li>거의 안 쓰는 도구를 <b>defer_loading</b> 으로 미뤄 뒀는가</li>
-<li>대화가 길어질 때 <b>캐시 끊는 자리</b>를 뒤로 옮기고 있는가</li>
-<li>도구 호출이나 서브에이전트가 <b>5분을 넘겨</b> 부모 캐시가 만료되지 않는가 <span class="sub">— 그러면 1시간짜리를 씁니다</span></li>
-<li>세션이 열릴 때 <b>미리 데워</b> 두는가 <span class="sub">— max_tokens: 0 으로 한 번 보냅니다</span></li>
+<h2><span class="num">2</span>복사해서 쓰는 요청 뼈대</h2>
+<p class="sub">요청을 이 순서로 짜면 앞부분이 매번 같아져 캐시가 걸립니다. 그대로 복사해 내 값만 채우세요.</p>
+<pre>{
+  "tools": [ ... ],            // 순서 고정 · 거의 안 쓰는 도구는 defer_loading
+  "system": [
+    { "type": "text",
+      "text": "역할 · 규칙 · 용어집 · 예시 — 안 바뀌는 것만",
+      "cache_control": { "type": "ephemeral" } }
+  ],
+  // ── 여기까지가 캐시. 아래부터는 매번 새로 계산됩니다 ──
+  "messages": [
+    { "role": "user",
+      "content": "지금 시각 · 요청 ID · 사용자 이름 — 바뀌는 값은 전부 여기\n\n(이번 질문)" }
+  ]
+}</pre>
+<ul>
+<li><b>바뀌는 값을 위로 올리지 않습니다.</b> 시각·요청 ID 가 시스템 프롬프트에 있으면 앞부분이 매번 달라져 캐시가 통째로 깨집니다 — 바이트 단위로 같아야 읽습니다.</li>
+<li><b>도구 순서를 고정합니다.</b> 도구 정의는 프롬프트 맨 위에 붙어서, 순서가 흔들리면 그 뒤가 전부 새로 계산됩니다.</li>
+<li><b>effort·모델은 대화 도중에 바꾸지 않습니다.</b> 이 값도 앞부분에 실립니다 — 바꿔야 하면 <b>어차피 캐시가 깨지는 순간</b>(대화 압축 같은 때)에 같이 바꾸세요.</li>
+<li><b>캐시는 마지막으로 쓴 지 5분이면 사라집니다.</b> 도구 호출이나 서브에이전트가 그보다 오래 걸려 부모 캐시가 만료되면 1시간짜리로 올립니다.</li>
+<li><b>세션을 열 때 한 번 데웁니다</b> — 같은 앞부분에 <code>max_tokens: 0</code> 으로 빈 요청 하나.</li>
 </ul>
-<div class="tip">모델·effort를 바꿔야 한다면 <b>어차피 캐시가 깨지는 순간</b>(대화 압축 같은 때)에 같이 바꾸세요.</div>
 </div>
 
 <div class="card">
-<h2><span class="num">3</span>지시문 안티패턴 6종</h2>
+<h2><span class="num">3</span>찾아서 바꿀 문장 여섯 쌍</h2>
+<p class="sub">내 프롬프트·스킬·도구 설명에서 <b>왼쪽을 찾아 오른쪽으로 바꾸면 끝</b>입니다. 지우기만 해도 되는 줄은 그렇게 적어 뒀습니다.</p>
 <table>
-<tr><th>이름</th><th>내 프롬프트에서 이런 꼴</th><th>왜 값이 되나</th></tr>
-<tr><td class="v">검증 의식</td><td>“두 번 확인해”, “답하기 전에 검증해”</td><td>곧이곧대로 지켜서 같은 조회를 두 번 합니다</td></tr>
-<tr><td class="v">강조 부스터</td><td>“최대한 꼼꼼히”, “CRITICAL: YOU MUST ALWAYS…”</td><td>말이 길어지고 도구를 더 부릅니다</td></tr>
-<tr><td class="v">절차 강제</td><td>“스크래치패드에 단계별로 생각해”</td><td>모델이 이미 하는 일 위에 한 겹 더 쌓입니다</td></tr>
-<tr><td class="v">낡은 예시</td><td>옛 모델 실수를 고치려 넣은 few-shot</td><td>긴 추론을 흉내 내게 가르칩니다</td></tr>
-<tr><td class="v">어긋난 규칙</td><td>“정책 안이면 환불” + “승인 없이 환불 금지”</td><td>최신 모델은 둘 다 지키려다 멈춥니다</td></tr>
-<tr><td class="v">낡은 설정</td><td>손으로 잡아 둔 thinking budget 같은 것</td><td>새 모델에서는 요청이 거부되기도 합니다</td></tr>
+<tr><th>찾을 말</th><th>그 자리에 넣을 말</th></tr>
+<tr><td>“두 번 확인해”<br>“답하기 전에 검증해”<div class="sub">검증 의식</div></td><td><b>지웁니다.</b> 대신 「근거를 못 찾은 항목은 «못 찾음»이라고 적어.」<div class="sub">곧이곧대로 지켜서 같은 조회를 두 번 합니다</div></td></tr>
+<tr><td>“최대한 꼼꼼히”<br>“CRITICAL: YOU MUST ALWAYS…”<div class="sub">강조 부스터</div></td><td><b>지웁니다.</b> 대신 원하는 결과를 적습니다 — 「답은 세 문단 안에.」<div class="sub">말이 길어지고 도구를 더 부릅니다</div></td></tr>
+<tr><td>“스크래치패드에 단계별로 생각해”<div class="sub">절차 강제</div></td><td><b>지웁니다.</b> 모델이 이미 하는 일 위에 한 겹 더 쌓는 것입니다.</td></tr>
+<tr><td>옛 모델 실수를 고치려 넣은 예시 묶음<div class="sub">낡은 예시</div></td><td><b>출력 «형식» 예시 한 개만</b> 남기고 나머지는 지웁니다.<div class="sub">긴 추론을 흉내 내게 가르칩니다</div></td></tr>
+<tr><td>“정책 안이면 환불”<br>+ “승인 없이 환불 금지”<div class="sub">어긋난 규칙</div></td><td>우선순위를 적습니다 — 「둘이 부딪히면 앞 규칙을 따르고, 뒤 규칙을 못 지킨 이유를 한 줄 적어.」<div class="sub">최신 모델은 둘 다 지키려다 멈춥니다</div></td></tr>
+<tr><td>손으로 잡아 둔 thinking budget 같은 설정<div class="sub">낡은 설정</div></td><td><b>지웁니다.</b> 기본값에 맡깁니다 — 새 모델에서는 요청이 거부되기도 합니다.</td></tr>
 </table>
 <div class="quote">여섯 개를 하나씩 심어 재 봤더니 — <b>“</b>Running /claude-api prompt-audit removed the anti-patterns, <b>decreasing costs by 14.6% and increasing accuracy by 5.3% on average</b><b>”</b></div>
 <div class="hard">정확도가 «오른» 이유가 재밌습니다. 어긋난 환불 규칙 때문에 <b>줘야 할 환불 네 건을 붙들고</b> 있었고, 손으로 만든 스크래치패드가 모델의 내장 사고와 부딪혀 <b>도구 호출을 생각 안에 적고 실행하지 않은</b> 티켓이 세 건이었습니다.</div>
 </div>
 
 <div class="card">
-<h2><span class="num">4</span>effort 고르는 법</h2>
-<p>effort 는 «얼마나 열심히 할지»입니다. 낮으면 빨리 결론에 닿고, 높으면 따져 보고 대안을 찾습니다.</p>
+<h2><span class="num">4</span>복사해서 쓰는 effort 규칙</h2>
+<p class="sub">effort 는 «얼마나 열심히 할지»입니다. 아래를 팀 문서에 그대로 붙여 두고, 일을 시작할 때 한 줄을 고르세요.</p>
+<pre>[ effort 규칙 ]
+답이 이미 준 자료 안에 있다        →  low
+찾을 곳이 여러 군데다              →  medium
+가설을 세우고 확인해야 한다        →  high
+답이 있는지조차 모른다             →  max
+
+바꾸는 자리   : 대화 도중이 아니라 «새 대화를 열 때»
+되돌리는 자리 : 한 칸 올려도 답이 안 바뀌면 도로 내린다
+고르는 모델   : 약한 모델을 세게 굴리기보다 «센 모델을 낮은 effort 로»</pre>
 <table>
 <tr><th>Claude Fable 5 · 어려운 코딩 50문제</th><th>한 문제 값</th><th>점수</th></tr>
 <tr><td>low</td><td class="win">$5.35</td><td>11.5%</td></tr>
@@ -130,8 +149,6 @@ a{color:var(--cyan-d)}
 <ul>
 <li><b>높다고 좋은 게 아닙니다.</b> 필요보다 오래 재면 값과 시간만 늘고 답이 나빠질 수 있습니다. 「Deliberation only helps while there's still evidence to find.」</li>
 <li><b>낮다고 싼 것도 아닙니다.</b> 증거가 모자란 채로 멈춥니다 — 「The answer looks finished, but it's built on partial information.」</li>
-<li><b>더 센 모델을 낮은 effort 로</b> 쓰는 쪽이 약한 모델을 세게 굴리는 것보다 쌀 수 있습니다.</li>
-<li>마지막 한 칸이 <b>측정 오차 안</b>이면 그건 돈만 더 내는 것입니다.</li>
 </ul>
 </div>
 
