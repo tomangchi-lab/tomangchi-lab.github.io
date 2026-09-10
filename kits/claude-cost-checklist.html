@@ -1,0 +1,178 @@
+<!doctype html><html lang="ko"><head><title>🧭 클로드 값 깎기 체크리스트 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="프롬프트 캐시·지시문·effort 세 손잡이로 Claude API 값을 깎는 점검표. 공식 아티클의 팁을 항목으로 펴고, 실측 수치표와 명령 세 개가 하는 일을 한 장에 모았습니다.">
+<meta property="og:title" content="🧭 클로드 값 깎기 체크리스트">
+<meta property="og:description" content="캐시 점검 8항 · 지시문 안티패턴 6종 · effort 고르는 법 · 공식 실측 수치표 · 명령 세 개.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;--warm:#D2694A;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.warn{border-left:4px solid var(--coral);padding-left:14px}
+.quote{background:var(--surface);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a505a;margin-top:10px}
+.quote b{color:var(--ink)}
+.fn{font-size:12.5px;color:var(--gray);margin-top:8px}
+pre{background:#1C2028;color:#F5F7F9;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-break:break-all;margin-top:8px;font-family:'Noto Sans KR',monospace}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+td.win{color:var(--cyan-d);font-weight:900;white-space:nowrap}
+td.lose{color:var(--coral);font-weight:900;white-space:nowrap}
+.chk{list-style:none;padding-left:0!important}
+.chk li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.bars{margin-top:12px;display:grid;gap:9px}
+.bar{display:grid;grid-template-columns:96px 1fr 76px;align-items:center;gap:9px}
+.bar .nm{font-size:13px;font-weight:700;color:#3a4049;line-height:1.25}
+.bar .track{background:var(--surface);border-radius:999px;height:20px;position:relative;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--warm);border-radius:999px}
+.bar .fill.base{background:#C8CED6}
+.bar .pc{font-size:13px;font-weight:900;color:var(--warm);text-align:right}
+.bar .pc.base{color:var(--gray)}
+.legend{font-size:12.5px;color:var(--gray);margin-top:8px}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+@media (max-width:420px){.clocks{grid-template-columns:1fr}.bar{grid-template-columns:78px 1fr 62px}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 값 깎기 킷</span>
+<h1>🧭 클로드 값 깎기<br>체크리스트</h1>
+<p class="lead">앤트로픽이 2026년 9월 9일 새벽(한국시간) <b>@ClaudeDevs</b> 아티클로 <b>Reducing cost and improving performance with Claude Platform</b> 을 올렸습니다. 손잡이는 <b>프롬프트 캐시 · 지시문 · effort</b> 셋입니다. 이 킷은 아티클의 팁을 <b>오늘 내 프롬프트에서 눈으로 확인할 수 있는 항목</b>으로 펴 놓은 것이고, <b>영문 인용은 공식 원문 그대로</b>입니다.</p>
+
+<div class="clocks">
+  <div class="clock"><div class="k">올라온 곳</div><div class="v">X @ClaudeDevs</div><div class="sub">아티클 · 한국시간 9월 9일 02:01</div></div>
+  <div class="clock"><div class="k">명령이 사는 곳</div><div class="v">claude-api 스킬</div><div class="sub">Claude Code 에 기본 내장</div></div>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span>손잡이는 셋입니다</h2>
+<p>아티클이 첫 문단에서 세 가지로 못박습니다.</p>
+<div class="quote"><b>“</b>many applications using Claude Platform can cut cost without giving up performance with <b>three fixes</b>: maximize the prompt cache hit rate, remove anti-patterns from your prompts when upgrading to frontier Claude models, and calibrate effort to the task<b>”</b></div>
+<ul>
+<li><b>캐시</b> — 앞부분이 그대로면 다시 계산하지 않습니다. 값이 가장 크게 움직이는 자리입니다.</li>
+<li><b>지시문</b> — 옛 모델의 약점을 메우려 넣은 주문이 지금은 값이 됩니다.</li>
+<li><b>effort</b> — 일의 무게에 맞춥니다. 높다고 늘 좋지 않습니다.</li>
+</ul>
+<div class="tip">셋은 서로 곱해집니다. 캐시를 고친 다음 지시문을 걷어내고, 그 위에서 effort 를 재는 순서가 아티클의 순서입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>캐시 점검 8항</h2>
+<p class="sub">아래는 아티클의 팁을 «내 프롬프트에서 눈으로 볼 수 있는 것»으로 옮긴 항목입니다. 하나씩 짚어 보세요.</p>
+<ul class="chk">
+<li>시스템 프롬프트에 <b>지금 시각·요청 ID</b> 같은 매번 바뀌는 값이 들어 있지 않은가 <span class="sub">— 앞부분이 바이트 단위로 같아야 읽습니다</span></li>
+<li>도구 정의가 <b>매 요청마다 순서가 바뀌지</b> 않는가 <span class="sub">— 도구는 프롬프트 맨 위에 붙습니다</span></li>
+<li><b>안 변하는 것(도구 정의·시스템 프롬프트)이 앞</b>, 늘어나는 대화가 뒤인가</li>
+<li>대화 도중에 <b>effort 를 바꾸고</b> 있지 않은가 <span class="sub">— 이 값도 앞부분에 실려 캐시를 깹니다</span></li>
+<li>거의 안 쓰는 도구를 <b>defer_loading</b> 으로 미뤄 뒀는가</li>
+<li>대화가 길어질 때 <b>캐시 끊는 자리</b>를 뒤로 옮기고 있는가</li>
+<li>도구 호출이나 서브에이전트가 <b>5분을 넘겨</b> 부모 캐시가 만료되지 않는가 <span class="sub">— 그러면 1시간짜리를 씁니다</span></li>
+<li>세션이 열릴 때 <b>미리 데워</b> 두는가 <span class="sub">— max_tokens: 0 으로 한 번 보냅니다</span></li>
+</ul>
+<div class="tip">모델·effort를 바꿔야 한다면 <b>어차피 캐시가 깨지는 순간</b>(대화 압축 같은 때)에 같이 바꾸세요.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>지시문 안티패턴 6종</h2>
+<table>
+<tr><th>이름</th><th>내 프롬프트에서 이런 꼴</th><th>왜 값이 되나</th></tr>
+<tr><td class="v">검증 의식</td><td>“두 번 확인해”, “답하기 전에 검증해”</td><td>곧이곧대로 지켜서 같은 조회를 두 번 합니다</td></tr>
+<tr><td class="v">강조 부스터</td><td>“최대한 꼼꼼히”, “CRITICAL: YOU MUST ALWAYS…”</td><td>말이 길어지고 도구를 더 부릅니다</td></tr>
+<tr><td class="v">절차 강제</td><td>“스크래치패드에 단계별로 생각해”</td><td>모델이 이미 하는 일 위에 한 겹 더 쌓입니다</td></tr>
+<tr><td class="v">낡은 예시</td><td>옛 모델 실수를 고치려 넣은 few-shot</td><td>긴 추론을 흉내 내게 가르칩니다</td></tr>
+<tr><td class="v">어긋난 규칙</td><td>“정책 안이면 환불” + “승인 없이 환불 금지”</td><td>최신 모델은 둘 다 지키려다 멈춥니다</td></tr>
+<tr><td class="v">낡은 설정</td><td>손으로 잡아 둔 thinking budget 같은 것</td><td>새 모델에서는 요청이 거부되기도 합니다</td></tr>
+</table>
+<div class="quote">여섯 개를 하나씩 심어 재 봤더니 — <b>“</b>Running /claude-api prompt-audit removed the anti-patterns, <b>decreasing costs by 14.6% and increasing accuracy by 5.3% on average</b><b>”</b></div>
+<div class="hard">정확도가 «오른» 이유가 재밌습니다. 어긋난 환불 규칙 때문에 <b>줘야 할 환불 네 건을 붙들고</b> 있었고, 손으로 만든 스크래치패드가 모델의 내장 사고와 부딪혀 <b>도구 호출을 생각 안에 적고 실행하지 않은</b> 티켓이 세 건이었습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>effort 고르는 법</h2>
+<p>effort 는 «얼마나 열심히 할지»입니다. 낮으면 빨리 결론에 닿고, 높으면 따져 보고 대안을 찾습니다.</p>
+<table>
+<tr><th>Claude Fable 5 · 어려운 코딩 50문제</th><th>한 문제 값</th><th>점수</th></tr>
+<tr><td>low</td><td class="win">$5.35</td><td>11.5%</td></tr>
+<tr><td>max</td><td class="lose">$19.00</td><td>30.9%</td></tr>
+</table>
+<p class="fn">점수는 약 2.7배(+19점) 오르는데 값은 약 3.5배입니다 — <b>“</b>raises the score about 2.7x (+19 points) for about 3.5x the cost<b>”</b></p>
+<ul>
+<li><b>높다고 좋은 게 아닙니다.</b> 필요보다 오래 재면 값과 시간만 늘고 답이 나빠질 수 있습니다. 「Deliberation only helps while there's still evidence to find.」</li>
+<li><b>낮다고 싼 것도 아닙니다.</b> 증거가 모자란 채로 멈춥니다 — 「The answer looks finished, but it's built on partial information.」</li>
+<li><b>더 센 모델을 낮은 effort 로</b> 쓰는 쪽이 약한 모델을 세게 굴리는 것보다 쌀 수 있습니다.</li>
+<li>마지막 한 칸이 <b>측정 오차 안</b>이면 그건 돈만 더 내는 것입니다.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>명령 세 개가 하는 일</h2>
+<table>
+<tr><th>명령</th><th>언제</th><th>무엇을</th></tr>
+<tr><td class="v">prompt-audit</td><td>최신 모델로 막 옮겼을 때</td><td>작업 폴더의 프롬프트·스킬·도구 설명을 훑어 안티패턴을 걷어냅니다</td></tr>
+<tr><td class="v">cost-optimize</td><td>값이 어디로 새는지 모를 때</td><td>토큰이 어디로 가는지 프로파일하고 캐시·배치·출력 길이로 줄입니다</td></tr>
+<tr><td class="v">hillclimb</td><td>평가셋이 있을 때</td><td>학습/시험으로 갈라 설정을 바꿔 가며 값과 성능을 같이 찾습니다</td></tr>
+</table>
+<p class="fn">hillclimb 을 고객문의 벤치에 돌린 결과 — 처음 못 본 티켓 14건에서 <b>90.5% (원래 설정 78.6%)</b> 를 <b>약 5분의 1 값</b>에 냈습니다.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">6</span>공식 실측 — 벤치마크 넷</h2>
+<p class="sub">Sonnet 5 를 기준선으로 <code>cost-optimize</code> 를 돌린 결과입니다. 막대는 <b>줄어든 값의 비율</b>입니다.</p>
+<div class="bars">
+  <div class="bar"><span class="nm">tau2-bench<br>(retail)</span><span class="track"><span class="fill" style="width:73%"></span></span><span class="pc">−73%</span></div>
+  <div class="bar"><span class="nm">LegalBench</span><span class="track"><span class="fill" style="width:58%"></span></span><span class="pc">−58%</span></div>
+  <div class="bar"><span class="nm">SWE-bench<br>Verified</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="pc">−55%</span></div>
+  <div class="bar"><span class="nm">OfficeQA Pro</span><span class="track"><span class="fill" style="width:52%"></span></span><span class="pc">−52%</span></div>
+</div>
+<p class="legend">막대는 아티클이 적은 절감률(~73% / ~58% / ~55% / ~52%)을 그대로 옮긴 것입니다.</p>
+<table>
+<tr><th>어디서</th><th>무엇을 바꿔서</th><th>눈에 띄는 수치</th></tr>
+<tr><td class="v">LegalBench</td><td>공통 앞부분 캐시 + low effort + 배치 API</td><td>생각 토큰 102,779 → 8,284</td></tr>
+<tr><td class="v">tau2-bench</td><td>캐시 끊는 자리를 손으로 지정</td><td>통과율은 그대로</td></tr>
+<tr><td class="v">OfficeQA Pro</td><td>배치 처리 + 문서 캐시</td><td>$136.20 → $64.87</td></tr>
+<tr><td class="v">SWE-bench</td><td>effort medium + 출력 길이 제한</td><td>단계 중앙값 29 → 17 · 프롬프트 토큰 75.2M → 33.7M</td></tr>
+</table>
+<div class="hard">🔴 <b>점수는 «대체로» 제자리입니다 — «전부»가 아닙니다.</b> 아티클의 Figure 7 은 점수 변화를 신뢰구간과 같이 그립니다. SWE-bench 는 점수가 내려갔고, 그 폭이 오차 구간 안에 걸쳐 있습니다. «값이 반이 됐는데 점수는 그대로»가 아니라 <b>«값이 반이 됐고 점수 변화는 재기 어려운 크기»</b>가 정확한 말입니다.</div>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>AI 소식을 매일 한 장으로 정리합니다.</p>
+<a class="follow" href="https://instagram.com/ai_tomangchi.lab" target="_blank" rel="noopener">인스타그램 <b>@ai_tomangchi.lab</b></a>
+</div>
+<p class="stamp">출처 — X @ClaudeDevs 아티클 「Reducing cost and improving performance with Claude Platform」<br>
+글쓴이 Lance Martin · Brad Abrams · Isabella He · Ben Lehrburger<br>
+2026년 9월 9일 조회 · 영문 인용은 원문 그대로</p>
+</div>
+</body></html>
