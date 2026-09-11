@@ -1,0 +1,210 @@
+<!doctype html><html lang="ko"><head><title>🧰 내 AI 하네스 점검표 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="행동하기 전에 잡는 것과 행동한 뒤에 재는 것. AGENTS.md 스타터, 리페어 루프, 행동 평가 한 줄까지 복사해 쓰는 점검표.">
+<meta property="og:title" content="🧰 내 AI 하네스 점검표 — 앞을 잡는 것 / 뒤를 재는 것">
+<meta property="og:description" content="역할 분리·완료 조건·경계·리페어 루프를 그대로 복사해 쓰는 표로 옮겼습니다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;--warm:#D2694A;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.clock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.clock .k{font-size:12.5px;color:var(--gray);font-weight:700}
+.clock .v{font-size:17px;font-weight:900;margin-top:2px}
+.clock .sub{font-size:12.5px;color:var(--gray);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+pre.copy{margin-top:8px;background:var(--ink);color:#f4f6fa;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.hero{background:linear-gradient(180deg,#EAF7F8,#fff);border:2px solid var(--cyan-d)}
+.hero h2{color:#12636B}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.side .t{font-weight:900;font-size:15px}
+.side .e{font-size:12.5px;color:var(--gray);font-weight:700}
+.side .d{font-size:13.5px;color:#4a505a;margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.chk{list-style:none;padding-left:0!important}
+.chk li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+@media (max-width:420px){.clocks,.two{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · 하네스 점검표</span>
+<h1>🧰 내 AI 하네스<br>점검표</h1>
+<p class="lead">에이전트가 사고를 치면 보통 모델을 바꿔 봅니다. 그런데 고칠 자리는 대개 <b>모델 둘레</b>입니다. 앤트로픽이 밝힌 구조와 구글이 든 원칙, 그리고 guides·sensors 분류를 <b>그대로 복사해 붙일 수 있는 꼴</b>로 옮겼습니다.</p>
+
+<div class="clocks">
+<div class="clock"><div class="k">행동하기 전</div><div class="v">guides</div><div class="sub">미리 방향을 잡는 것</div></div>
+<div class="clock"><div class="k">행동한 뒤</div><div class="v">sensors</div><div class="sub">재서 스스로 고치게 하는 것</div></div>
+</div>
+
+<div class="card hero">
+<h2><span class="num">1</span>먼저 한쪽만 있는지 본다</h2>
+<p>둘 중 하나만 있으면 이렇게 됩니다.</p>
+<div class="two">
+<div class="side"><div class="t">뒤만 있으면</div><div class="e">feedback-only</div><div class="d">같은 실수를 계속 되풀이합니다. 매번 지적하지만 다음에 또 합니다.</div></div>
+<div class="side"><div class="t">앞만 있으면</div><div class="e">feed-forward-only</div><div class="d">규칙은 쌓이는데 그게 들었는지를 끝내 모릅니다.</div></div>
+</div>
+<div class="tip">💡 점검표를 채우기 전에 이것부터 보세요. 대부분은 <b>앞쪽만</b> 갖고 있습니다 — 규칙 파일은 길어지는데 재는 자리가 없는 상태입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>역할과 «끝»을 먼저 가른다</h2>
+<p>한 에이전트에게 만들고 검사까지 시키면 <b>자기 결과에 후합니다.</b> 만드는 쪽(generator)과 판정하는 쪽(evaluator)을 따로 세우고, 코드를 쓰기 전에 «끝»이 무엇인지부터 합의하게 만듭니다.</p>
+<p class="sub" style="margin-top:12px">착수 전에 둘이 주고받아 채우는 칸입니다. 그대로 복사해 쓰세요.</p>
+<pre class="copy"># sprint contract — 코드보다 먼저 채운다
+이번에 만들 것 :
+"done" 의 모습 :
+어떻게 확인하나 :
+  - 확인 1 : (통과 기준선)
+  - 확인 2 : (통과 기준선)
+기준선을 하나라도 못 넘으면 → 이 구간은 실패, 피드백을 받아 다시 한다</pre>
+<p class="sub" style="margin-top:14px">세션이 끊겨도 이어지게 하는 자국입니다. 창이 새로 열리면 앞 일을 기억하지 못합니다.</p>
+<pre class="copy"># 한 번에 하나씩 + 자국 남기기
+1) 이번 세션은 기능 하나만 민다
+2) 끝내기 전에 git commit 을 남긴다 (메시지에 무엇을 했는지)
+3) claude-progress.txt 에 한 문단을 덧붙인다
+   - 이번에 한 것 :
+   - 남은 것 :
+   - 다음 세션이 먼저 볼 것 :
+
+# 다음 세션의 첫 동작
+git log 와 progress 파일을 읽고 시작한다</pre>
+<div class="hard">🔴 이 칸이 없으면 나중에 붙은 세션이 «쌓인 걸 둘러보고» 다 됐다고 선언합니다. 실제로 가장 자주 나는 실패입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>앞을 잡는 것 — 규칙 파일</h2>
+<p>규칙 파일은 길이가 아니라 <b>출처</b>가 중요합니다. 한 줄마다 «이 줄은 어떤 사고 때문에 생겼나»를 댈 수 있어야 합니다. 못 대면 지웁니다.</p>
+<p class="sub" style="margin-top:12px">그대로 복사해서 저장소 맨 위에 두세요.</p>
+<pre class="copy"># AGENTS.md
+
+## 만져도 되는 자리
+- 쓰기 허용: sandbox/ 와 tests/ 만
+- 읽기만: config/
+- 절대 금지: 운영 자격 증명 , 배포 스크립트 실행
+
+## 끝났다고 말하기 전에
+- 테스트를 돌리고 결과를 붙인다
+- 실패가 있으면 끝났다고 하지 않는다
+- 애매하면 추측하지 말고 되묻는다
+
+## 이 파일의 규칙
+- 한 줄마다 그 줄이 생긴 «사고»를 옆에 적는다
+- 사고를 못 대는 줄은 지운다
+- 같은 실수가 두 번 나오면 그때 한 줄을 더한다</pre>
+<div class="hard">🔴 «앞으로 이렇게 하면 좋겠다»는 줄은 넣지 마세요. 실제로 난 사고에서 나온 줄만 남기는 것이 이 파일이 짧게 유지되는 유일한 방법입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>뒤를 재는 것 — 리페어 루프 <span class="e" style="color:#787E88;font-size:13px;font-weight:700">Repair Loop</span></h2>
+<p>에이전트는 실수합니다. 좋은 하네스는 <b>실패한 로그를 그대로 다시 넣어 줍니다.</b> 사람이 복사해다 붙이는 그 동작을 자동으로 만드는 것입니다.</p>
+<p class="sub" style="margin-top:12px">아래 흐름을 그대로 옮겨 쓰세요 — 언어는 무엇이든 됩니다.</p>
+<pre class="copy">실행한다
+  └ 검사를 돌린다 (테스트 / linters / 타입 검사)
+      ├ 통과 → 끝낸다
+      └ 실패 → 로그를 그대로 되돌려 준다  (loop_back)
+                └ 고친 뒤 다시 검사한다
+
+# 킬 스위치 — 반드시 같이 건다
+반복 횟수를 센다
+  └ 한도를 넘으면 멈추고 사람을 부른다</pre>
+<div class="hard">🔴 킬 스위치가 없으면 «고쳤다 깼다»를 무한히 반복합니다. 횟수를 세는 줄 하나가 그 사고를 막습니다.</div>
+<div class="tip">💡 놀 자리도 같이 가두세요. 작업 폴더를 <b>sandbox</b> 하나로 묶어 두면, 잘못 지워도 그 안에서 끝납니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>점수 말고 «행동»을 잰다</h2>
+<p>벤치마크 점수는 몇 퍼센트 움직여도 <b>왜 움직였는지</b>를 알려 주지 않습니다. 대신 행동을 하나씩 참/거짓으로 재면 어디가 깨졌는지가 바로 보입니다.</p>
+<table>
+<tr><th>재는 방식</th><th>한 번 비용</th><th>알려 주는 것</th></tr>
+<tr><td>점수판</td><td class="v">100달러+</td><td>하나의 합산 점수</td></tr>
+<tr><td>행동 평가</td><td class="v">1초 미만</td><td>동작마다 통과 / 실패</td></tr>
+</table>
+<p class="sub" style="margin-top:14px">시작은 세 단계입니다. 그대로 복사해 두고 한 칸씩 채우세요.</p>
+<pre class="copy">1) 실패 한 가지를 고른다
+   최근에 실제로 난 실수 하나.
+   예) 끝났다고 하기 전에 테스트를 안 돌렸다.
+
+2) 그 한 동작만 재는 검사를 쓴다
+   쉬운 일 → 그 동작을 했는지 딱 집어 본다
+   어려운 일 → 순서를 강제하지 말고 결과만 본다
+
+3) 모아서 돌리고 추이를 본다
+   한 번 실패했다고 막지 말고,
+   여러 번 돌린 통과율이 내려가는지를 본다
+
+# 돌리는 줄
+pytest evals/behavioral/ -v</pre>
+<div class="tip">💡 목적은 «2% 좋아졌다»가 아닙니다. <b>바꾼 것이 다른 데를 망가뜨리지 않았다</b>는 확신을 얻는 것입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">6</span>한 칸을 더 둔다 — 못 잡는 것</h2>
+<p>저희가 이 채널을 에이전트로 굴리면서 배운 자리입니다. 검사는 만들기 쉽고 «했다»가 눈에 보여서, <b>못 재는 것을 적지 않으면 검사가 완전한 척하게 됩니다.</b></p>
+<ul class="chk">
+<li>이 검사가 <b>못 잡는 것</b>은 무엇인가</li>
+<li>그것은 누가 보는가 (사람 자리인가)</li>
+<li>검사가 헛돌고 있지는 않은가 — <b>일부러 걸려야 하는 입력</b>을 한 번 넣어 본다</li>
+</ul>
+<p class="sub" style="margin-top:12px">셋째 줄이 가장 자주 빠집니다. 검사를 넣어 두고 실제로는 한 번도 걸린 적이 없는 경우가 생각보다 흔합니다.</p>
+<pre class="copy"># 검사마다 세 줄을 같이 남긴다
+- 무엇을 잡는가 :
+- 무엇을 못 잡는가 :
+- 걸려야 하는 입력을 넣으면 걸리는가 : (예/아니오)
+
+# 그리고 사람 자리
+같은 지적이 두 번 나오면
+그때 규칙이나 검사를 고친다</pre>
+<div class="hard">🔴 개수가 많다고 좋은 하네스가 아닙니다. 죽어 있는 검사도 하나로 세어집니다 — 저희도 정규식이 깨져서 <b>한 번도 걸린 적 없던 검사</b>를 뒤늦게 발견한 적이 있습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">7</span>오늘 한 칸만 한다면</h2>
+<ul class="chk">
+<li>최근에 에이전트가 낸 실수 <b>하나</b>를 적는다</li>
+<li>그게 «앞»에서 막을 일인지 «뒤»에서 잴 일인지 고른다</li>
+<li>앞이면 규칙 파일에 한 줄, 뒤면 검사 하나를 더한다</li>
+<li>그 검사가 <b>정말 걸리는지</b> 일부러 틀린 입력으로 한 번 확인한다</li>
+</ul>
+<div class="tip">💡 한 번에 다 만들려고 하면 아무것도 안 남습니다. 실수 하나 → 컨트롤 하나가 이 방식의 전부입니다.</div>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>토망치랩은 AI 소식을 원문까지 두드려 보고 전합니다.</p>
+<a class="follow" href="https://instagram.com/ai_tomangchi.lab" target="_blank" rel="noopener">AI TOMANGCHI <b>LAB</b> 팔로우</a>
+</div>
+
+<p class="stamp">근거 — Anthropic Engineering 「Harness design for long-running application development」(2026-03-24) · 「Effective harnesses for long-running agents」(2025-11-26) · Google Cloud Tech 「What is harness engineering and why should I care?」(2026-08-24) · Google Developers Blog 「The Anatomy of Harness Engineering」(2026-09-09) · Birgitta Böckeler 「Harness engineering for coding agent users」(martinfowler.com · 2026-04-02).<br>100달러·1초 비교는 구글 개발자 블로그 본문의 표에 적힌 값입니다. sprint contract 와 claude-progress.txt 는 앤트로픽 글의 이름을 그대로 썼습니다. 「못 잡는 것」 칸은 토망치랩 운영 규칙에서 가져왔습니다.</p>
+</div>
+</body></html>
