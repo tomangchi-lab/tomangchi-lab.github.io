@@ -29,11 +29,15 @@
 
 git_dir=$(git rev-parse --git-dir 2>/dev/null) || exit 0
 
+# A linked worktree passes THIS guard and falls through to the ones below.
+# It used to `exit 0` right here, which made every guard appended after it dead
+# code - found 2026-09-13 by running the negative case (a staged kit with a
+# stale index committed cleanly). Guards added later go at the end of this file
+# and must be reached, so this case body stays empty on purpose.
 case "$git_dir" in
     */worktrees/*)
-        exit 0
         ;;
-esac
+    *)
 
 branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '?')
 
@@ -76,4 +80,45 @@ cat >&2 <<EOF
 
 EOF
 
-exit 1
+        exit 1
+        ;;
+esac
+
+# ---------------------------------------------------------------------------
+# kit index guard  (2026-09-13)
+#
+# WHY
+#   index.html carried hand-written cards. Kits were added and nobody updated
+#   the list: 35 kit pages on disk, 10 linked, index.html untouched for 24 days.
+#   The Instagram bio points at that page as the fallback for anyone whose DM
+#   did not arrive, so 25 kits were unreachable.
+#
+# WHAT IT DOES
+#   Regenerates the list in memory and refuses the commit if index.html does
+#   not already match. Fix: py scripts/build_index.py && git add index.html
+#
+# Charter section 0, layer 1: make it impossible, do not merely check for it.
+# ---------------------------------------------------------------------------
+
+if git diff --cached --name-only | grep -qE '^(kits/|index\.html$)'; then
+    # Korean output dies under cp949 when a hook redirects the stream. Pin it.
+    # (Same trap bit the jj-company checkers on 2026-09-11.)
+    PYTHONIOENCODING=utf-8
+    export PYTHONIOENCODING
+    if ! py scripts/build_index.py --self-test >/dev/null 2>&1; then
+        echo "  [kit-index] build_index self-test FAILED - run: py scripts/build_index.py --self-test" >&2
+        exit 1
+    fi
+    before=$(git hash-object index.html)
+    py scripts/build_index.py >/dev/null 2>&1 || { echo "  [kit-index] generator failed" >&2; exit 1; }
+    after=$(git hash-object index.html)
+    if [ "$before" != "$after" ]; then
+        echo "" >&2
+        echo "  [kit-index] commit refused: index.html was stale." >&2
+        echo "  It has just been regenerated from kits/*.html - review and stage it:" >&2
+        echo "      git add index.html" >&2
+        echo "" >&2
+        exit 1
+    fi
+    echo "  [kit-index] index.html matches kits/ OK" >&2
+fi
