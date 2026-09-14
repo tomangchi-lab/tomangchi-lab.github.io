@@ -1,0 +1,146 @@
+<!doctype html><html lang="ko"><head><title>🧰 Aside 윈도우 설치 순서 — 받기 · 내 구독 연결 · CLI · 클로드 코드 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI 브라우저 Aside 윈도우판을 받고, 이미 내는 클로드·챗GPT 구독을 붙이고, CLI 를 깔아 클로드 코드에 스킬로 얹는 순서. 막히는 자리를 같이 적었습니다.">
+<meta property="og:title" content="🧰 Aside 윈도우 설치 순서">
+<meta property="og:description" content="받기 → 내 구독 연결 → CLI → 클로드 코드. 공식 도움말의 설치 줄 그대로 + 막히는 자리.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--coral:#C43E36;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card h3{font-size:15px;font-weight:900;margin-top:16px;margin-bottom:2px;color:var(--cyan-d)}
+.card p{margin-top:8px}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+pre.copy{margin-top:8px;background:var(--ink);color:#f4f6fa;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.hero{background:linear-gradient(180deg,#EAF7F8,#fff);border:2px solid var(--cyan-d)}
+.hero h2{color:#12636B}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.chk{list-style:none;padding-left:0!important}
+.chk li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · Aside 윈도우</span>
+<h1>🧰 Aside 윈도우 설치 순서<br>받기 → 내 구독 연결 → CLI → 클로드 코드</h1>
+<p class="lead">AI 브라우저 Aside 의 윈도우 정식판이 나왔습니다. 받아서 여는 것보다 <b>이미 내는 클로드·챗GPT 구독을 붙이는 자리</b>와 <b>터미널·클로드 코드에 잇는 자리</b>에서 막히기 쉬워, 그 네 단계를 순서대로 적고 각 단계의 막히는 자리를 붙였습니다. 설치 줄과 메뉴 이름은 공식 도움말 그대로입니다.</p>
+
+<div class="card hero">
+<h2><span class="num">0</span>먼저 — 이 글은 광고가 아닙니다</h2>
+<p>대가·제휴 없이 저희가 직접 받아 보고 적은 순서입니다. 요금은 <b>aside.com</b> 요금 페이지 기준으로, 무료 요금제에 «Bring your own subscription» 이 들어 있어 내 구독만 붙이면 값을 더 내지 않고 돌릴 수 있습니다.</p>
+<table>
+<tr><th>단계</th><th>어디서</th><th>막히는 자리</th></tr>
+<tr><td class="v">1 받기</td><td>aside.com → Download</td><td>복구 키 파일을 어디 두나</td></tr>
+<tr><td class="v">2 내 구독 연결</td><td>Settings > Models > Providers</td><td>OAuth 팝업이 닫힌 뒤 돌아오기</td></tr>
+<tr><td class="v">3 CLI</td><td>Settings › Developers</td><td>먼저 열어 둔 터미널은 못 찾는다</td></tr>
+<tr><td class="v">4 클로드 코드</td><td>터미널 한 줄</td><td>스킬을 깐 뒤 aside guide 부터</td></tr>
+</table>
+<div class="tip">💡 순서를 바꾸지 마세요. CLI 는 앱이 떠 있어야 말을 듣고, 구독은 앱 안에서만 붙습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">1</span>받기 — 윈도우판 설치</h2>
+<p><b>무엇을 받나.</b> aside.com 의 Download 에서 윈도우 설치 파일을 받습니다. 변경 로그 v1.0.914.1 첫 줄이 «Aside is now officially available on Windows!» 입니다.</p>
+<p><b>첫 실행에서 묻는 것.</b> 비밀번호 관리자(Aside Vault)를 켤지 묻고, 켜면 <b>복구 키</b>를 파일로 내려 줍니다. 그 다음이 «AI 구독 선택» 화면이고, 이건 2단계에서 붙입니다.</p>
+<div class="hard">⚠️ 막히는 자리: 복구 키 파일이 기본으로 다운로드 폴더에 떨어집니다. 그 폴더는 나중에 통째로 지우기 쉬우니, 비밀번호 관리자나 외장 저장소로 옮기고 다운로드 폴더의 사본은 지우세요. 키를 잃으면 금고를 다시 열 수 없습니다.</div>
+<div class="tip">💡 다른 브라우저의 북마크·비밀번호 가져오기는 온보딩에 있습니다. 실패하면 대화 상자로 알려 줍니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>내 구독 연결 — 클로드·챗GPT 그대로</h2>
+<p><b>무엇을 해주나.</b> Aside 크레딧 대신 <b>이미 내는 구독의 모델</b>로 에이전트를 돌립니다. 도움말이 적어 둔 대상은 셋입니다.</p>
+<ul>
+<li>Claude Subscription — reuse your <b>Claude Pro or Max</b> subscription</li>
+<li>ChatGPT Subscription — reuse your <b>ChatGPT Plus or Pro</b> subscription</li>
+<li>GitHub Copilot — reuse your GitHub Copilot subscription</li>
+</ul>
+<h3>연결 방법</h3>
+<ol>
+<li>앱에서 <b>Settings &gt; Models &gt; Providers</b> 를 엽니다.</li>
+<li><b>Connect</b> 를 누르고 <b>Subscription</b> 아래에서 제공자를 고릅니다.</li>
+<li>OAuth 로그인 팝업이 뜹니다. 로그인을 끝내고 <b>Aside 로 돌아옵니다.</b></li>
+</ol>
+<div class="hard">⚠️ 막히는 자리: 팝업에서 로그인을 끝냈는데 목록에 안 보이면, 앱으로 돌아오지 않은 채 팝업만 닫은 경우가 많습니다. Providers 목록에 «Subscription» 라벨이 붙은 줄이 생겼는지 보세요.</div>
+<div class="tip">💡 붙인 구독은 Aside 크레딧과 따로 셉니다. 무료 요금제의 월 500 크레딧은 Aside 자체 모델을 쓸 때만 줄어듭니다. API 키(Anthropic · OpenAI · OpenRouter · Google · xAI 등)를 넣는 길도 같은 화면에 있습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>CLI — 터미널에서 aside 한 줄</h2>
+<p><b>무엇을 해주나.</b> 터미널에서 <b>aside "할 일"</b> 로 브라우저 에이전트를 부르고, 코딩 도구에 MCP 서버로 붙일 수 있게 합니다.</p>
+<h3>설치 방법 — 윈도우</h3>
+<ol>
+<li>앱에서 <b>Settings &gt; Developers</b> 를 엽니다.</li>
+<li><b>Install</b> 버튼을 누릅니다. 설정 페이지가 설치·업데이트·재설치를 직접 해 줍니다.</li>
+<li><b>새 터미널을 엽니다.</b> 그 다음 아래 줄로 확인합니다.</li>
+</ol>
+<pre class="copy">aside --version</pre>
+<h3>설치 방법 — 맥·리눅스</h3>
+<pre class="copy">curl -fsSL https://releases.aside.com/install.sh | bash</pre>
+<div class="hard">⚠️ 막히는 자리: 설치 <b>전에</b> 열어 둔 터미널·에디터는 aside 를 못 찾습니다. PATH 가 새 창부터 반영되기 때문이라, 새 터미널을 여세요. 그래도 안 되면 윈도우에서는 사용자 폴더 아래 AppData\Local\Aside\CLI\current 안의 aside.exe 를 전체 경로로 부르면 됩니다.</div>
+<div class="tip">💡 CLI 는 <b>앱이 떠 있어야</b> 동작합니다. 앱을 끄면 «Aside isn't running on this machine» 이 뜹니다. 판이 낡았으면 아래 한 줄로 올립니다.</div>
+<pre class="copy">aside update</pre>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>클로드 코드 — 스킬로 얹기</h2>
+<p><b>무엇을 해주나.</b> 클로드 코드·코덱스·커서·오픈코드 안에서 «브라우저로 이거 해 줘» 라고 하면 Aside 가 대신 브라우저를 움직입니다. 변경 로그의 문장 그대로, <b>aside skills install</b> 이 그 도구들에 aside-browser 스킬을 깔아 줍니다.</p>
+<h3>설치 방법</h3>
+<ol>
+<li>터미널에서 아래 한 줄을 보냅니다. 어느 도구에 깔지 물어보면 고릅니다.</li>
+<li>깐 도구(클로드 코드 등)를 <b>새로 엽니다.</b></li>
+<li>그 도구 안에서 먼저 <b>aside guide</b> 를 읽게 합니다. 스킬 파일이 «반드시 먼저 읽으라»고 적어 둔 그 줄입니다.</li>
+</ol>
+<pre class="copy">aside skills install</pre>
+<pre class="copy">aside guide</pre>
+<p class="sub">MCP 로 붙이는 도구면 mcp.json 에 명령을 <b>aside mcp</b> 로 적습니다. 설정 페이지가 CLI 의 실제 경로를 찾아 줬으면 그 경로를 command 에 넣습니다.</p>
+<div class="hard">⚠️ 막히는 자리: 스킬은 «문»일 뿐이라 실제 사용법은 aside guide 출력에 있습니다. 그걸 건너뛰면 도구가 명령을 추측해 엉뚱한 옵션을 씁니다. 화면을 직접 들여다봐야 하는 일(스크린샷 · DOM)은 aside repl 인데, 그 전에 aside guide repl 을 먼저 읽으라고 적혀 있습니다.</div>
+<div class="tip">💡 설치 확인: 클로드 코드에서 «브라우저로 aside.com 요금 페이지 열어서 무료 요금제 항목 읽어 줘» 를 시켜 보세요. Aside 창에 Agent Tabs 그룹이 생기며 탭이 열리면 걸린 겁니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>순서 체크리스트</h2>
+<ul class="chk">
+<li>aside.com 에서 윈도우판을 받아 설치했다</li>
+<li>복구 키 파일을 다운로드 폴더 밖으로 옮겼다</li>
+<li>Settings › Models › Providers 에 «Subscription» 줄이 생겼다</li>
+<li>Settings › Developers 에서 CLI 를 깔고 새 터미널에서 aside --version 이 찍힌다</li>
+<li>aside skills install 뒤 도구를 새로 열고 aside guide 를 읽게 했다</li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>다음 소식으로 찾아뵙겠습니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">설치 줄·메뉴 이름은 docs.aside.com 도움말과 변경 로그 원문 · 요금은 aside.com 요금 페이지 · 2026-09-14 기준<br>토망치랩 · AI TOMANGCHI LAB</p>
+</div>
+</body></html>
