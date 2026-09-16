@@ -1,0 +1,123 @@
+<!doctype html><html lang="ko"><head><title>🧰 Odyssey-3 한 장 정리 — 여섯 실험 · 데모 지시문 · 공개 전 볼 곳 — 토망치랩</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="월드 모델 Odyssey-3 가 로봇 팔 · 휴머노이드 · 주행 · AI 훈련 · 드론 · 게임에서 무엇을 얼마의 데이터로 했는지 한 장에 묶었습니다. 공식 데모에 쓰인 지시문과 공개 전 볼 곳을 같이 적었습니다.">
+<meta property="og:title" content="🧰 Odyssey-3 한 장 정리">
+<meta property="og:description" content="여섯 실험의 데이터 양과 결과 · 공식 데모 지시문 · 공개 전 볼 곳.">
+<meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo_unit.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#F5F7F9;--ink:#1C2028;--cyan:#34DCE6;--cyan-d:#1E8C96;--line:#E4E8EC;--gray:#787E88;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--ink);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:10px;justify-content:center}
+.top .mark{font-size:20px}
+.top .word{font-weight:900;letter-spacing:.06em;font-size:15px}
+.top .word b{color:var(--cyan)}
+.wrap{max-width:640px;margin:0 auto;padding:70px 20px 60px}
+.badge{display:inline-block;border:2px solid var(--cyan);color:var(--cyan-d);border-radius:999px;padding:4px 16px;font-weight:700;font-size:13px;margin-bottom:14px}
+h1{font-weight:900;font-size:26px;line-height:1.35;margin-bottom:10px}
+.lead{color:#464c56;font-size:15px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 4px 14px rgba(28,32,40,.05)}
+.card h2{font-size:18px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cyan-d);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}
+.card h3{font-size:15px;font-weight:900;margin-top:16px;margin-bottom:2px;color:var(--cyan-d)}
+.card p{margin-top:8px}
+.card p,.card li{font-size:15px;color:#3a4049}
+.card ol,.card ul{padding-left:22px;display:grid;gap:7px;margin-top:4px}
+pre.copy{margin-top:8px;background:var(--ink);color:#f4f6fa;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.card .tip{margin-top:12px;background:var(--surface);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--cyan-d);font-weight:700}
+.card .hard{margin-top:12px;background:#FBEDE7;border-radius:12px;padding:10px 14px;font-size:13.5px;color:#8E3229;font-weight:700}
+.sub{font-size:13px;color:var(--gray);margin-top:6px}
+.hero{background:linear-gradient(180deg,#EAF7F8,#fff);border:2px solid var(--cyan-d)}
+.hero h2{color:#12636B}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gray);font-size:12.5px;font-weight:700}
+td.v{font-weight:900;white-space:nowrap}
+.chk{list-style:none;padding-left:0!important}
+.chk li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
+.chk li::before{content:"☐";flex:none;font-size:16px;color:var(--cyan-d);line-height:1.5}
+.foot{text-align:center;margin-top:34px}
+.foot .hammer{font-size:26px}
+.foot p{font-size:14px;color:var(--gray);margin:8px 0 14px}
+.follow{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 26px;font-size:15px}
+.follow b{color:var(--cyan)}
+.stamp{text-align:center;font-size:12.5px;color:var(--gray);margin-top:20px;line-height:1.7}
+a{color:var(--cyan-d)}
+</style></head><body>
+<header class="top"><span class="mark">🐰🔨</span><span class="word">AI TOMANGCHI <b>LAB</b></span></header>
+<div class="wrap">
+<span class="badge">AI 소식 · Odyssey-3</span>
+<h1>🧰 Odyssey-3 한 장 정리<br>여섯 실험 · 데모 지시문 · 공개 전 볼 곳</h1>
+<p class="lead">Odyssey 가 월드 모델 <b>Odyssey-3</b> 를 내보였습니다. 세상을 영상으로 보고 배운 모델 하나에 과제별 경험 데이터를 조금 더 먹여 로봇·차·드론·게임을 움직이는 구조입니다. 아직 바로 써 볼 수 있는 단계는 아니라서, <b>공개 전</b>에 알아 둘 것만 한 장에 묶었습니다. 수치와 문장은 전부 공식 블로그 원문 기준입니다.</p>
+
+<div class="card hero">
+<h2><span class="num">1</span>먼저 — 이 글은 광고가 아닙니다</h2>
+<p>대가·제휴 없이 공식 발표 글을 읽고 정리했습니다. 아래 결과는 모두 <b>Odyssey 가 스스로 돌린 실험</b>이고, 저희가 다시 재 본 값이 아닙니다.</p>
+<table>
+<tr><th>분야</th><th>더 먹인 데이터</th><th>결과</th></tr>
+<tr><td class="v">로봇 팔</td><td>로봇 시연 수십 시간</td><td>여러 로봇 팔로 작업 · 시연에 없던 복구 동작</td></tr>
+<tr><td class="v">휴머노이드</td><td>원격 조종 수십 시간 (Flexion)</td><td>실시간 작업 · 조명이 바뀌어도 계속</td></tr>
+<tr><td class="v">주행</td><td>시뮬레이션 주행 20시간</td><td>인도 실제 도로 자율주행 · 개입 간 거리 약 77%</td></tr>
+<tr><td class="v">AI 훈련</td><td>—</td><td>AI 가 행동하고 배우는 세계를 생성</td></tr>
+<tr><td class="v">드론</td><td>시뮬레이션 비행 수십 시간</td><td>실내 시뮬레이션에서 장애물 회피</td></tr>
+<tr><td class="v">게임</td><td>GTA 영상 약 2시간</td><td>RDR 2 에서 말 타기 · 추가 학습 없음</td></tr>
+</table>
+<div class="tip">💡 77% 는 «시뮬레이션만으로 배운 정책»이 «실제 주행 영상으로 배운 정책»만큼의 거리를 안전 요원 개입 없이 간 비율입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">2</span>어떻게 돌아가나 — 세 줄</h2>
+<ol>
+<li><b>본체</b>: 세상의 영상을 대량으로 보고 물리·역학·인과를 배운 월드 모델입니다. 구조는 autoregressive diffusion transformer 입니다.</li>
+<li><b>붙이는 것</b>: 과제마다 «화면 + 그때 누른 조작» 짝을 조금 모아 <b>action decoder</b> 를 학습시킵니다. 주행·게임에서는 본체를 얼려 둡니다.</li>
+<li><b>그래서</b>: 과제별로 몇 시간~수십 시간의 경험 데이터로 새 기계를 다룬다는 것이 이 발표의 요지입니다. Odyssey 는 이것을 physical agents 라고 부릅니다.</li>
+</ol>
+<div class="hard">⚠️ 헷갈리는 자리: 일부 소개 글에 «Physics Agent» 라는 이름이 돌지만 공식 원문의 표현은 <b>physical agents</b> 입니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">3</span>공식 데모 지시문 — 복사해 두기</h2>
+<p>데모 영상 밑에 붙어 있던 지시문을 원문 그대로 모았습니다. 공개되면 <b>이 정도 길이의 한 줄 지시</b>로 움직인다는 감을 잡는 용도입니다.</p>
+<h3>로봇 팔 · 휴머노이드</h3>
+<pre class="copy">Pour the cereal into the bowl
+Put the items into the box and close it
+Move the plate to the center of the table and place the mug on top of it</pre>
+<h3>주행 · 드론</h3>
+<pre class="copy">Take the first roundabout exit
+Do a 180 degree turn towards the left
+Take off, navigate under the table, and land behind the bookcase
+Take off, explore the room, and hover above the table</pre>
+<p class="sub">게임 데모에는 지시문이 없고, 화면과 키보드·마우스 입력만으로 배운 정책이 움직입니다.</p>
+</div>
+
+<div class="card">
+<h2><span class="num">4</span>공개 전 볼 곳</h2>
+<ul>
+<li><b>발표 글 전문</b> — odyssey.systems/introducing-odyssey-3 (2026-09-15)</li>
+<li><b>공식 X</b> — @odysseyml 발표 스레드 (영상 두 편)</li>
+<li><b>API 문의</b> — odyssey.systems 상단 메뉴의 «Get API Access»</li>
+</ul>
+<div class="tip">💡 공식 글의 마지막 문장은 «몇 주 안에 공개하겠다»입니다. 날짜는 아직 없습니다.</div>
+</div>
+
+<div class="card">
+<h2><span class="num">5</span>공개되면 확인할 것</h2>
+<ul class="chk">
+<li>누구에게 열리나 — 연구용인지, API 신청제인지</li>
+<li>내 로봇·게임에 붙이려면 경험 데이터를 어떤 꼴로 모으나</li>
+<li>본체를 얼려 둔 채 쓰는지, 같이 학습하는지</li>
+<li>블로그의 여섯 실험 가운데 무엇이 같이 풀리나</li>
+</ul>
+</div>
+
+<div class="foot">
+<div class="hammer">🐰🔨</div>
+<p>공개되면 다시 찾아뵙겠습니다.</p>
+<a class="follow" href="https://www.instagram.com/ai_tomangchi.lab/">@ai_tomangchi.lab <b>팔로우</b></a>
+</div>
+<p class="stamp">수치·지시문은 odyssey.systems 공식 발표 글 원문 · 2026-09-16 기준<br>토망치랩 · AI TOMANGCHI LAB</p>
+</div>
+</body></html>
